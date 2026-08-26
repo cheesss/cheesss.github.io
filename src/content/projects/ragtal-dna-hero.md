@@ -39,6 +39,22 @@ media:
     section: method
     autoplay: false
     aspectRatio: 16 / 9
+  - src: /media/videos/ragtal-teleoperation.mp4
+    poster: /media/posters/ragtal-teleoperation.webp
+    alt: A custom leader arm is moved by hand while an RB10 robot mirrors the motion across three real manipulation setups.
+    caption: Leader-arm teleoperation used to collect demonstrations across three task configurations. Hardware design and integration were team efforts; my role centered on the learning pipeline and evaluation workflow.
+    kind: video
+    section: evidence
+    autoplay: false
+    aspectRatio: 16 / 9
+  - src: /media/videos/ragtal-rollouts.mp4
+    poster: /media/posters/ragtal-rollouts.webp
+    alt: An RB10 robot executes three learned manipulation tasks involving flat parts, a yellow bin, and a black workpiece.
+    caption: Representative real-robot rollouts from the three final-presentation task families. The reported 9/10 result is limited to that integrated presentation setting.
+    kind: video
+    section: evidence
+    autoplay: false
+    aspectRatio: 16 / 9
 links: []
 featured: true
 order: 2

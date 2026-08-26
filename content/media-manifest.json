@@ -10,6 +10,10 @@
     { "file": "public/media/ragtal-system.svg", "project": "RAGTAL / DNA-HERO", "kind": "diagram", "owner": "Hyeonjun Cho", "publicClearance": true },
     { "file": "public/media/vlm-system.svg", "project": "VLM-Grounded LMTG", "kind": "diagram", "owner": "Hyeonjun Cho", "publicClearance": true },
     { "file": "public/media/lmtg-system.svg", "project": "Zero-Shot LMTG", "kind": "diagram", "owner": "Hyeonjun Cho", "publicClearance": true },
+    { "file": "public/media/videos/ragtal-teleoperation.mp4", "sourcePage": "Robot Learning Framework", "sourceFile": "PPT_영상.zip / slide 9*.mp4", "candidateSegments": "5–10 s, 4–9 s, and 1–6 s from three task variants", "project": "RAGTAL / DNA-HERO", "kind": "video", "intendedUse": "Evidence", "owner": "RAGTAL team; clearance required", "publicClearance": false },
+    { "file": "public/media/posters/ragtal-teleoperation.webp", "sourceFile": "Derived from ragtal-teleoperation.mp4 at 2.5 s", "project": "RAGTAL / DNA-HERO", "kind": "poster", "owner": "RAGTAL team; clearance required", "publicClearance": false },
+    { "file": "public/media/videos/ragtal-rollouts.mp4", "sourcePage": "Robot Learning Framework", "sourceFile": "PPT_영상.zip / slide 10*.mp4", "candidateSegments": "3–9 s, 2–7 s, and 1–6 s from three final-presentation task families", "project": "RAGTAL / DNA-HERO", "kind": "video", "intendedUse": "Evidence", "owner": "RAGTAL team; clearance required", "publicClearance": false },
+    { "file": "public/media/posters/ragtal-rollouts.webp", "sourceFile": "Derived from ragtal-rollouts.mp4 at 8 s", "project": "RAGTAL / DNA-HERO", "kind": "poster", "owner": "RAGTAL team; clearance required", "publicClearance": false },
     { "file": "public/media/videos/lpb-hero.mp4", "project": "Recovery-Aware LPB", "kind": "video", "intendedUse": "Hero", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
     { "file": "public/media/posters/lpb-hero.webp", "project": "Recovery-Aware LPB", "kind": "poster", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
     { "file": "public/media/videos/lpb-recovery-a.mp4", "project": "Recovery-Aware LPB", "kind": "video", "intendedUse": "Evidence", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
@@ -53,7 +57,7 @@
       "intendedUse": "Teleoperation collection and RB10 rollout",
       "ownership": "RAGTAL team; publication clearance required",
       "publicClearance": false,
-      "status": "Indexed in Notion; binary review pending"
+      "status": "Downloaded and reviewed; derived teleoperation and rollout clips staged for local review"
     },
     {
       "sourcePage": "DNA-Hero (RAGTAL)",
@@ -63,7 +67,7 @@
       "intendedUse": "Contrast the previous VR-tracker interface with the leader-arm collection workflow",
       "ownership": "RAGTAL team; publication clearance required",
       "publicClearance": false,
-      "status": "Indexed in Notion; binary review pending"
+      "status": "Downloaded and reviewed; not selected because the custom leader-arm footage is more project-specific"
     },
     {
       "sourcePage": "Robot Learning Framework",
@@ -93,7 +97,17 @@
       "intendedUse": "Sensor-aware RB10 rollout evidence",
       "ownership": "RAGTAL team; publication clearance required",
       "publicClearance": false,
-      "status": "Indexed in Notion; binary review pending"
+      "status": "Downloaded and reviewed; not selected because the display-heavy framing provides weaker visual evidence"
+    },
+    {
+      "sourcePage": "0430영상",
+      "sourceUrl": "https://app.notion.com/p/7730fff7d7d983e3b62601253f796859",
+      "filename": "reference_mode2_ep0_view_hq.mp4 and eq_best_ep0_view_hq.mp4",
+      "project": "RAGTAL / DNA-HERO",
+      "intendedUse": "Reference-versus-policy comparison",
+      "ownership": "RAGTAL team; publication clearance required",
+      "publicClearance": false,
+      "status": "Downloaded and reviewed; not selected because the low-contrast internal visualization is less legible than the real-robot rollouts"
     },
     {
       "sourcePage": "25-1_urp_ppt_final.pptx, slide 22",
