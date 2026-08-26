@@ -30,6 +30,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Check content and types
         run: pnpm check
+      - name: Verify media release clearance
+        run: pnpm release:check
       - name: Build site
         run: pnpm build
       - uses: actions/upload-pages-artifact@v4

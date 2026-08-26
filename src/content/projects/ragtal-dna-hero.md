@@ -36,6 +36,7 @@ media:
     alt: Diagram showing force-feedback teleoperation demonstrations flowing into dataset curation, policy learning, and RB10 robot rollout evaluation.
     caption: My work centered on the learning loop while the complete system was built by a cross-functional hardware and software team.
     kind: diagram
+    section: method
     autoplay: false
     aspectRatio: 16 / 9
 links: []

@@ -52,11 +52,16 @@ test('reduced motion disables continuous CSS animation', async ({ browser }) => 
   const context = await browser.newContext({ reducedMotion: 'reduce' });
   const page = await context.newPage();
   await page.goto('/');
-  const motion = await page.locator('.recovery-path').evaluate((element) => ({
-    durationSeconds: Number.parseFloat(getComputedStyle(element).animationDuration),
-    iterations: getComputedStyle(element).animationIterationCount,
-  }));
-  expect(motion.durationSeconds).toBeLessThan(0.001);
-  expect(motion.iterations).toBe('1');
+  await expect(page.locator('video[data-autoplay="true"]')).toHaveJSProperty('paused', true);
   await context.close();
+});
+
+test('research evidence videos retain posters, captions, and native controls', async ({ page }) => {
+  await page.goto('/research/vlm-lmtg/');
+  const videos = page.locator('.evidence-media video, .limitation-media video');
+  await expect(videos).toHaveCount(3);
+  for (let index = 0; index < await videos.count(); index += 1) {
+    await expect(videos.nth(index)).toHaveAttribute('poster', /\/media\/posters\/.+\.webp/);
+    await expect(videos.nth(index)).toHaveAttribute('controls', '');
+  }
 });

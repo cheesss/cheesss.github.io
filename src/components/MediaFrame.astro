@@ -6,6 +6,7 @@ interface Props {
     alt: string;
     caption: string;
     kind: 'video' | 'image' | 'diagram';
+    section?: 'method' | 'evidence' | 'limitation';
     autoplay?: boolean;
     aspectRatio: string;
   };
@@ -17,6 +18,7 @@ const { media, priority = false } = Astro.props;
   <div class="media-surface">
     {media.kind === 'video' ? (
       <>
+        {media.poster && <img class="media-poster" src={media.poster} alt="" aria-hidden="true" loading={priority ? 'eager' : 'lazy'} decoding="async" />}
         <video
           muted
           loop
@@ -54,7 +56,9 @@ const { media, priority = false } = Astro.props;
   .media-frame { margin: 0; }
   .media-surface { position: relative; overflow: hidden; aspect-ratio: var(--ratio); background: #e4e5df; }
   img, video { width: 100%; height: 100%; object-fit: cover; }
-  video[data-failed='true'] { opacity: 0; }
+  .media-poster { position: absolute; inset: 0; }
+  video { position: relative; z-index: 1; background: transparent; }
+  video[data-failed='true'] { visibility: hidden; }
   figcaption { max-width: 48rem; margin-top: 0.8rem; color: var(--ink-soft); font-size: 0.8rem; line-height: 1.55; }
   .noscript-note { position: absolute; inset: auto 1rem 1rem; margin: 0; padding: 0.5rem; background: var(--paper); font-size: 0.75rem; }
 </style>

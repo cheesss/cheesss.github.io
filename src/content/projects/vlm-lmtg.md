@@ -36,6 +36,31 @@ media:
     alt: Diagram of an RGB scene being grounded into objects, a gripper-aware grasp being selected, and execution feedback updating task memory.
     caption: Perception, grasp selection, and execution feedback are kept in one loop so the planner can revise decisions after failure.
     kind: diagram
+    section: method
+    autoplay: false
+    aspectRatio: 16 / 9
+  - src: /media/videos/vlm-yellow-bottle.mp4
+    poster: /media/posters/vlm-yellow-bottle.webp
+    alt: Real robot selecting and executing a grasp for a yellow bottle among several tabletop objects.
+    caption: Real-robot result for the prompt “Pick up the yellow bottle,” demonstrating gripper-aware object selection and execution.
+    kind: video
+    section: evidence
+    autoplay: false
+    aspectRatio: 16 / 9
+  - src: /media/videos/vlm-red-box-suction.mp4
+    poster: /media/posters/vlm-red-box-suction.webp
+    alt: Real robot using a suction end effector to approach and lift a red rectangular box from a tabletop scene.
+    caption: A second end-effector condition tests whether the planner can ground the red box and execute a suction grasp.
+    kind: video
+    section: evidence
+    autoplay: false
+    aspectRatio: 16 / 9
+  - src: /media/videos/vlm-zero-shot-failure.mp4
+    poster: /media/posters/vlm-zero-shot-failure.webp
+    alt: Real robot approaching tabletop objects during a zero-shot trial that does not complete the intended grasp reliably.
+    caption: Limitation case retained to show why scene grounding alone does not guarantee robust zero-shot execution.
+    kind: video
+    section: limitation
     autoplay: false
     aspectRatio: 16 / 9
 links: []

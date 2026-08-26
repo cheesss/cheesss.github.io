@@ -27,6 +27,8 @@ pnpm-debug.log*
 .artifacts/
 test-results/
 playwright-report/
+.playwright-cli/
+output/playwright/
 
 # unedited source media; only cleared derivatives belong in public/
 content/raw-media/

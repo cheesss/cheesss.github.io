@@ -25,7 +25,7 @@ pnpm audit:public
 
 ## Content model
 
-Research case studies live in `src/content/projects`. Each project declares its title, period, status, summary, individual role, team contribution, metrics, methods, limitations, media, links, featured status, and order. Astro validates the schema during checks and builds.
+Research case studies live in `src/content/projects`. Each project declares its title, period, status, summary, individual role, team contribution, metrics, methods, limitations, media, links, featured status, and order. Media entries use a `section` value of `method`, `evidence`, or `limitation` so unsuccessful trials are never presented as positive results. Astro validates the schema during checks and builds.
 
 To add a project:
 
@@ -46,6 +46,9 @@ Only link a project repository when its public history and README clearly substa
 - Initial published media total: no more than 45 MB.
 
 Original research media is not committed until ownership and public-release permission are confirmed. Never substitute a re-recorded Notion preview for the source file.
+
+Web derivatives may be staged locally with `publicClearance: false` in the manifest for review. Do not push those assets to the public repository until the owner changes that field after confirming release permission.
+The GitHub Pages workflow runs `pnpm release:check` and refuses to deploy while any staged asset remains uncleared.
 
 ## Deployment and recovery
 

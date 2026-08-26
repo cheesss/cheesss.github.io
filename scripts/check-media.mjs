@@ -10,7 +10,9 @@ for (const item of manifest.published) {
   const info = await stat(filePath);
   total += info.size;
   const extension = path.extname(filePath).toLowerCase();
-  const max = extension === '.mp4' ? (item.intendedUse === 'Hero' ? 5 : 8) * 1024 * 1024 : 350 * 1024;
+  const max = extension === '.mp4'
+    ? (item.intendedUse === 'Hero' ? 5 : 8) * 1024 * 1024
+    : (item.kind === 'poster' ? 250 : 350) * 1024;
   if (info.size > max) throw new Error(`${item.file} exceeds its ${Math.round(max / 1024)} KB budget.`);
 }
 

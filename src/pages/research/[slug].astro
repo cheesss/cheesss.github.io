@@ -13,6 +13,9 @@ export async function getStaticPaths() {
 
 const { project, previous, next } = Astro.props;
 const data = project.data;
+const methodMedia = data.media.filter((item) => item.section === 'method');
+const evidenceMedia = data.media.filter((item) => item.section === 'evidence');
+const limitationMedia = data.media.filter((item) => item.section === 'limitation');
 ---
 <BaseLayout title={`${data.title} — Hyeonjun Cho`} description={data.summary}>
   <article>
@@ -21,9 +24,9 @@ const data = project.data;
     </header>
     <section class="section compact"><div class="container contribution-grid"><p class="eyebrow">One-line contribution</p><p class="contribution">{data.contribution}</p></div></section>
     <section class="section section-rule"><div class="container two-column"><div><p class="eyebrow">My Role</p><ul>{data.role.map((item) => <li>{item}</li>)}</ul></div><div class="team-panel"><p class="eyebrow">Team Contribution</p><ul>{data.teamContribution.map((item) => <li>{item}</li>)}</ul></div></div></section>
-    <section class="section method-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">System / Method</p><h2>How it works</h2></div><p class="lede">A compact view of the research loop and the interface between learning, safety, perception, and execution.</p></div><MediaFrame media={data.media[0]} priority={true} /><ol class="method-list">{data.methods.map((method, index) => <li><span>0{index + 1}</span>{method}</li>)}</ol></div></section>
-    <section class="section evidence-section"><div class="container"><p class="eyebrow">Evidence</p><h2>Results in context</h2><div class="metrics">{data.metrics.map((metric) => <div class="metric"><strong>{metric.value}</strong><span>{metric.label}</span><p>{metric.note}</p></div>)}</div></div></section>
-    <section class="section section-rule"><div class="container two-column limit-grid"><div><p class="eyebrow">Limitations</p><h2>What this does not claim</h2></div><ul>{data.limitations.map((item) => <li>{item}</li>)}</ul></div></section>
+    <section class="section method-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">System / Method</p><h2>How it works</h2></div><p class="lede">A compact view of the research loop and the interface between learning, safety, perception, and execution.</p></div><div class="method-media">{methodMedia.map((media, index) => <MediaFrame media={media} priority={index === 0} />)}</div><ol class="method-list">{data.methods.map((method, index) => <li><span>0{index + 1}</span>{method}</li>)}</ol></div></section>
+    <section class="section evidence-section"><div class="container"><p class="eyebrow">Evidence</p><h2>Results in context</h2><div class="metrics">{data.metrics.map((metric) => <div class="metric"><strong>{metric.value}</strong><span>{metric.label}</span><p>{metric.note}</p></div>)}</div>{evidenceMedia.length > 0 && <div class="evidence-media"><h3>Demonstrations and traces</h3><div class="media-gallery">{evidenceMedia.map((media) => <MediaFrame media={media} />)}</div></div>}</div></section>
+    <section class="section section-rule"><div class="container"><div class="two-column limit-grid"><div><p class="eyebrow">Limitations</p><h2>What this does not claim</h2></div><ul>{data.limitations.map((item) => <li>{item}</li>)}</ul></div>{limitationMedia.length > 0 && <div class="limitation-media"><h3>Observed limitation</h3><div class="media-gallery">{limitationMedia.map((media) => <MediaFrame media={media} />)}</div></div>}</div></section>
     <section class="section section-rule"><div class="container details-grid"><div><p class="eyebrow">Technical stack</p><div class="tags">{data.stack.map((item) => <span>{item}</span>)}</div></div><div><p class="eyebrow">Code & materials</p>{data.links.length ? data.links.map((link) => <a class="resource-link" href={link.href}>{link.label} ↗</a>) : <p class="availability">Code available upon request.</p>}</div></div></section>
     <nav class="project-nav" aria-label="Project navigation"><div class="container nav-grid"><a href={`/research/${previous.id.replace(/\.md$/, '')}/`}><span>← Previous</span><strong>{previous.data.shortTitle}</strong></a><a class="next" href={`/research/${next.id.replace(/\.md$/, '')}/`}><span>Next →</span><strong>{next.data.shortTitle}</strong></a></div></nav>
   </article>
@@ -44,6 +47,7 @@ const data = project.data;
   li::before { content:'—'; position:absolute; left:0; color:var(--teal); }
   .team-panel { padding:2rem; border:1px solid var(--line); background:var(--paper); }
   .method-section { background:var(--paper); }
+  .method-media { display:grid; gap:1.25rem; }
   .section-heading { display:grid; grid-template-columns:1fr 1fr; align-items:end; gap:3rem; margin-bottom:3rem; }
   .section-heading h2,.section-heading .lede { margin-bottom:0; }
   .method-list { display:grid; grid-template-columns:repeat(4,1fr); margin:2rem 0 0; padding:0; list-style:none; border-top:1px solid var(--line); }
@@ -57,6 +61,11 @@ const data = project.data;
   .metric strong { display:block; color:#82cec5; font-family:var(--serif); font-size:clamp(2.8rem,5vw,4.6rem); font-weight:550; line-height:1; }
   .metric span { display:block; margin-top:1rem; font-weight:690; }
   .metric p { margin-top:.5rem; color:#aab8c3; font-size:.78rem; }
+  .evidence-media,.limitation-media { margin-top:clamp(3rem,7vw,6rem); padding-top:2rem; border-top:1px solid rgba(245,242,233,.3); }
+  .limitation-media { border-top-color:var(--line); }
+  .evidence-media h3,.limitation-media h3 { margin-bottom:1.5rem; font-size:clamp(1.6rem,3vw,2.3rem); }
+  .media-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2rem 1.25rem; }
+  .evidence-media :global(figcaption) { color:#aab8c3; }
   .limit-grid { align-items:start; }
   .tags { display:flex; flex-wrap:wrap; gap:.6rem; }
   .tags span { padding:.5rem .75rem; border:1px solid var(--line-dark); background:var(--paper); font-size:.75rem; font-weight:650; }
@@ -69,5 +78,5 @@ const data = project.data;
   .nav-grid .next { text-align:right; }
   .nav-grid span { color:var(--ink-soft); font-size:.72rem; font-weight:680; text-transform:uppercase; }
   .nav-grid strong { font-family:var(--serif); font-size:1.3rem; }
-  @media (max-width:700px) { .contribution-grid,.two-column,.details-grid,.section-heading { grid-template-columns:1fr; gap:1.5rem; } .method-list { grid-template-columns:1fr 1fr; } .nav-grid strong { font-size:1rem; } }
+  @media (max-width:700px) { .contribution-grid,.two-column,.details-grid,.section-heading,.media-gallery { grid-template-columns:1fr; gap:1.5rem; } .method-list { grid-template-columns:1fr 1fr; } .nav-grid strong { font-size:1rem; } }
 </style>

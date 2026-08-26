@@ -1,9 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import MediaFrame from '../components/MediaFrame.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const heroMedia = {
+  src: '/media/videos/lpb-hero.mp4',
+  poster: '/media/posters/lpb-hero.webp',
+  alt: 'RB10 manipulator moving above a tabletop cup during an intervention-and-recovery experiment without any people in frame.',
+  caption: 'RB10 intervention-and-recovery experiment · muted 9.5-second excerpt',
+  kind: 'video' as const,
+  section: 'evidence' as const,
+  autoplay: true,
+  aspectRatio: '16 / 9',
+};
 ---
 <BaseLayout
   title="Hyeonjun Cho — Robot Learning Research"
@@ -22,30 +33,9 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
           <a class="button" href="mailto:chohjender@g.skku.edu">Email Me</a>
         </div>
       </div>
-      <div class="hero-visual" aria-label="Abstract visualization of an RB10 robot recovering from a safety intervention">
+      <div class="hero-visual">
         <div class="visual-label"><span>RB10 · Recovery loop</span><span class="live-dot">Real-robot research</span></div>
-        <svg viewBox="0 0 680 720" role="img" aria-labelledby="hero-title hero-desc">
-          <title id="hero-title">Recovery-aware robot learning</title>
-          <desc id="hero-desc">A stylized robot arm changes from an interrupted trajectory to a safe recovery path.</desc>
-          <defs>
-            <linearGradient id="field" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17314b"/><stop offset="1" stop-color="#0a1c30"/></linearGradient>
-            <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
-          </defs>
-          <rect width="680" height="720" fill="url(#field)"/>
-          <g opacity=".16" stroke="#d8eee9" stroke-width="1"><path d="M0 120h680M0 240h680M0 360h680M0 480h680M0 600h680"/><path d="M113 0v720M226 0v720M339 0v720M452 0v720M565 0v720"/></g>
-          <circle cx="518" cy="230" r="85" fill="#c76b37" opacity=".2" filter="url(#soft)"/>
-          <circle cx="518" cy="230" r="62" fill="none" stroke="#d77b47" stroke-dasharray="8 10" stroke-width="2"/>
-          <text x="518" y="235" fill="#e9a37a" font-size="15" text-anchor="middle" font-family="Inter">RMP INTERVENTION</text>
-          <path d="M120 550C195 485 290 415 392 323S503 158 578 115" fill="none" stroke="#8c9dab" stroke-width="3" stroke-dasharray="8 12"/>
-          <path class="recovery-path" d="M120 550C230 470 248 402 335 398C430 394 445 327 470 287" fill="none" stroke="#5fc0b6" stroke-width="7" stroke-linecap="round"/>
-          <g fill="#f4f0e6" stroke="#10283e" stroke-width="8" stroke-linejoin="round">
-            <path d="M110 590h180v52H110z"/><path d="M170 590l48-145 50 16-37 129z"/><path d="M213 450l92-116 45 32-83 101z"/><path d="M307 335l98-53 25 45-80 42z"/>
-          </g>
-          <circle cx="221" cy="451" r="24" fill="#5fc0b6"/><circle cx="329" cy="351" r="22" fill="#5fc0b6"/><circle cx="416" cy="305" r="19" fill="#5fc0b6"/>
-          <path d="M420 305l33-45m-23 59 51-6" stroke="#f4f0e6" stroke-width="10" stroke-linecap="round"/>
-          <g transform="translate(55 68)"><rect width="195" height="68" rx="2" fill="#f4f0e6"/><text x="18" y="29" fill="#122a40" font-size="13" font-weight="700" font-family="Inter">POLICY STATE</text><text x="18" y="51" fill="#516477" font-size="12" font-family="Inter">recover → reconnect → act</text></g>
-          <g transform="translate(432 588)"><text fill="#86d2c9" font-size="42" font-weight="650" font-family="Source Serif 4">91.3%</text><text y="26" fill="#a8b6c2" font-size="12" font-family="Inter">160 recovery trials</text></g>
-        </svg>
+        <MediaFrame media={heroMedia} priority={true} />
       </div>
     </div>
   </section>
@@ -94,11 +84,11 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   .hero-copy .lede { max-width: 32rem; font-size: 1.02rem; }
   .hero-copy .button-row { margin-top: 2rem; }
   .hero-visual { position: relative; overflow: hidden; background: var(--navy); box-shadow: var(--shadow); }
-  .hero-visual svg { width: 100%; height: auto; }
+  .hero-visual :global(.media-surface) { min-height:clamp(22rem,48vw,38rem); }
+  .hero-visual :global(img),.hero-visual :global(video) { object-position:center; }
+  .hero-visual :global(figcaption) { padding:.15rem 1rem 1rem; color:#b7c4cc; }
   .visual-label { position: absolute; inset: 0 0 auto; z-index: 2; display: flex; justify-content: space-between; padding: 1rem; color: #ccd6dd; background: linear-gradient(#0b1d32, transparent); font-size: .68rem; font-weight: 660; letter-spacing: .07em; text-transform: uppercase; }
   .live-dot::before { content: ''; display: inline-block; width: .45rem; height: .45rem; margin-right: .45rem; border-radius: 50%; background: #5fc0b6; }
-  .recovery-path { stroke-dasharray: 14 12; animation: flow 1.4s linear infinite; }
-  @keyframes flow { to { stroke-dashoffset: -52; } }
   .section-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; margin-bottom: 3rem; }
   .section-heading h2 { margin-bottom: 0; }
   .section-heading .lede { margin-bottom: .4rem; }

@@ -39,8 +39,33 @@ media:
     alt: Diagram showing a task policy, RMP safety intervention, OOD state, and recovery-aware policy bridge returning control to the task policy.
     caption: The safety layer can create states unseen in demonstrations; the recovery bridge explicitly reconnects those states to task execution.
     kind: diagram
+    section: method
     autoplay: false
     aspectRatio: 16 / 9
+  - src: /media/videos/lpb-hero.mp4
+    poster: /media/posters/lpb-hero.webp
+    alt: RB10 manipulator moving above a tabletop cup during an intervention-and-recovery experiment without any people in frame.
+    caption: Face-free excerpt from the repeated RB10 intervention-and-recovery experiment used for real-robot evaluation.
+    kind: video
+    section: evidence
+    autoplay: false
+    aspectRatio: 16 / 9
+  - src: /media/videos/lpb-recovery-a.mp4
+    poster: /media/posters/lpb-recovery-a.webp
+    alt: LPB diagnostic timeline showing live camera observations, nearest-neighbor guidance, measured paths, and the recovery cost crossing its threshold.
+    caption: Representative guided recovery trace with synchronized observations, trajectory views, and the LPB cost timeline.
+    kind: video
+    section: evidence
+    autoplay: false
+    aspectRatio: 597 / 548
+  - src: /media/videos/lpb-recovery-b.mp4
+    poster: /media/posters/lpb-recovery-b.webp
+    alt: Second LPB diagnostic timeline showing a distinct recovery trajectory and the recovery cost falling below the decision threshold.
+    caption: A second recovery trace exposes a different OOD path and its return toward a task-relevant state.
+    kind: video
+    section: evidence
+    autoplay: false
+    aspectRatio: 597 / 548
 links: []
 featured: true
 order: 1
