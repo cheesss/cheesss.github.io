@@ -6,10 +6,10 @@ import ProjectCard from '../components/ProjectCard.astro';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const heroMedia = {
-  src: '/media/videos/lpb-hero.mp4',
-  poster: '/media/posters/lpb-hero.webp',
-  alt: 'RB10 manipulator moving above a tabletop cup during an intervention-and-recovery experiment.',
-  caption: 'RB10 intervention-and-recovery experiment · 9.5-second excerpt',
+  src: '/media/videos/lpb-inference-excerpt.mp4',
+  poster: '/media/posters/lpb-inference-excerpt.webp',
+  alt: 'Hyeonjun Cho adjusts a workpiece beside an RB10 manipulator during an LPB inference session.',
+  caption: 'Continuous RB10 LPB inference session with manual workpiece repositioning · 18-second excerpt',
   kind: 'video' as const,
   section: 'evidence' as const,
   autoplay: true,
@@ -34,7 +34,7 @@ const heroMedia = {
         </div>
       </div>
       <div class="hero-visual">
-        <div class="visual-label"><span>Real-robot experiment</span><span>RB10 · Recovery</span></div>
+        <div class="visual-label"><span>Real-robot inference</span><span>Hyeonjun Cho · RB10</span></div>
         <MediaFrame media={heroMedia} priority={true} />
       </div>
     </div>
