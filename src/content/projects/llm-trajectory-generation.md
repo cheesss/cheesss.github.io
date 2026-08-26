@@ -5,6 +5,12 @@ period: 2024–2025
 status: Prototype · early robot trials
 summary: A language-to-motion prototype that converts instructions into waypoint trajectories and checks them for collisions before execution.
 contribution: I implemented the task representation, waypoint parser, and collision checks, then connected the planner to simulation and initial real-robot trials.
+problem: >-
+  LMTG generates manipulation trajectories from natural-language instructions without task-specific training, but a language model has no geometric model of the workspace, so generated waypoints can pass through objects or approach with an unusable end-effector orientation. This project asked whether a reproduction of LMTG could be made safe enough for real-robot trials by validating its output geometrically before execution.
+approach: >-
+  I reproduced LMTG on Franka and PyBullet, then extended it with object-aware waypoint and end-effector orientation refinement and height-based collision avoidance. Instructions are parsed into a structured task and scene representation, the language model proposes waypoints, and every trajectory is checked against scene geometry before execution. Initial sim-to-real perception integration connected the planner to early real-robot trials.
+findings: >-
+  The planning loop was evaluated in simulation, and the real-robot clips on this page are prototype demonstrations rather than a controlled benchmark, so no quantitative success rate is claimed. The contribution is the validated language-to-motion pipeline and the perception integration that the VLM-grounded LMTG project extended.
 role:
   - Designed structured task and scene representations for language-model planning.
   - Implemented waypoint parsing, validation, and collision-aware trajectory generation.

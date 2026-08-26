@@ -5,6 +5,12 @@ period: "2025"
 status: Evaluated on 15 scenarios
 summary: A tabletop manipulation planner that combines visual grounding, execution memory, and gripper-aware grasp selection.
 contribution: I connected visual grounding and execution memory to the planner, then evaluated the system on a fixed set of 15 scenarios. Success increased from 9/15 to 12/15.
+problem: >-
+  Language-model planners for tabletop manipulation often fail for reasons unrelated to reasoning: the object named in the instruction is not grounded in the image, the chosen grasp does not fit the gripper, or the same mistake is repeated after a failed attempt. The question was how much of a fixed scenario set a planner could complete once grounding, gripper constraints, and execution memory were made explicit.
+approach: >-
+  I integrated GPT-based visual grounding with Lang-SAM so that instructions resolve to segmented objects in the scene, added task memory and grasp-mode selection, and wired failure replanning for both PyBullet and RB10 execution. Task-order verification and explicit prompt constraints were enforced so the planner could not skip or reorder required steps.
+findings: >-
+  On the fixed 15-scenario evaluation set, success rose from 9/15 with the initial system to 12/15 with grounding, memory, and gripper-aware selection in place. The gain is specific to those scenarios; cluttered or previously unseen real-world scenes were not part of the evaluation.
 role:
   - Built the scene-grounding interface between visual observations and language-conditioned planning.
   - Added memory and gripper-aware grasp selection to reduce repeated execution failures.

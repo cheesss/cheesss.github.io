@@ -15,6 +15,7 @@ for (const slug of projects) {
   test(`${slug} case study has evidence, role, and limitations`, async ({ page }) => {
     await page.goto(`/research/${slug}/`);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'Problem' })).toBeVisible();
     await expect(page.getByRole('heading', { level: 2, name: 'My Role' })).toBeVisible();
     await expect(page.getByRole('heading', { level: 2, name: 'Team Contribution' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Evaluation results' })).toBeVisible();

@@ -5,6 +5,12 @@ period: "2026"
 status: Manuscript in preparation
 summary: A policy bridge that detects states created by reactive safety interventions and returns the robot to task-relevant behavior.
 contribution: I designed the recovery bridge and evaluated it in 160 RB10 trials. Task success increased from 64.4% with the original LPB to 91.3% under the same intervention setting.
+problem: >-
+  Reactive safety layers such as RMPflow keep a manipulator away from obstacles, but the avoidance motion can leave the robot in states that never appeared in the demonstrations. A diffusion policy queried from such a state has no reliable reference to return to, so a single safe intervention can turn into a task failure. The question was whether a latent-guidance method, Latent Policy Barrier (LPB), could be made aware of these avoidance-induced states without retraining the base policy.
+approach: >-
+  I reimplemented Latent Policy Barrier and augmented its latent-dynamics model with post-avoidance recovery transitions collected from real RMP interventions, keeping the base diffusion policy fixed. The framework combines diffusion-policy references, RMPflow reactive avoidance triggered by proximity signals, and LPB latent guidance that steers the robot back toward the demonstration distribution. An RB10 / ROS 2 pipeline synchronizes policy references, RMP-modified executions, dual-camera observations, proximity signals, and LPB internal states for every trial.
+findings: >-
+  Across eight real-robot OOD start configurations (160 trials), the recovery-aware bridge succeeded in 146 trials (91.3%). The original LPB reached 64.4%, and fine-tuning the policy on the same recovery demonstrations reached 63.8%, so adding recovery transitions to the latent model helped where direct adaptation did not. The base policy with no recovery mechanism succeeded in 25.0% of trials.
 role:
   - Designed the recovery-state definition and recovery-aware policy bridge.
   - Built the RB10 and ROS 2 evaluation pipeline for intervention and recovery trials.

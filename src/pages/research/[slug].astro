@@ -33,6 +33,15 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
       </div>
     </header>
 
+    {data.problem && (
+      <section class="section section-rule">
+        <div class="container split">
+          <h2>Problem</h2>
+          <p>{data.problem}</p>
+        </div>
+      </section>
+    )}
+
     {introMedia.length > 0 && (
       <section class="section section-rule">
         <div class="container split">
@@ -59,6 +68,7 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
       <div class="container split">
         <h2>Method</h2>
         <div>
+          {data.approach && <p class="lead-para">{data.approach}</p>}
           <div class="method-media">{methodMedia.map((media, index) => <MediaFrame media={media} priority={index === 0} label={labels.get(media)} />)}</div>
           <ol class="method-list">{data.methods.map((method) => <li>{method}</li>)}</ol>
         </div>
@@ -73,6 +83,7 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
           <thead><tr><th>Condition</th><th class="num">Result</th><th>Note</th></tr></thead>
           <tbody>{data.metrics.map((metric) => <tr><td>{metric.label}</td><td class="num">{metric.value}</td><td>{metric.note}</td></tr>)}</tbody>
         </table>
+        {data.findings && <p class="findings">{data.findings}</p>}
         {evidenceMedia.length > 0 && <div class="evidence-media"><h3>Experiments</h3><div class="media-gallery">{evidenceMedia.map((media) => <MediaFrame media={media} label={labels.get(media)} />)}</div></div>}
         </div>
       </div>
@@ -115,6 +126,8 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
   .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
   .two-column ul { margin-bottom: 0; }
   h2.sub { font-family: var(--sans); font-size: 1rem; font-weight: 600; }
+  .lead-para { margin-bottom: 1.5rem; }
+  .findings { margin-top: 1.25rem; }
   .method-list { margin: 1.25rem 0 0; }
   .results { margin-bottom: 0; max-width: 56rem; }
   .evidence-media, .limitation-media { margin-top: 2rem; }
