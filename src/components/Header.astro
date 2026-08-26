@@ -1,0 +1,36 @@
+---
+const nav = [
+  ['Research', '/#research'],
+  ['Ongoing', '/#ongoing'],
+  ['Awards', '/#awards'],
+  ['About', '/#about'],
+  ['CV', '/cv/Hyeonjun_Cho_Academic_CV_20260805.pdf'],
+  ['Contact', '/#contact'],
+];
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href="/" aria-label="Hyeonjun Cho, home">
+      <span>Hyeonjun Cho</span><small>Robot Learning</small>
+    </a>
+    <nav aria-label="Primary navigation">
+      {nav.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid rgba(155, 165, 170, 0.5); background: rgba(245, 242, 233, 0.92); backdrop-filter: blur(14px); }
+  .header-inner { min-height: 4.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  .wordmark { display: flex; flex-direction: column; font-weight: 750; line-height: 1.1; text-decoration: none; }
+  .wordmark small { margin-top: 0.2rem; color: var(--ink-soft); font-size: 0.63rem; font-weight: 620; letter-spacing: 0.13em; text-transform: uppercase; }
+  nav { display: flex; gap: clamp(0.8rem, 2vw, 1.75rem); align-items: center; }
+  nav a { font-size: 0.76rem; font-weight: 680; text-decoration: none; }
+  @media (max-width: 760px) {
+    .header-inner { min-height: 4rem; }
+    nav { max-width: 58vw; overflow-x: auto; scrollbar-width: none; }
+    nav::-webkit-scrollbar { display: none; }
+    nav a { flex: 0 0 auto; }
+    .wordmark small { display: none; }
+  }
+</style>

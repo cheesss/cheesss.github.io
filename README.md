@@ -1,43 +1,56 @@
-# Astro Starter Kit: Minimal
+# Hyeonjun Cho — Academic Research Portfolio
 
-```sh
-pnpm create astro@latest -- --template minimal
+An English-language research portfolio for robot-learning laboratory outreach. The site prioritizes fast evidence review: research direction, personal role, team contribution, quantitative results, limitations, and contact actions.
+
+## Local development
+
+Requirements: Node.js 22.12 or newer and pnpm 11.
+
+```bash
+pnpm install
+pnpm astro dev --background
+pnpm astro dev status
+pnpm astro dev logs
+pnpm astro dev stop
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Quality gates:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+pnpm check
+pnpm build
+pnpm test
+pnpm audit:public
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Content model
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Research case studies live in `src/content/projects`. Each project declares its title, period, status, summary, individual role, team contribution, metrics, methods, limitations, media, links, featured status, and order. Astro validates the schema during checks and builds.
 
-Any static assets, like images, can be placed in the `public/` directory.
+To add a project:
 
-## 🧞 Commands
+1. Add one Markdown file in `src/content/projects` with a unique filename/slug.
+2. Add its reviewed visual assets under `public/media`.
+3. Register every published asset in `content/media-manifest.json`.
+4. Run `pnpm check`, `pnpm build`, and `pnpm test`.
 
-All commands are run from the root of the project, from a terminal:
+Only link a project repository when its public history and README clearly substantiate Hyeonjun Cho's contribution. Otherwise retain `Code available upon request.`
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## Media policy and budget
 
-## 👀 Want to learn more?
+- No identifiable faces or team photos in v1; prefer robots, sensors, and screen recordings.
+- Videos: H.264 MP4, 720p or lower, muted, fast-start, no more than 8 MB each.
+- Hero video: no more than 5 MB.
+- Posters: WebP, no more than 250 KB.
+- General images: WebP or AVIF, no more than 350 KB.
+- Initial published media total: no more than 45 MB.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Original research media is not committed until ownership and public-release permission are confirmed. Never substitute a re-recorded Notion preview for the source file.
+
+## Deployment and recovery
+
+The GitHub Pages workflow builds and deploys on a push to `main`. This user-site repository intentionally sets `site: https://cheesss.github.io` and no Astro `base` path.
+
+Deployment is intentionally deferred until the local copy, research claims, attribution, and media clearance are approved. After publication, a bad deployment can be recovered by reverting the responsible commit on `main`; GitHub Actions then redeploys the last approved state.
+
+The site uses no analytics, cookies, forms, CMS, or runtime Notion integration.

@@ -1,0 +1,54 @@
+{
+  "policy": {
+    "faces": "Exclude identifiable people and team photos from v1.",
+    "video": "H.264 MP4, 720p or lower, muted, fast-start, 8 MB maximum per clip and 5 MB for hero.",
+    "images": "WebP or AVIF, 350 KB maximum; posters 250 KB maximum.",
+    "totalBudgetBytes": 47185920
+  },
+  "published": [
+    { "file": "public/media/lpb-system.svg", "project": "Recovery-Aware LPB", "kind": "diagram", "owner": "Hyeonjun Cho", "publicClearance": true },
+    { "file": "public/media/ragtal-system.svg", "project": "RAGTAL / DNA-HERO", "kind": "diagram", "owner": "Hyeonjun Cho", "publicClearance": true },
+    { "file": "public/media/vlm-system.svg", "project": "VLM-Grounded LMTG", "kind": "diagram", "owner": "Hyeonjun Cho", "publicClearance": true },
+    { "file": "public/media/lmtg-system.svg", "project": "Zero-Shot LMTG", "kind": "diagram", "owner": "Hyeonjun Cho", "publicClearance": true }
+  ],
+  "requestedOriginals": [
+    {
+      "sourcePage": "LPB experiment log",
+      "filename": "lpb_nn_timeline_20260813_202122_episode_0002_latest.mp4",
+      "project": "Recovery-Aware LPB",
+      "intendedUse": "Hero or HOME recovery comparison",
+      "publicClearance": false,
+      "status": "Original file required"
+    },
+    {
+      "sourcePage": "LPB experiment log",
+      "filename": "lpb_nn_timeline_20260813_213306_episode_0001_latest.mp4",
+      "project": "Recovery-Aware LPB",
+      "intendedUse": "HOME 16 representative recovery",
+      "publicClearance": false,
+      "status": "Original file required"
+    },
+    {
+      "sourcePage": "RAGTAL project page",
+      "filename": "PPT_영상.zip",
+      "project": "RAGTAL / DNA-HERO",
+      "intendedUse": "Teleoperation collection and RB10 rollout",
+      "publicClearance": false,
+      "status": "Original archive required"
+    },
+    {
+      "sourcePage": "DTW experiment page",
+      "filename": "demo_3_dtw_scene_validation_base_pose_motion_finger_change_top_repeat6.mp4",
+      "project": "Ongoing human-video dexterous manipulation",
+      "intendedUse": "DTW alignment comparison after face/privacy review",
+      "publicClearance": false,
+      "status": "Original file required"
+    }
+  ],
+  "excluded": [
+    {
+      "file": "whisking.mp4 (local candidate, not published)",
+      "reason": "Contains an identifiable person and does not match the robot-and-screen-only v1 media policy."
+    }
+  ]
+}

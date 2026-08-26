@@ -1,0 +1,29 @@
+<footer id="contact" class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2>Let’s discuss<br />robot learning.</h2>
+    </div>
+    <div class="contact-stack">
+      <a href="mailto:chohjender@g.skku.edu">chohjender@g.skku.edu <span aria-hidden="true">↗</span></a>
+      <a href="https://github.com/cheesss" rel="me">GitHub / cheesss <span aria-hidden="true">↗</span></a>
+      <a href="/cv/Hyeonjun_Cho_Academic_CV_20260805.pdf">Academic CV <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+  <div class="container fine-print">
+    <span>Hyeonjun Cho · Suwon, Republic of Korea</span>
+    <span>Built for clarity, without analytics or cookies.</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer { padding: clamp(4rem, 8vw, 7rem) 0 2rem; color: #f5f2e9; background: var(--navy); }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: end; }
+  .site-footer .eyebrow { color: #68b8af; }
+  h2 { margin-bottom: 0; }
+  .contact-stack { display: grid; border-top: 1px solid rgba(245, 242, 233, 0.3); }
+  .contact-stack a { display: flex; justify-content: space-between; padding: 1.1rem 0; border-bottom: 1px solid rgba(245, 242, 233, 0.3); color: inherit; font-weight: 640; text-decoration: none; }
+  .contact-stack a:hover { color: #8ed2ca; }
+  .fine-print { display: flex; justify-content: space-between; gap: 1rem; margin-top: 6rem; color: #9dacb9; font-size: 0.72rem; }
+  @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } .fine-print { margin-top: 4rem; flex-direction: column; } }
+</style>

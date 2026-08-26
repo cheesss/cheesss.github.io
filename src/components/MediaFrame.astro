@@ -1,0 +1,60 @@
+---
+interface Props {
+  media: {
+    src: string;
+    poster?: string;
+    alt: string;
+    caption: string;
+    kind: 'video' | 'image' | 'diagram';
+    autoplay?: boolean;
+    aspectRatio: string;
+  };
+  priority?: boolean;
+}
+const { media, priority = false } = Astro.props;
+---
+<figure class="media-frame" style={`--ratio: ${media.aspectRatio}`}>
+  <div class="media-surface">
+    {media.kind === 'video' ? (
+      <>
+        <video
+          muted
+          loop
+          playsinline
+          controls
+          preload={priority ? 'metadata' : 'none'}
+          poster={media.poster}
+          data-autoplay={media.autoplay ? 'true' : 'false'}
+          aria-label={media.alt}
+        >
+          <source src={media.src} type="video/mp4" />
+          <a href={media.src}>Download the demonstration video</a>
+        </video>
+        <noscript><p class="noscript-note">Use the native video controls or download the clip to view this evidence.</p></noscript>
+      </>
+    ) : (
+      <img src={media.src} alt={media.alt} loading={priority ? 'eager' : 'lazy'} decoding="async" />
+    )}
+  </div>
+  <figcaption>{media.caption}</figcaption>
+</figure>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLVideoElement>('video[data-autoplay="true"]').forEach((video) => {
+    if (!reduceMotion) video.play().catch(() => undefined);
+    video.addEventListener('error', () => {
+      video.controls = false;
+      video.dataset.failed = 'true';
+    });
+  });
+</script>
+
+<style>
+  .media-frame { margin: 0; }
+  .media-surface { position: relative; overflow: hidden; aspect-ratio: var(--ratio); background: #e4e5df; }
+  img, video { width: 100%; height: 100%; object-fit: cover; }
+  video[data-failed='true'] { opacity: 0; }
+  figcaption { max-width: 48rem; margin-top: 0.8rem; color: var(--ink-soft); font-size: 0.8rem; line-height: 1.55; }
+  .noscript-note { position: absolute; inset: auto 1rem 1rem; margin: 0; padding: 0.5rem; background: var(--paper); font-size: 0.75rem; }
+</style>
