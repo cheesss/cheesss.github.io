@@ -5,9 +5,9 @@ const projects = ['recovery-aware-lpb', 'ragtal-dna-hero', 'vlm-lmtg', 'llm-traj
 test('home communicates research direction and exposes primary actions', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: /Hyeonjun Cho/ })).toBeVisible();
-  await expect(page.getByText('Imitation learning, vision-language manipulation', { exact: false })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', /Hyeonjun_Cho_Academic_CV_20260805\.pdf/);
-  await expect(page.getByRole('link', { name: 'Email Me' })).toHaveAttribute('href', 'mailto:chohjender@g.skku.edu');
+  await expect(page.getByText('robot learning for physical manipulation under distribution shift', { exact: false })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Academic CV (PDF)' }).first()).toHaveAttribute('href', /Hyeonjun_Cho_Academic_CV_20260805\.pdf/);
+  await expect(page.getByRole('link', { name: 'chohjender@g.skku.edu' }).first()).toHaveAttribute('href', 'mailto:chohjender@g.skku.edu');
   await expect(page.locator('body')).toHaveJSProperty('scrollWidth', await page.locator('body').evaluate((el) => el.clientWidth));
 });
 
@@ -44,7 +44,8 @@ test('core content remains available without JavaScript', async ({ browser }) =>
   const page = await context.newPage();
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: /Hyeonjun Cho/ })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'View Research' })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 2, name: 'Research', exact: true })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Project page' }).first()).toBeVisible();
   await context.close();
 });
 
@@ -63,6 +64,47 @@ test('research evidence videos retain posters, captions, and native controls', a
   for (let index = 0; index < await videos.count(); index += 1) {
     await expect(videos.nth(index)).toHaveAttribute('poster', /\/media\/posters\/.+\.webp/);
     await expect(videos.nth(index)).toHaveAttribute('controls', '');
+  }
+});
+
+test('additional project evidence stays within the four published research cases', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#ongoing')).toHaveCount(0);
+  await expect(page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Ongoing' })).toHaveCount(0);
+
+  await page.goto('/research/ragtal-dna-hero/');
+  await expect(page.locator('video source[src="/media/videos/ragtal-gripper-sync.mp4"]')).toHaveCount(1);
+  await expect(page.locator('figcaption').filter({ hasText: 'Leader–follower gripper synchronization check' })).toHaveCount(1);
+
+  await page.goto('/research/llm-trajectory-generation/');
+  await expect(page.locator('video source[src="/media/videos/lmtg-simulation-planning.mp4"]')).toHaveCount(1);
+  await expect(page.locator('figcaption').filter({ hasText: 'Simulation trace of the language-generated approach' })).toHaveCount(1);
+});
+
+test('project pages link only to repositories that match their implementation scope', async ({ page }) => {
+  const repositories = {
+    '/research/recovery-aware-lpb/': [
+      'https://github.com/cheesss/fork-interactive_diffusion_policy-main',
+      'https://github.com/cheesss/fork_lpb_interactive_diffusion_policy',
+    ],
+    '/research/ragtal-dna-hero/': [
+      'https://github.com/cheesss/robomimic_DNA',
+      'https://github.com/cheesss/robotory_rb10_rt',
+      'https://github.com/cheesss/teleop_data',
+    ],
+    '/research/vlm-lmtg/': [
+      'https://github.com/cheesss/folk-language-models-trajectory-generators/tree/VLM_memory_LMTG_realWorld',
+    ],
+    '/research/llm-trajectory-generation/': [
+      'https://github.com/cheesss/language-models-trajectory-generators',
+    ],
+  };
+
+  for (const [path, hrefs] of Object.entries(repositories)) {
+    await page.goto(path);
+    for (const href of hrefs) {
+      await expect(page.locator(`a[href="${href}"]`)).toHaveCount(1);
+    }
   }
 });
 

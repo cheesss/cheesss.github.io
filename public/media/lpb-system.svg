@@ -1,10 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img">
-  <rect width="1600" height="900" fill="#0b1d32"/><g stroke="#fff" opacity=".08"><path d="M0 180h1600M0 360h1600M0 540h1600M0 720h1600"/><path d="M320 0v900M640 0v900M960 0v900M1280 0v900"/></g>
-  <text x="90" y="110" fill="#77c8bf" font-family="Arial" font-size="26" font-weight="700" letter-spacing="4">RECOVERY-AWARE CONTROL LOOP</text>
-  <g font-family="Arial"><g transform="translate(90 250)"><rect width="300" height="220" fill="#f5f2e9"/><text x="34" y="65" fill="#13243a" font-size="24" font-weight="700">Task Policy</text><text x="34" y="110" fill="#506071" font-size="18">nominal action</text><text x="34" y="145" fill="#506071" font-size="18">from demonstrations</text></g>
-  <g transform="translate(485 250)"><rect width="300" height="220" fill="#173751"/><text x="34" y="65" fill="#f5f2e9" font-size="24" font-weight="700">Safety RMP</text><text x="34" y="110" fill="#aebdc8" font-size="18">proximity response</text><text x="34" y="145" fill="#aebdc8" font-size="18">alters trajectory</text></g>
-  <g transform="translate(880 250)"><rect width="300" height="220" fill="#9a512c"/><text x="34" y="65" fill="#fff3e9" font-size="24" font-weight="700">OOD State</text><text x="34" y="110" fill="#f4c4a7" font-size="18">safe but unfamiliar</text><text x="34" y="145" fill="#f4c4a7" font-size="18">to the task policy</text></g>
-  <g transform="translate(485 610)"><rect width="695" height="150" fill="#147d78"/><text x="35" y="62" fill="#f3fffd" font-size="27" font-weight="700">Recovery-Aware Policy Bridge</text><text x="35" y="105" fill="#caefea" font-size="18">reconnect intervention states to task-relevant execution</text></g>
-  <g fill="none" stroke="#78c7be" stroke-width="8"><path d="M390 360h75"/><path d="M785 360h75"/><path d="M1030 485v100"/><path d="M485 685H240V500"/></g><g fill="#78c7be"><path d="m465 360-20-13v26z"/><path d="m860 360-20-13v26z"/><path d="m1030 585-13-20h26z"/><path d="m240 500-13 20h26z"/></g></g>
-  <text x="1260" y="690" fill="#77c8bf" font-family="Georgia" font-size="72">91.3%</text><text x="1265" y="730" fill="#9dabb6" font-family="Arial" font-size="17">146 / 160 trials</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="t" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <title id="t">Block diagram of the recovery-aware LPB control loop</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#16191d"/></marker>
+    <marker id="at" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1f4f8f"/></marker>
+  </defs>
+  <rect width="1200" height="600" fill="#f3f4f5"/>
+
+  <!-- proposed region -->
+  <rect x="260" y="300" width="790" height="145" fill="none" stroke="#1f4f8f" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="272" y="290" font-size="14" fill="#1f4f8f">Proposed: recovery-aware policy bridge</text>
+
+  <!-- boxes -->
+  <g fill="#f3f4f5" stroke="#16191d" stroke-width="2">
+    <rect x="40" y="100" width="240" height="84"/>
+    <rect x="380" y="100" width="260" height="84"/>
+    <rect x="880" y="100" width="280" height="84"/>
+  </g>
+  <g fill="#f3f4f5" stroke="#1f4f8f" stroke-width="2">
+    <rect x="280" y="330" width="320" height="84"/>
+    <rect x="690" y="330" width="340" height="84"/>
+  </g>
+  <g font-size="18" font-weight="600" fill="#16191d" text-anchor="middle">
+    <text x="160" y="138">Task policy</text>
+    <text x="510" y="138">Safety RMP</text>
+    <text x="1020" y="138">Robot and environment</text>
+    <text x="440" y="368">Recovery-state detection</text>
+    <text x="860" y="368">Recovery-aware policy bridge</text>
+  </g>
+  <g font-size="14" fill="#545b61" text-anchor="middle">
+    <text x="160" y="164">learned from demonstrations</text>
+    <text x="510" y="164">proximity-triggered intervention</text>
+    <text x="1020" y="164">RB10 manipulator</text>
+    <text x="440" y="394">state outside the demonstration set?</text>
+    <text x="860" y="394">return to task-relevant execution</text>
+  </g>
+
+  <!-- action path -->
+  <g fill="none" stroke="#16191d" stroke-width="2" marker-end="url(#a)">
+    <path d="M280 142H378"/>
+    <path d="M640 142H742"/>
+    <path d="M756 142H878"/>
+    <path d="M510 48V98"/>
+  </g>
+  <circle cx="750" cy="142" r="6" fill="#f3f4f5" stroke="#16191d" stroke-width="2"/>
+  <g font-size="14" font-style="italic" fill="#545b61" text-anchor="middle">
+    <text x="329" y="130">task action</text>
+    <text x="692" y="130">safe action</text>
+    <text x="817" y="130">executed action</text>
+    <text x="510" y="38">obstacle proximity</text>
+  </g>
+
+  <!-- recovery action into junction -->
+  <path d="M860 330V230H750V150" fill="none" stroke="#1f4f8f" stroke-width="2" marker-end="url(#at)"/>
+  <text x="762" y="200" font-size="14" font-style="italic" fill="#1f4f8f">recovery action</text>
+
+  <!-- detection to bridge -->
+  <path d="M600 372H688" fill="none" stroke="#1f4f8f" stroke-width="2" marker-end="url(#at)"/>
+  <text x="644" y="362" font-size="14" font-style="italic" fill="#1f4f8f" text-anchor="middle">OOD state</text>
+
+  <!-- state feedback bus -->
+  <path d="M1020 184V520H160V186" fill="none" stroke="#16191d" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M440 520V416" fill="none" stroke="#16191d" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M860 520V416" fill="none" stroke="#16191d" stroke-width="2" marker-end="url(#a)"/>
+  <g fill="#16191d"><circle cx="440" cy="520" r="4"/><circle cx="860" cy="520" r="4"/></g>
+  <text x="650" y="548" font-size="14" font-style="italic" fill="#545b61" text-anchor="middle">observed state</text>
 </svg>

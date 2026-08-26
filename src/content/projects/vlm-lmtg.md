@@ -38,7 +38,7 @@ media:
     kind: diagram
     section: method
     autoplay: false
-    aspectRatio: 16 / 9
+    aspectRatio: 2 / 1
   - src: /media/videos/vlm-yellow-bottle.mp4
     poster: /media/posters/vlm-yellow-bottle.webp
     alt: Real robot selecting and executing a grasp for a yellow bottle among several tabletop objects.
@@ -63,7 +63,9 @@ media:
     section: limitation
     autoplay: false
     aspectRatio: 16 / 9
-links: []
+links:
+  - label: VLM, memory, and gripper research fork
+    href: https://github.com/cheesss/folk-language-models-trajectory-generators/tree/VLM_memory_LMTG_realWorld
 featured: true
 order: 3
 accent: orange

@@ -1,8 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
-  <rect width="1600" height="900" fill="#f5f2e9"/><text x="90" y="105" fill="#75658f" font-family="Arial" font-size="26" font-weight="700" letter-spacing="4">LANGUAGE-TO-MOTION PROTOTYPE</text>
-  <g font-family="Arial"><g transform="translate(90 250)"><rect width="340" height="250" fill="#13243a"/><text x="35" y="58" fill="#9b8db1" font-size="19" font-weight="700">INSTRUCTION</text><text x="35" y="118" fill="#f5f2e9" font-size="26">“Move the block</text><text x="35" y="158" fill="#f5f2e9" font-size="26">around the obstacle.”</text></g>
-  <g transform="translate(630 250)"><rect width="340" height="250" fill="#fff" stroke="#c5c3c8" stroke-width="3"/><text x="35" y="58" fill="#75658f" font-size="19" font-weight="700">WAYPOINTS</text><g fill="#75658f"><circle cx="70" cy="170" r="14"/><circle cx="160" cy="110" r="14"/><circle cx="270" cy="155" r="14"/></g><path d="M70 170l90-60 110 45" fill="none" stroke="#75658f" stroke-width="7" stroke-dasharray="10 8"/></g>
-  <g transform="translate(1170 250)"><rect width="340" height="250" fill="#fff" stroke="#c5c3c8" stroke-width="3"/><text x="35" y="58" fill="#75658f" font-size="19" font-weight="700">GEOMETRIC CHECK</text><rect x="145" y="100" width="80" height="90" fill="#c77645"/><path d="M45 190C115 130 245 90 300 125" fill="none" stroke="#147d78" stroke-width="9"/><circle cx="45" cy="190" r="12" fill="#147d78"/><circle cx="300" cy="125" r="12" fill="#147d78"/></g>
-  <g fill="none" stroke="#75658f" stroke-width="8"><path d="M430 375h180M970 375h180"/></g><g fill="#75658f"><path d="m610 375-22-14v28zM1150 375l-22-14v28z"/></g>
-  <g transform="translate(490 650)"><rect width="620" height="105" fill="#75658f"/><text x="310" y="45" fill="#fff" text-anchor="middle" font-size="25" font-weight="700">Validated trajectory</text><text x="310" y="78" fill="#e5dfed" text-anchor="middle" font-size="18">simulation + early perception integration</text></g></g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="t" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <title id="t">Block diagram of the language-to-motion prototype</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#16191d"/></marker>
+  </defs>
+  <rect width="1200" height="520" fill="#f3f4f5"/>
+
+  <!-- language side vs geometric side -->
+  <rect x="24" y="190" width="692" height="230" fill="none" stroke="#a7abb0" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="36" y="180" font-size="14" fill="#545b61">Language reasoning</text>
+  <rect x="739" y="190" width="437" height="230" fill="none" stroke="#a7abb0" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="751" y="180" font-size="14" fill="#545b61">Geometric validation and execution</text>
+
+  <!-- boxes -->
+  <g fill="#f3f4f5" stroke="#16191d" stroke-width="2">
+    <rect x="40" y="250" width="150" height="100"/>
+    <rect x="245" y="250" width="230" height="100"/>
+    <rect x="530" y="250" width="170" height="100"/>
+    <rect x="755" y="250" width="190" height="100"/>
+    <rect x="1000" y="250" width="160" height="100"/>
+  </g>
+  <g font-size="18" font-weight="600" fill="#16191d" text-anchor="middle">
+    <text x="115" y="292">Instruction</text>
+    <text x="360" y="286">Structured task and</text>
+    <text x="360" y="308">scene representation</text>
+    <text x="615" y="286">LLM waypoint</text>
+    <text x="615" y="308">generation</text>
+    <text x="850" y="292">Collision check</text>
+    <text x="1080" y="292">Execution</text>
+  </g>
+  <g font-size="14" fill="#545b61" text-anchor="middle">
+    <text x="115" y="318">natural language</text>
+    <text x="360" y="334">parsed by the planner</text>
+    <text x="615" y="334">no task-specific tuning</text>
+    <text x="850" y="318">against scene geometry,</text>
+    <text x="850" y="336">before execution</text>
+    <text x="1080" y="318">simulation and</text>
+    <text x="1080" y="336">early real-robot trials</text>
+  </g>
+
+  <!-- scene input -->
+  <text x="360" y="135" font-size="16" fill="#16191d" text-anchor="middle">Scene state</text>
+  <path d="M360 145V248" fill="none" stroke="#16191d" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- forward arrows -->
+  <g fill="none" stroke="#16191d" stroke-width="2" marker-end="url(#a)">
+    <path d="M190 300H243"/>
+    <path d="M475 300H528"/>
+    <path d="M700 300H753"/>
+    <path d="M945 300H998"/>
+  </g>
+  <text x="971" y="290" font-size="14" font-style="italic" fill="#545b61" text-anchor="middle">valid</text>
+
+  <!-- rejected -->
+  <path d="M850 350V440" fill="none" stroke="#16191d" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a)"/>
+  <text x="850" y="468" font-size="14" font-style="italic" fill="#545b61" text-anchor="middle">colliding trajectories are not executed</text>
 </svg>

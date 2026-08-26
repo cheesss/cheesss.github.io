@@ -38,11 +38,19 @@ media:
     kind: diagram
     section: method
     autoplay: false
-    aspectRatio: 16 / 9
+    aspectRatio: 30 / 13
   - src: /media/videos/ragtal-teleoperation.mp4
     poster: /media/posters/ragtal-teleoperation.webp
     alt: A custom leader arm is moved by hand while an RB10 robot mirrors the motion across three real manipulation setups.
     caption: Leader-arm teleoperation used to collect demonstrations for three task configurations.
+    kind: video
+    section: evidence
+    autoplay: false
+    aspectRatio: 16 / 9
+  - src: /media/videos/ragtal-gripper-sync.mp4
+    poster: /media/posters/ragtal-gripper-sync.webp
+    alt: A custom leader gripper is closed by hand while the paired RB10 follower gripper mirrors the command beside a tabletop box.
+    caption: Leader–follower gripper synchronization check before demonstration collection. This verifies command coupling; it is not a learned-policy rollout.
     kind: video
     section: evidence
     autoplay: false
@@ -55,7 +63,13 @@ media:
     section: evidence
     autoplay: false
     aspectRatio: 16 / 9
-links: []
+links:
+  - label: Team learning workspace (private; access on request)
+    href: https://github.com/cheesss/robomimic_DNA
+  - label: Team RB10 rollout integration (private; access on request)
+    href: https://github.com/cheesss/robotory_rb10_rt
+  - label: Team teleoperation data tools (private; access on request)
+    href: https://github.com/cheesss/teleop_data
 featured: true
 order: 2
 accent: blue

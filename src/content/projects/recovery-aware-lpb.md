@@ -49,7 +49,7 @@ media:
     kind: diagram
     section: method
     autoplay: false
-    aspectRatio: 16 / 9
+    aspectRatio: 2 / 1
   - src: /media/videos/lpb-hero.mp4
     poster: /media/posters/lpb-hero.webp
     alt: RB10 manipulator moving above a tabletop cup during an intervention-and-recovery experiment without any people in frame.
@@ -82,7 +82,11 @@ media:
     section: evidence
     autoplay: false
     aspectRatio: 597 / 548
-links: []
+links:
+  - label: Public OOD tooling fork
+    href: https://github.com/cheesss/fork-interactive_diffusion_policy-main
+  - label: Full LPB implementation (private; access on request)
+    href: https://github.com/cheesss/fork_lpb_interactive_diffusion_policy
 featured: true
 order: 1
 accent: teal

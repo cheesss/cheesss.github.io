@@ -1,19 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-const projects = (await getCollection('projects')).sort((a,b) => a.data.order - b.data.order);
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
 <BaseLayout title="Page not found · Hyeonjun Cho" description="The requested page was not found. Continue to Hyeonjun Cho's robot-learning research.">
-  <section class="not-found section"><div class="container error-grid"><div><p class="eyebrow">Error 404</p><h1>Page not found.</h1><p class="lede">The requested address does not match a page in this portfolio.</p><div class="button-row"><a class="button primary" href="/">Return home</a><a class="button" href="mailto:chohjender@g.skku.edu">Email me</a></div></div><div class="project-list"><p class="eyebrow">Research</p>{projects.map((project) => <a href={`/research/${project.id.replace(/\.md$/, '')}/`}><span>0{project.data.order}</span><strong>{project.data.shortTitle}</strong><span aria-hidden="true">→</span></a>)}</div></div></section>
+  <section class="section not-found">
+    <div class="container">
+      <h1>Page not found.</h1>
+      <p>The requested address does not match a page in this portfolio. <a href="/">Return home</a> or open one of the research pages below.</p>
+      <ul>
+        {projects.map((project) => <li><a href={`/research/${project.id.replace(/\.md$/, '')}/`}>{project.data.title}</a></li>)}
+      </ul>
+      <p>Questions: <a href="mailto:chohjender@g.skku.edu">chohjender@g.skku.edu</a></p>
+    </div>
+  </section>
 </BaseLayout>
 <style>
-  .not-found { min-height:75vh; display:grid; align-items:center; }
-  .error-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(3rem,10vw,10rem); align-items:end; }
-  h1 { font-size:clamp(3rem,6vw,5.4rem); }
-  .button-row { margin-top:2rem; }
-  .project-list { border-top:1px solid var(--line-dark); }
-  .project-list .eyebrow { padding-top:1rem; }
-  .project-list a { display:grid; grid-template-columns:2rem 1fr auto; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--line); text-decoration:none; }
-  .project-list span { color:var(--teal); font-size:.72rem; }
-  @media (max-width:700px) { .error-grid { grid-template-columns:1fr; } }
+  .not-found { min-height: 60vh; padding-top: 3rem; }
 </style>

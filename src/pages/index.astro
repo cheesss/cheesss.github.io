@@ -6,10 +6,10 @@ import ProjectCard from '../components/ProjectCard.astro';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const heroMedia = {
-  src: '/media/videos/lpb-inference-excerpt.mp4',
-  poster: '/media/posters/lpb-inference-excerpt.webp',
-  alt: 'Hyeonjun Cho adjusts a workpiece beside an RB10 manipulator during an LPB inference session.',
-  caption: 'Continuous RB10 LPB inference session with manual workpiece repositioning · 18-second excerpt',
+  src: '/media/videos/lpb-inference-full.mp4',
+  poster: '/media/posters/lpb-inference-full.webp',
+  alt: 'Hyeonjun Cho sits beside an RB10 manipulator and repositions workpieces between rollouts during a continuous LPB inference session.',
+  caption: 'Continuous RB10 LPB inference session, full recording at 1.7× speed (3 min 27 s). One passer-by’s face is masked.',
   kind: 'video' as const,
   section: 'evidence' as const,
   autoplay: true,
@@ -20,117 +20,90 @@ const heroMedia = {
   title="Hyeonjun Cho · Robot Learning Research"
   description="Research portfolio of Hyeonjun Cho: imitation learning, vision-language manipulation, and recovery-aware robot learning."
 >
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow">Undergraduate Researcher · Sungkyunkwan University</p>
+  <section class="section intro">
+    <div class="container intro-grid">
+      <div class="intro-copy">
         <h1>Hyeonjun Cho</h1>
-        <p class="research-statement">Robot learning for physical manipulation under distribution shift.</p>
-        <p class="lede">Imitation learning, vision-language manipulation, and recovery after safety interventions.</p>
-        <div class="button-row">
-          <a class="button primary" href="#research">View Research</a>
-          <a class="button" href="/cv/Hyeonjun_Cho_Academic_CV_20260805.pdf">Download CV</a>
-          <a class="button" href="mailto:chohjender@g.skku.edu">Email Me</a>
-        </div>
+        <p class="meta">Undergraduate researcher · Mechanical Engineering and Physics, Sungkyunkwan University</p>
+        <p>
+          I work on robot learning for physical manipulation under distribution shift.
+          My projects cover imitation learning, vision-language manipulation, and recovery after safety interventions,
+          with most evaluation carried out on a real RB10 manipulator.
+        </p>
+        <p>
+          Most recently I designed a recovery-aware policy bridge for states created by reactive safety interventions
+          and evaluated it in 160 real-robot trials, where task success rose from 64.4% with the original LPB to 91.3%
+          under the same intervention setting. A manuscript is in preparation.
+        </p>
+        <ul class="links">
+          <li><a href="/cv/Hyeonjun_Cho_Academic_CV_20260805.pdf">Academic CV (PDF)</a></li>
+          <li><a href="mailto:chohjender@g.skku.edu">chohjender@g.skku.edu</a></li>
+          <li><a href="https://github.com/cheesss" rel="me">GitHub</a></li>
+        </ul>
       </div>
-      <div class="hero-visual">
-        <div class="visual-label"><span>Real-robot inference</span><span>Hyeonjun Cho · RB10</span></div>
+      <div class="intro-visual">
         <MediaFrame media={heroMedia} priority={true} />
       </div>
     </div>
   </section>
 
   <section id="research" class="section section-rule">
-    <div class="container">
-      <div class="section-heading">
-        <div><p class="eyebrow">Selected research · 2024–2026</p><h2>Research</h2></div>
-      </div>
+    <div class="container split">
+      <h2>Research</h2>
       <div class="project-list">
         {projects.map((project) => (
           <ProjectCard
             slug={project.id.replace(/\.md$/, '')}
-            order={project.data.order}
             title={project.data.title}
             period={project.data.period}
-            summary={project.data.summary}
             status={project.data.status}
-            metricValue={project.data.metrics[0]?.value}
-            metricLabel={project.data.metrics[0]?.label}
-            metricNote={project.data.metrics[0]?.note}
+            summary={project.data.summary}
+            contribution={project.data.contribution}
+            links={project.data.links}
           />
         ))}
       </div>
     </div>
   </section>
 
-  <section id="ongoing" class="section section-rule">
-    <div class="container ongoing-grid">
-      <div>
-        <p class="eyebrow">Ongoing research</p>
-        <h2>Dexterous manipulation from human video</h2>
-      </div>
-      <div class="ongoing-body">
-        <p class="lede">Aligning human demonstration video with robot state under occlusion and timing mismatch.</p>
-        <dl>
-          <div><dt>Current focus</dt><dd>DTW alignment and occlusion-aware supervision</dd></div>
-          <div><dt>Status</dt><dd>Results not yet finalized</dd></div>
-        </dl>
-      </div>
-    </div>
-  </section>
-
   <section id="awards" class="section section-rule">
-    <div class="container profile-grid">
-      <div><p class="eyebrow">Recognition</p><h2>Awards</h2></div>
-      <div class="rows">
-        <div class="info-row"><span>Grand Prize</span><strong>DNA Capstone Design · RAGTAL / DNA-HERO</strong></div>
-      </div>
+    <div class="container split">
+      <h2>Awards</h2>
+      <p>Grand Prize, DNA Capstone Design, for the RAGTAL / DNA-HERO team project (2025).</p>
     </div>
   </section>
 
   <section id="about" class="section section-rule">
-    <div class="container profile-grid">
-      <div><p class="eyebrow">Profile</p><h2>Mechanical systems and robot learning</h2></div>
-      <div>
-        <p class="lede">I study Mechanical Engineering and Physics at Sungkyunkwan University. I work across policy learning, robot integration, and controlled evaluation.</p>
-        <dl class="profile-details">
-          <div><dt>Education</dt><dd>Sungkyunkwan University · Mechanical Engineering and Physics · Expected Aug 2027</dd></div>
-          <div><dt>Methods</dt><dd>Imitation learning · Vision-language models · Motion planning</dd></div>
-          <div><dt>Tools</dt><dd>Python · PyTorch · ROS 2 · Real-robot systems</dd></div>
-        </dl>
-      </div>
+    <div class="container split">
+      <h2>Profile</h2>
+      <dl class="profile">
+        <div><dt>Education</dt><dd>B.S. in Mechanical Engineering and Physics, Sungkyunkwan University, expected August 2027.</dd></div>
+        <div><dt>Methods</dt><dd>Imitation learning, vision-language models, motion planning.</dd></div>
+        <div><dt>Tools</dt><dd>Python, PyTorch, ROS 2, real-robot systems (RB10).</dd></div>
+      </dl>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .hero { padding: clamp(4rem, 8vw, 7rem) 0; }
-  .hero-grid { display: grid; grid-template-columns: 1fr 0.92fr; align-items: center; gap: clamp(3rem, 7vw, 7rem); }
-  .hero-copy, .hero-visual { min-width: 0; }
-  .hero-copy h1 { margin-bottom: 1.25rem; }
-  .research-statement { max-width: 36rem; margin-bottom: 1rem; font-family: var(--serif); font-size: clamp(1.55rem, 2.6vw, 2.15rem); line-height: 1.25; }
-  .hero-copy .lede { max-width: 34rem; }
-  .hero-copy .button-row { margin-top: 1.75rem; }
-  .hero-visual { border: 1px solid var(--line); background: var(--paper); }
-  .hero-visual :global(img), .hero-visual :global(video) { object-position: center; }
-  .hero-visual :global(figcaption) { padding: 0 0.9rem 0.85rem; }
-  .visual-label { display: flex; justify-content: space-between; padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 0.66rem; font-weight: 620; letter-spacing: 0.07em; text-transform: uppercase; }
-  .section-heading { margin-bottom: 2.5rem; }
-  .section-heading h2 { margin-bottom: 0; }
-  .ongoing-grid, .profile-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(3rem, 8vw, 8rem); }
-  .ongoing-body dl, .profile-details { margin: 2rem 0 0; border-top: 1px solid var(--line-dark); }
-  .ongoing-body dl div, .profile-details div { display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--line); }
-  dt { color: var(--ink-soft); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; }
-  dd { margin: 0; font-size: 0.88rem; }
-  .rows { border-top: 1px solid var(--line-dark); }
-  .info-row { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
-  .info-row span { color: var(--teal); font-size: 0.74rem; font-weight: 650; }
-  .info-row strong { font-family: var(--serif); font-size: 1.1rem; font-weight: 560; }
-  @media (max-width: 850px) {
-    .hero-grid, .section-heading, .ongoing-grid, .profile-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .hero-visual { width: min(100%, 42rem); }
+  .intro { padding-top: 2.5rem; }
+  .intro-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 3.5rem; align-items: start; }
+  .intro-copy, .intro-visual { min-width: 0; }
+  .intro-copy .meta { margin-bottom: 1.2rem; }
+  .intro-copy .links { margin-top: 1.2rem; }
+  .intro-visual { padding-top: 0.45rem; }
+  .project-list { margin-top: 0; }
+  .profile { margin: 0; }
+  .profile { max-width: var(--measure); }
+  .profile div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid var(--line); }
+  .profile div:first-child { border-top: 1px solid var(--line-dark); }
+  dt { font-weight: 600; }
+  dd { margin: 0; }
+  @media (max-width: 760px) {
+    .intro-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .intro-visual { max-width: 24rem; padding-top: 0; }
   }
-  @media (max-width: 520px) {
-    .ongoing-body dl div, .profile-details div, .info-row { grid-template-columns: 1fr; gap: 0.25rem; }
+  @media (max-width: 480px) {
+    .profile div { grid-template-columns: 1fr; gap: 0.15rem; }
   }
 </style>
