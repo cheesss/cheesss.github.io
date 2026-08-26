@@ -16,6 +16,8 @@
     { "file": "public/media/posters/ragtal-rollouts.webp", "sourceFile": "Derived from ragtal-rollouts.mp4 at 8 s", "project": "RAGTAL / DNA-HERO", "kind": "poster", "owner": "RAGTAL team; clearance required", "publicClearance": false },
     { "file": "public/media/videos/lpb-hero.mp4", "project": "Recovery-Aware LPB", "kind": "video", "intendedUse": "Hero", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
     { "file": "public/media/posters/lpb-hero.webp", "project": "Recovery-Aware LPB", "kind": "poster", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
+    { "file": "public/media/videos/lpb-inference-excerpt.mp4", "sourcePage": "User-provided local recording", "sourceFile": "2026_06_26 18_23.mp4", "candidateSegments": "40–58 s; operator face privacy-blurred", "project": "Recovery-Aware LPB", "kind": "video", "intendedUse": "Evidence", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
+    { "file": "public/media/posters/lpb-inference-excerpt.webp", "sourceFile": "Derived from lpb-inference-excerpt.mp4 at 9 s", "project": "Recovery-Aware LPB", "kind": "poster", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
     { "file": "public/media/videos/lpb-recovery-a.mp4", "project": "Recovery-Aware LPB", "kind": "video", "intendedUse": "Evidence", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
     { "file": "public/media/posters/lpb-recovery-a.webp", "project": "Recovery-Aware LPB", "kind": "poster", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
     { "file": "public/media/videos/lpb-recovery-b.mp4", "project": "Recovery-Aware LPB", "kind": "video", "intendedUse": "Evidence", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
@@ -49,6 +51,15 @@
       "intendedUse": "HOME 16 representative recovery",
       "publicClearance": false,
       "status": "Downloaded locally; publication clearance pending"
+    },
+    {
+      "sourcePage": "User-provided local recording",
+      "filename": "2026_06_26 18_23.mp4",
+      "project": "Recovery-Aware LPB",
+      "intendedUse": "Long-form real-robot LPB inference evidence",
+      "ownership": "Hyeonjun Cho research recording",
+      "publicClearance": false,
+      "status": "Downloaded and reviewed; 40–58 s privacy-protected excerpt staged for local review"
     },
     {
       "sourcePage": "RAGTAL project page",
