@@ -66,6 +66,16 @@ test('research evidence videos retain posters, captions, and native controls', a
   }
 });
 
+test('LPB project introduces the RMP inference run with masked footage', async ({ page }) => {
+  await page.goto('/research/recovery-aware-lpb/');
+  await expect(page.getByRole('heading', { name: 'RMP intervention and LPB inference' })).toBeVisible();
+  const video = page.locator('.intro-media video');
+  await expect(video).toHaveCount(1);
+  await expect(video.locator('source')).toHaveAttribute('src', '/media/videos/lpb-rmp-inference-intro.mp4');
+  await expect(video).toHaveAttribute('poster', '/media/posters/lpb-rmp-inference-intro.webp');
+  await expect(page.locator('.intro-media figcaption')).toContainText('third-party faces are masked');
+});
+
 test('primary mobile navigation remains fully visible at 320px', async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 320, height: 720 } });
   const page = await context.newPage();

@@ -35,6 +35,14 @@ limitations:
   - The manuscript and broader task-suite evaluation are still in preparation.
 stack: [Python, PyTorch, ROS 2, RB10, RMP, Imitation Learning]
 media:
+  - src: /media/videos/lpb-rmp-inference-intro.mp4
+    poster: /media/posters/lpb-rmp-inference-intro.webp
+    alt: An RB10 manipulator runs an RMP-guided LPB inference trial while a privacy-masked operator introduces a white-board obstacle.
+    caption: A 55-second RMP and LPB inference excerpt. The operator introduces an obstacle during the rollout; all visible third-party faces are masked.
+    kind: video
+    section: intro
+    autoplay: false
+    aspectRatio: 16 / 9
   - src: /media/lpb-system.svg
     alt: Diagram showing a task policy, RMP safety intervention, OOD state, and recovery-aware policy bridge returning control to the task policy.
     caption: The RMP safety layer can move the robot outside the demonstration distribution. The recovery bridge returns control from those states to task execution.

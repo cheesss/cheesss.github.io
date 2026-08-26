@@ -18,6 +18,8 @@
     { "file": "public/media/posters/lpb-hero.webp", "project": "Recovery-Aware LPB", "kind": "poster", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
     { "file": "public/media/videos/lpb-inference-excerpt.mp4", "sourcePage": "User-provided local recording", "sourceFile": "2026_06_26 18_23.mp4", "candidateSegments": "40–58 s", "project": "Recovery-Aware LPB", "kind": "video", "intendedUse": "Hero and Evidence", "owner": "Hyeonjun Cho research recording", "faceClearance": true, "faceClearanceNote": "Hyeonjun Cho confirmed on 2026-08-26 that the visible person is himself and approved showing his face.", "publicClearance": false },
     { "file": "public/media/posters/lpb-inference-excerpt.webp", "sourceFile": "Derived from lpb-inference-excerpt.mp4 at 9 s", "project": "Recovery-Aware LPB", "kind": "poster", "owner": "Hyeonjun Cho research recording", "faceClearance": true, "faceClearanceNote": "Hyeonjun Cho confirmed on 2026-08-26 that the visible person is himself and approved showing his face.", "publicClearance": false },
+    { "file": "public/media/videos/lpb-rmp-inference-intro.mp4", "sourcePage": "User-provided local recording", "sourceFile": "2026_08_26 16_28.mp4", "candidateSegments": "55–110 s", "project": "Recovery-Aware LPB", "kind": "video", "intendedUse": "Project introduction", "owner": "Hyeonjun Cho research recording; third-party face present", "privacyTreatment": "All visible third-party faces are tracked and masked in the published derivative.", "publicClearance": false },
+    { "file": "public/media/posters/lpb-rmp-inference-intro.webp", "sourceFile": "Derived from lpb-rmp-inference-intro.mp4 at 15 s", "project": "Recovery-Aware LPB", "kind": "poster", "owner": "Hyeonjun Cho research recording; third-party face present", "privacyTreatment": "The visible third-party face is masked in the poster.", "publicClearance": false },
     { "file": "public/media/videos/lpb-recovery-a.mp4", "project": "Recovery-Aware LPB", "kind": "video", "intendedUse": "Evidence", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
     { "file": "public/media/posters/lpb-recovery-a.webp", "project": "Recovery-Aware LPB", "kind": "poster", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
     { "file": "public/media/videos/lpb-recovery-b.mp4", "project": "Recovery-Aware LPB", "kind": "video", "intendedUse": "Evidence", "owner": "Hyeonjun Cho research recording", "publicClearance": false },
@@ -62,6 +64,15 @@
       "faceClearanceNote": "Hyeonjun Cho confirmed on 2026-08-26 that the visible person is himself and approved showing his face.",
       "publicClearance": false,
       "status": "Downloaded and reviewed; 40–58 s excerpt staged with subject-approved face visibility for local review"
+    },
+    {
+      "sourcePage": "User-provided local recording",
+      "filename": "2026_08_26 16_28.mp4",
+      "project": "Recovery-Aware LPB",
+      "intendedUse": "RMP and LPB inference project introduction",
+      "ownership": "Hyeonjun Cho research recording; third-party face present",
+      "publicClearance": false,
+      "status": "Reviewed; 55–110 s excerpt staged with tracked masking on all visible third-party faces"
     },
     {
       "sourcePage": "RAGTAL project page",

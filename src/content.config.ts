@@ -8,7 +8,7 @@ const mediaSchema = z.object({
   alt: z.string().min(12),
   caption: z.string().min(12),
   kind: z.enum(['video', 'image', 'diagram']),
-  section: z.enum(['method', 'evidence', 'limitation']).default('evidence'),
+  section: z.enum(['intro', 'method', 'evidence', 'limitation']).default('evidence'),
   autoplay: z.boolean().default(false),
   aspectRatio: z.string().regex(/^\d+\s*\/\s*\d+$/),
 });
