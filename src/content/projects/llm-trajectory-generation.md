@@ -1,6 +1,7 @@
 ---
-title: LLM-Based Zero-Shot Trajectory Generation
-shortTitle: Zero-Shot LMTG
+title: Zero-Shot Language-to-Motion Planning with Geometric Validation
+subtitle: Reproduction and extension of LMTG
+shortTitle: Zero-Shot Language-to-Motion Planning
 period: 2024–2025
 status: Prototype · early robot trials
 summary: A language-to-motion prototype that converts instructions into waypoint trajectories and checks them for collisions before execution.

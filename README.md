@@ -65,7 +65,7 @@ Only link a project repository when its public history and README clearly substa
 
 `content/raw-media/` is git-ignored. It holds source recordings, the masking scripts (`mask_faces_video.py`, `lpb/mask_hero_full.py`), and their JSON logs. Never commit originals, and never substitute a re-recorded preview for a source file.
 
-Web derivatives may be staged locally with `publicClearance: false` in the manifest for review. The GitHub Pages workflow runs `pnpm release:check` and refuses to deploy while any published asset remains uncleared, so flipping that field is the release decision. All 36 assets published on 2026-08-26 were approved by the owner; the approval note lives in the manifest `policy` block.
+Web derivatives may be staged locally with `publicClearance: false` in the manifest for review. The GitHub Pages workflow runs `pnpm release:check` and refuses to deploy while any published asset remains uncleared, so flipping that field is the release decision. All 38 assets published on 2026-08-26 were approved by the owner; the approval note lives in the manifest `policy` block.
 
 ## Deployment and recovery
 

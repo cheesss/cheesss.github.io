@@ -8,7 +8,7 @@ const mediaSchema = z.object({
   alt: z.string().min(12),
   caption: z.string().min(12),
   kind: z.enum(['video', 'image', 'diagram']),
-  section: z.enum(['intro', 'method', 'evidence', 'limitation']).default('evidence'),
+  section: z.enum(['intro', 'method', 'evidence', 'additional', 'limitation']).default('evidence'),
   autoplay: z.boolean().default(false),
   aspectRatio: z.string().regex(/^\d+\s*\/\s*\d+$/),
 });
@@ -17,6 +17,7 @@ const projects = defineCollection({
   loader: glob({ base: './src/content/projects', pattern: '**/*.md' }),
   schema: z.object({
     title: z.string(),
+    subtitle: z.string().optional(),
     shortTitle: z.string(),
     period: z.string(),
     status: z.enum(['Manuscript in preparation', 'Completed', 'Evaluated on 15 scenarios', 'Prototype · early robot trials']),

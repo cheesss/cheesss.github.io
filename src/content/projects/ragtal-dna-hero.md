@@ -1,16 +1,17 @@
 ---
-title: RAGTAL / DNA-HERO
-shortTitle: RAGTAL / DNA-HERO
+title: Force-Feedback Teleoperation for Real-Robot Imitation Learning
+subtitle: RAGTAL / DNA-HERO Team Project
+shortTitle: Force-Feedback Teleoperation
 period: "2025"
 status: Completed
-summary: An RB10 imitation-learning system trained from force-feedback teleoperation data and tested through repeated real-robot rollouts.
-contribution: As Learning Lead, I built the demonstration-to-rollout workflow, curated the training data, and ran 50 real-robot rollouts per evaluated model.
+summary: An RB10 imitation-learning system trained from force-feedback teleoperation demonstrations and evaluated through repeated real-robot rollouts.
+contribution: As Learning Lead, I built the demonstration-to-rollout workflow, curated the training data, and conducted 50 real-robot rollouts for each evaluated model.
 problem: >-
   The DNA-HERO team built a custom teleoperation system with external force/torque sensing and force feedback for collecting manipulation demonstrations on an RB10. The learning question was whether demonstrations gathered through that system could train a policy that completes the team's three manipulation tasks on the real robot, and which policy class should be deployed.
 approach: >-
   As Learning Lead I owned the pipeline from demonstration preprocessing to rollout: curating the teleoperation data, training BC-Transformer and image-based diffusion policies, deploying checkpoints on the robot stack, and running RB10 rollouts. The deployed stack integrated dual RGB-D observations, OnRobot gripper I/O, and RB10 control on top of the team's teleoperation hardware.
 findings: >-
-  BC-Transformer and diffusion policy were compared with 50 real-robot rollouts per model. The integrated system completed 9 of 10 trials across the three manipulation tasks in the final-presentation setting; that figure reflects the presentation condition rather than a broad benchmark. The project received the Grand Prize at the Sungkyunkwan University stage of the DNA-HERO industry-academia program.
+  BC-Transformer and diffusion policy were compared in 50 real-robot rollouts per model. The integrated system completed 9 of 10 trials across three manipulation tasks in the final-presentation setting; this result describes that presentation condition rather than a broad benchmark. The project received the Grand Prize at the Sungkyunkwan University stage of the DNA-HERO industry-academia program.
 role:
   - Led learning-system integration from teleoperation demonstrations to policy rollout.
   - Collected and curated real-robot demonstrations and ran 50 rollouts per evaluated model.
@@ -70,12 +71,8 @@ media:
     autoplay: false
     aspectRatio: 16 / 9
 links:
-  - label: Team learning workspace (private; access on request)
-    href: https://github.com/cheesss/robomimic_DNA
-  - label: Team RB10 rollout integration (private; access on request)
-    href: https://github.com/cheesss/robotory_rb10_rt
-  - label: Team teleoperation data tools (private; access on request)
-    href: https://github.com/cheesss/teleop_data
+  - label: Request team repository access
+    href: mailto:chohjender@g.skku.edu?subject=RAGTAL%20code%20access
 featured: true
 order: 2
 accent: blue

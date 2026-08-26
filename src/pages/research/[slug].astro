@@ -16,8 +16,9 @@ const data = project.data;
 const introMedia = data.media.filter((item) => item.section === 'intro');
 const methodMedia = data.media.filter((item) => item.section === 'method');
 const evidenceMedia = data.media.filter((item) => item.section === 'evidence');
+const additionalMedia = data.media.filter((item) => item.section === 'additional');
 const limitationMedia = data.media.filter((item) => item.section === 'limitation');
-const ordered = [...introMedia, ...methodMedia, ...evidenceMedia, ...limitationMedia];
+const ordered = [...introMedia, ...methodMedia, ...evidenceMedia, ...additionalMedia, ...limitationMedia];
 const labels = new Map<(typeof ordered)[number], string>();
 let figures = 0;
 let videos = 0;
@@ -29,6 +30,7 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
       <div class="container">
         <p class="meta"><a href="/#research">Research</a> · {data.period} · {data.status}</p>
         <h1>{data.title}</h1>
+        {data.subtitle && <p class="project-subtitle">{data.subtitle}</p>}
         <p class="summary">{data.summary}</p>
       </div>
     </header>
@@ -42,14 +44,15 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
       </section>
     )}
 
-    {introMedia.length > 0 && (
-      <section class="section section-rule">
-        <div class="container split">
-          <h2>RMP intervention and LPB inference</h2>
-          <div class="intro-media">{introMedia.map((media, index) => <MediaFrame media={media} priority={index === 0} label={labels.get(media)} />)}</div>
+    <section class="section section-rule">
+      <div class="container split">
+        <h2>Key result</h2>
+        <div class="key-result">
+          <p class="key-value">{data.metrics[0].value}</p>
+          <p><strong>{data.metrics[0].label}.</strong> {data.metrics[0].note}</p>
         </div>
-      </section>
-    )}
+      </div>
+    </section>
 
     <section class="section section-rule">
       <div class="container split">
@@ -63,6 +66,15 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
         </div>
       </div>
     </section>
+
+    {introMedia.length > 0 && (
+      <section class="section section-rule">
+        <div class="container split">
+          <h2>Representative experiment</h2>
+          <div class="intro-media">{introMedia.map((media, index) => <MediaFrame media={media} priority={index === 0} label={labels.get(media)} />)}</div>
+        </div>
+      </section>
+    )}
 
     <section class="section section-rule">
       <div class="container split">
@@ -84,10 +96,19 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
           <tbody>{data.metrics.map((metric) => <tr><td>{metric.label}</td><td class="num">{metric.value}</td><td>{metric.note}</td></tr>)}</tbody>
         </table>
         {data.findings && <p class="findings">{data.findings}</p>}
-        {evidenceMedia.length > 0 && <div class="evidence-media"><h3>Experiments</h3><div class="media-gallery">{evidenceMedia.map((media) => <MediaFrame media={media} label={labels.get(media)} />)}</div></div>}
+        {evidenceMedia.length > 0 && <div class="evidence-media"><h3>Experiment evidence</h3><div class="media-gallery">{evidenceMedia.map((media) => <MediaFrame media={media} label={labels.get(media)} />)}</div></div>}
         </div>
       </div>
     </section>
+
+    {additionalMedia.length > 0 && (
+      <section class="section section-rule">
+        <div class="container split">
+          <h2>Additional experiment evidence</h2>
+          <div class="media-gallery">{additionalMedia.map((media) => <MediaFrame media={media} label={labels.get(media)} />)}</div>
+        </div>
+      </section>
+    )}
 
     <section class="section section-rule">
       <div class="container split">
@@ -121,7 +142,11 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
 <style>
   .project-header { padding-top: 2.5rem; }
   .project-header .meta { margin-bottom: 0.8rem; }
+  .project-subtitle { margin: -0.15rem 0 0.6rem; color: var(--ink-soft); font-size: 1rem; }
   .summary { margin-bottom: 0; font-size: 1.08rem; }
+  .key-result { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.25rem; align-items: baseline; max-width: var(--measure); }
+  .key-result p { margin: 0; }
+  .key-value { color: var(--accent); font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.75rem); font-weight: 600; line-height: 1; white-space: nowrap; }
   .intro-media, .method-media { width: 100%; }
   .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
   .two-column ul { margin-bottom: 0; }
@@ -139,5 +164,6 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
   @media (max-width: 700px) {
     .two-column, .media-gallery { grid-template-columns: 1fr; }
     .two-column { gap: 1.25rem; }
+    .key-result { grid-template-columns: 1fr; gap: 0.6rem; }
   }
 </style>

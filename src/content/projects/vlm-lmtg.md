@@ -1,9 +1,10 @@
 ---
-title: VLM-Grounded, Memory- and Gripper-Aware LMTG
-shortTitle: VLM-Grounded LMTG
+title: Grounded Language-to-Motion Planning with Memory and Gripper Constraints
+subtitle: Extension of LMTG
+shortTitle: Grounded Language-to-Motion Planning
 period: "2025"
 status: Evaluated on 15 scenarios
-summary: A tabletop manipulation planner that combines visual grounding, execution memory, and gripper-aware grasp selection.
+summary: A tabletop manipulation planner that combines visual grounding, execution memory, and gripper-aware grasp selection for real-robot execution.
 contribution: I connected visual grounding and execution memory to the planner, then evaluated the system on a fixed set of 15 scenarios. Success increased from 9/15 to 12/15.
 problem: >-
   Language-model planners for tabletop manipulation often fail for reasons unrelated to reasoning: the object named in the instruction is not grounded in the image, the chosen grasp does not fit the gripper, or the same mistake is repeated after a failed attempt. The question was how much of a fixed scenario set a planner could complete once grounding, gripper constraints, and execution memory were made explicit.

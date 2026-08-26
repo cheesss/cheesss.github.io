@@ -6,7 +6,9 @@ test('home communicates research direction and exposes primary actions', async (
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: /Hyeonjun Cho/ })).toBeVisible();
   await expect(page.getByText('robot learning for physical manipulation under distribution shift', { exact: false })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Academic CV (PDF)' }).first()).toHaveAttribute('href', /Hyeonjun_Cho_Academic_CV_20260805\.pdf/);
+  await expect(page.getByText('B.S. in Mechanical Engineering, expected February 2027; Double Major in Physics, expected August 2027', { exact: false })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Academic CV (PDF)' }).first()).toHaveAttribute('href', '/cv/Hyeonjun_Cho_CV.pdf');
+  await expect(page.locator('.intro-visual video source')).toHaveAttribute('src', '/media/videos/lpb-home-hero.mp4');
   await expect(page.getByRole('link', { name: 'chohjender@g.skku.edu' }).first()).toHaveAttribute('href', 'mailto:chohjender@g.skku.edu');
   await expect(page.locator('body')).toHaveJSProperty('scrollWidth', await page.locator('body').evaluate((el) => el.clientWidth));
 });
@@ -36,7 +38,7 @@ test('internal links and stable CV asset resolve', async ({ page, request }) => 
     const response = await request.get(href);
     expect(response.ok(), `${href} should resolve`).toBeTruthy();
   }
-  const cv = await request.get('/cv/Hyeonjun_Cho_Academic_CV_20260805.pdf');
+  const cv = await request.get('/cv/Hyeonjun_Cho_CV.pdf');
   expect(cv.headers()['content-type']).toContain('application/pdf');
 });
 
@@ -85,14 +87,10 @@ test('additional project evidence stays within the four published research cases
 test('project pages link only to repositories that match their implementation scope', async ({ page }) => {
   const repositories = {
     '/research/recovery-aware-lpb/': [
-      'https://github.com/cheesss/fork-interactive_diffusion_policy-main',
-      'https://github.com/cheesss/fork_lpb_interactive_diffusion_policy',
+      'https://github.com/cheesss/recovery-aware-lpb-rb10',
+      'mailto:chohjender@g.skku.edu?subject=Recovery-Aware%20LPB%20code%20access',
     ],
-    '/research/ragtal-dna-hero/': [
-      'https://github.com/cheesss/robomimic_DNA',
-      'https://github.com/cheesss/robotory_rb10_rt',
-      'https://github.com/cheesss/teleop_data',
-    ],
+    '/research/ragtal-dna-hero/': ['mailto:chohjender@g.skku.edu?subject=RAGTAL%20code%20access'],
     '/research/vlm-lmtg/': [
       'https://github.com/cheesss/folk-language-models-trajectory-generators/tree/VLM_memory_LMTG_realWorld',
     ],
@@ -107,16 +105,22 @@ test('project pages link only to repositories that match their implementation sc
       await expect(page.locator(`a[href="${href}"]`)).toHaveCount(1);
     }
   }
+
+  await page.goto('/research/ragtal-dna-hero/');
+  await expect(page.locator('a[href*="github.com/cheesss/robomimic_DNA"], a[href*="github.com/cheesss/robotory_rb10_rt"], a[href*="github.com/cheesss/teleop_data"]')).toHaveCount(0);
 });
 
-test('LPB project introduces the RMP inference run with masked footage', async ({ page }) => {
+test('LPB project leads with the result and a short representative experiment', async ({ page }) => {
   await page.goto('/research/recovery-aware-lpb/');
-  await expect(page.getByRole('heading', { name: 'RMP intervention and LPB inference' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Key result' })).toBeVisible();
+  await expect(page.locator('.key-result').getByText('146 successes in 160 trials of the proposed method', { exact: false })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Representative experiment' })).toBeVisible();
   const video = page.locator('.intro-media video');
   await expect(video).toHaveCount(1);
-  await expect(video.locator('source')).toHaveAttribute('src', '/media/videos/lpb-rmp-inference-intro.mp4');
-  await expect(video).toHaveAttribute('poster', '/media/posters/lpb-rmp-inference-intro.webp');
-  await expect(page.locator('.intro-media figcaption')).toContainText('third-party faces are masked');
+  await expect(video.locator('source')).toHaveAttribute('src', '/media/videos/lpb-hero.mp4');
+  await expect(video).toHaveAttribute('poster', '/media/posters/lpb-hero.webp');
+  await expect(page.getByRole('heading', { name: 'Additional experiment evidence' })).toBeVisible();
+  await expect(page.locator('video source[src="/media/videos/lpb-inference-full.mp4"]')).toHaveCount(1);
 });
 
 test('primary mobile navigation remains fully visible at 320px', async ({ browser }) => {
