@@ -3,13 +3,13 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 const projects = (await getCollection('projects')).sort((a,b) => a.data.order - b.data.order);
 ---
-<BaseLayout title="Page not found — Hyeonjun Cho" description="The requested page was not found. Continue to Hyeonjun Cho's robot-learning research.">
-  <section class="not-found section"><div class="container error-grid"><div><p class="eyebrow">Error 404</p><h1>Trajectory<br />interrupted.</h1><p class="lede">This route did not reach a valid state. Re-enter through the research index or contact me directly.</p><div class="button-row"><a class="button primary" href="/">Return home</a><a class="button" href="mailto:chohjender@g.skku.edu">Email me</a></div></div><div class="project-list"><p class="eyebrow">Research</p>{projects.map((project) => <a href={`/research/${project.id.replace(/\.md$/, '')}/`}><span>0{project.data.order}</span><strong>{project.data.shortTitle}</strong><span aria-hidden="true">↗</span></a>)}</div></div></section>
+<BaseLayout title="Page not found · Hyeonjun Cho" description="The requested page was not found. Continue to Hyeonjun Cho's robot-learning research.">
+  <section class="not-found section"><div class="container error-grid"><div><p class="eyebrow">Error 404</p><h1>Page not found.</h1><p class="lede">The requested address does not match a page in this portfolio.</p><div class="button-row"><a class="button primary" href="/">Return home</a><a class="button" href="mailto:chohjender@g.skku.edu">Email me</a></div></div><div class="project-list"><p class="eyebrow">Research</p>{projects.map((project) => <a href={`/research/${project.id.replace(/\.md$/, '')}/`}><span>0{project.data.order}</span><strong>{project.data.shortTitle}</strong><span aria-hidden="true">→</span></a>)}</div></div></section>
 </BaseLayout>
 <style>
   .not-found { min-height:75vh; display:grid; align-items:center; }
   .error-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(3rem,10vw,10rem); align-items:end; }
-  h1 { font-size:clamp(3.5rem,8vw,7rem); }
+  h1 { font-size:clamp(3rem,6vw,5.4rem); }
   .button-row { margin-top:2rem; }
   .project-list { border-top:1px solid var(--line-dark); }
   .project-list .eyebrow { padding-top:1rem; }

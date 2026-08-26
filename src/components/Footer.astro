@@ -2,28 +2,30 @@
   <div class="container footer-grid">
     <div>
       <p class="eyebrow">Contact</p>
-      <h2>Let’s discuss<br />robot learning.</h2>
+      <h2>Research inquiries</h2>
+      <p class="footer-note">Robot learning, imitation learning, and physical manipulation.</p>
     </div>
     <div class="contact-stack">
-      <a href="mailto:chohjender@g.skku.edu">chohjender@g.skku.edu <span aria-hidden="true">↗</span></a>
-      <a href="https://github.com/cheesss" rel="me">GitHub / cheesss <span aria-hidden="true">↗</span></a>
-      <a href="/cv/Hyeonjun_Cho_Academic_CV_20260805.pdf">Academic CV <span aria-hidden="true">↓</span></a>
+      <a href="mailto:chohjender@g.skku.edu"><span>Email</span><strong>chohjender@g.skku.edu</strong></a>
+      <a href="https://github.com/cheesss" rel="me"><span>GitHub</span><strong>cheesss</strong></a>
+      <a href="/cv/Hyeonjun_Cho_Academic_CV_20260805.pdf"><span>Document</span><strong>Academic CV ↓</strong></a>
     </div>
   </div>
   <div class="container fine-print">
     <span>Hyeonjun Cho · Suwon, Republic of Korea</span>
-    <span>Built for clarity, without analytics or cookies.</span>
+    <span>Updated August 2026</span>
   </div>
 </footer>
 
 <style>
-  .site-footer { padding: clamp(4rem, 8vw, 7rem) 0 2rem; color: #f5f2e9; background: var(--navy); }
-  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: end; }
-  .site-footer .eyebrow { color: #68b8af; }
-  h2 { margin-bottom: 0; }
-  .contact-stack { display: grid; border-top: 1px solid rgba(245, 242, 233, 0.3); }
-  .contact-stack a { display: flex; justify-content: space-between; padding: 1.1rem 0; border-bottom: 1px solid rgba(245, 242, 233, 0.3); color: inherit; font-weight: 640; text-decoration: none; }
-  .contact-stack a:hover { color: #8ed2ca; }
-  .fine-print { display: flex; justify-content: space-between; gap: 1rem; margin-top: 6rem; color: #9dacb9; font-size: 0.72rem; }
-  @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } .fine-print { margin-top: 4rem; flex-direction: column; } }
+  .site-footer { padding: clamp(4rem, 7vw, 6rem) 0 1.5rem; border-top: 1px solid var(--line); background: var(--paper); }
+  .footer-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(3rem, 8vw, 8rem); align-items: start; }
+  h2 { margin-bottom: 0.75rem; }
+  .footer-note { max-width: 28rem; color: var(--ink-soft); }
+  .contact-stack { display: grid; border-top: 1px solid var(--line-dark); }
+  .contact-stack a { display: grid; grid-template-columns: 6rem 1fr; gap: 1rem; padding: 0.95rem 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+  .contact-stack span { color: var(--ink-soft); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .contact-stack strong { font-size: 0.84rem; font-weight: 620; }
+  .fine-print { display: flex; justify-content: space-between; gap: 1rem; margin-top: 4rem; color: var(--ink-soft); font-size: 0.7rem; }
+  @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } .fine-print { margin-top: 3rem; flex-direction: column; gap: 0.25rem; } }
 </style>

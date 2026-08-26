@@ -5,7 +5,7 @@ const projects = ['recovery-aware-lpb', 'ragtal-dna-hero', 'vlm-lmtg', 'llm-traj
 test('home communicates research direction and exposes primary actions', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: /Hyeonjun Cho/ })).toBeVisible();
-  await expect(page.getByText('Imitation learning, diffusion policies', { exact: false })).toBeVisible();
+  await expect(page.getByText('Imitation learning, vision-language manipulation', { exact: false })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', /Hyeonjun_Cho_Academic_CV_20260805\.pdf/);
   await expect(page.getByRole('link', { name: 'Email Me' })).toHaveAttribute('href', 'mailto:chohjender@g.skku.edu');
   await expect(page.locator('body')).toHaveJSProperty('scrollWidth', await page.locator('body').evaluate((el) => el.clientWidth));
@@ -15,16 +15,16 @@ for (const slug of projects) {
   test(`${slug} case study has evidence, role, and limitations`, async ({ page }) => {
     await page.goto(`/research/${slug}/`);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-    await expect(page.getByText('My Role', { exact: true })).toBeVisible();
-    await expect(page.getByText('Team Contribution', { exact: true })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Results in context' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'What this does not claim' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'My Role' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'Team Contribution' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Evaluation results' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Limitations' })).toBeVisible();
   });
 }
 
 test('404 offers research recovery routes', async ({ page }) => {
   await page.goto('/404.html');
-  await expect(page.getByRole('heading', { name: /Trajectory interrupted/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Page not found/ })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Return home' })).toBeVisible();
 });
 
@@ -64,4 +64,29 @@ test('research evidence videos retain posters, captions, and native controls', a
     await expect(videos.nth(index)).toHaveAttribute('poster', /\/media\/posters\/.+\.webp/);
     await expect(videos.nth(index)).toHaveAttribute('controls', '');
   }
+});
+
+test('primary mobile navigation remains fully visible at 320px', async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 320, height: 720 } });
+  const page = await context.newPage();
+  await page.goto('/');
+  for (const name of ['Research', 'CV', 'Contact']) {
+    const link = page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name });
+    await expect(link).toBeVisible();
+    const box = await link.boundingBox();
+    expect(box, `${name} should have a layout box`).not.toBeNull();
+    expect((box?.x ?? 0) + (box?.width ?? 0), `${name} should fit inside the viewport`).toBeLessThanOrEqual(320);
+  }
+  await context.close();
+});
+
+test('mobile detail and 404 pages do not overflow horizontally', async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 375, height: 812 } });
+  const page = await context.newPage();
+  for (const path of ['/research/recovery-aware-lpb/', '/research/ragtal-dna-hero/', '/404.html']) {
+    await page.goto(path);
+    const dimensions = await page.locator('body').evaluate((body) => ({ clientWidth: body.clientWidth, scrollWidth: body.scrollWidth }));
+    expect(dimensions.scrollWidth, `${path} should fit the viewport`).toBe(dimensions.clientWidth);
+  }
+  await context.close();
 });

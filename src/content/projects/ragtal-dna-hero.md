@@ -3,8 +3,8 @@ title: RAGTAL / DNA-HERO
 shortTitle: RAGTAL / DNA-HERO
 period: "2025"
 status: Completed
-summary: A real-robot imitation-learning system that combines force-feedback teleoperation, demonstration collection, and policy rollout on an RB10 manipulator.
-contribution: As Learning Lead, I built the demonstration-to-rollout learning workflow and coordinated policy evaluation on the integrated hardware system.
+summary: An RB10 imitation-learning system trained from force-feedback teleoperation data and tested through repeated real-robot rollouts.
+contribution: As Learning Lead, I built the demonstration-to-rollout workflow, curated the training data, and ran 50 real-robot rollouts per evaluated model.
 role:
   - Led learning-system integration from teleoperation demonstrations to policy rollout.
   - Collected and curated real-robot demonstrations and ran 50 rollouts per evaluated model.
@@ -29,12 +29,12 @@ methods:
   - RB10 rollout evaluation
 limitations:
   - The 9/10 result reflects the final-presentation condition, not a broad benchmark.
-  - Hardware design and fabrication were team contributions, not solely my work.
+  - The hardware team designed and fabricated the teleoperation system.
 stack: [Python, PyTorch, ROS 2, RB10, Teleoperation, Imitation Learning]
 media:
   - src: /media/ragtal-system.svg
     alt: Diagram showing force-feedback teleoperation demonstrations flowing into dataset curation, policy learning, and RB10 robot rollout evaluation.
-    caption: My work centered on the learning loop while the complete system was built by a cross-functional hardware and software team.
+    caption: I led the learning loop. The team built and integrated the teleoperation hardware, controls, and robot platform.
     kind: diagram
     section: method
     autoplay: false
@@ -42,7 +42,7 @@ media:
   - src: /media/videos/ragtal-teleoperation.mp4
     poster: /media/posters/ragtal-teleoperation.webp
     alt: A custom leader arm is moved by hand while an RB10 robot mirrors the motion across three real manipulation setups.
-    caption: Leader-arm teleoperation used to collect demonstrations across three task configurations. Hardware design and integration were team efforts; my role centered on the learning pipeline and evaluation workflow.
+    caption: Leader-arm teleoperation used to collect demonstrations for three task configurations.
     kind: video
     section: evidence
     autoplay: false

@@ -17,66 +17,109 @@ const methodMedia = data.media.filter((item) => item.section === 'method');
 const evidenceMedia = data.media.filter((item) => item.section === 'evidence');
 const limitationMedia = data.media.filter((item) => item.section === 'limitation');
 ---
-<BaseLayout title={`${data.title} — Hyeonjun Cho`} description={data.summary}>
+<BaseLayout title={`${data.title} · Hyeonjun Cho`} description={data.summary}>
   <article>
-    <header class={`project-hero accent-${data.accent}`}>
-      <div class="container"><div class="project-meta"><span>Research 0{data.order}</span><span>{data.period}</span><span>{data.status}</span></div><h1>{data.title}</h1><p class="project-summary">{data.summary}</p></div>
+    <header class="project-hero">
+      <div class="container">
+        <div class="project-meta"><span>Research 0{data.order}</span><span>{data.period}</span><span>{data.status}</span></div>
+        <div class="hero-grid"><h1>{data.title}</h1><p class="project-summary">{data.summary}</p></div>
+      </div>
     </header>
-    <section class="section compact"><div class="container contribution-grid"><p class="eyebrow">One-line contribution</p><p class="contribution">{data.contribution}</p></div></section>
-    <section class="section section-rule"><div class="container two-column"><div><p class="eyebrow">My Role</p><ul>{data.role.map((item) => <li>{item}</li>)}</ul></div><div class="team-panel"><p class="eyebrow">Team Contribution</p><ul>{data.teamContribution.map((item) => <li>{item}</li>)}</ul></div></div></section>
-    <section class="section method-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">System / Method</p><h2>How it works</h2></div><p class="lede">A compact view of the research loop and the interface between learning, safety, perception, and execution.</p></div><div class="method-media">{methodMedia.map((media, index) => <MediaFrame media={media} priority={index === 0} />)}</div><ol class="method-list">{data.methods.map((method, index) => <li><span>0{index + 1}</span>{method}</li>)}</ol></div></section>
-    <section class="section evidence-section"><div class="container"><p class="eyebrow">Evidence</p><h2>Results in context</h2><div class="metrics">{data.metrics.map((metric) => <div class="metric"><strong>{metric.value}</strong><span>{metric.label}</span><p>{metric.note}</p></div>)}</div>{evidenceMedia.length > 0 && <div class="evidence-media"><h3>Demonstrations and traces</h3><div class="media-gallery">{evidenceMedia.map((media) => <MediaFrame media={media} />)}</div></div>}</div></section>
-    <section class="section section-rule"><div class="container"><div class="two-column limit-grid"><div><p class="eyebrow">Limitations</p><h2>What this does not claim</h2></div><ul>{data.limitations.map((item) => <li>{item}</li>)}</ul></div>{limitationMedia.length > 0 && <div class="limitation-media"><h3>Observed limitation</h3><div class="media-gallery">{limitationMedia.map((media) => <MediaFrame media={media} />)}</div></div>}</div></section>
-    <section class="section section-rule"><div class="container details-grid"><div><p class="eyebrow">Technical stack</p><div class="tags">{data.stack.map((item) => <span>{item}</span>)}</div></div><div><p class="eyebrow">Code & materials</p>{data.links.length ? data.links.map((link) => <a class="resource-link" href={link.href}>{link.label} ↗</a>) : <p class="availability">Code available upon request.</p>}</div></div></section>
-    <nav class="project-nav" aria-label="Project navigation"><div class="container nav-grid"><a href={`/research/${previous.id.replace(/\.md$/, '')}/`}><span>← Previous</span><strong>{previous.data.shortTitle}</strong></a><a class="next" href={`/research/${next.id.replace(/\.md$/, '')}/`}><span>Next →</span><strong>{next.data.shortTitle}</strong></a></div></nav>
+
+    <section class="section compact">
+      <div class="container contribution-grid">
+        <div><h2>Key contribution</h2></div>
+        <p class="contribution">{data.contribution}</p>
+      </div>
+    </section>
+
+    <section class="section section-rule">
+      <div class="container two-column">
+        <div><h2 class="eyebrow">My Role</h2><ul>{data.role.map((item) => <li>{item}</li>)}</ul></div>
+        <div><h2 class="eyebrow">Team Contribution</h2><ul>{data.teamContribution.map((item) => <li>{item}</li>)}</ul></div>
+      </div>
+    </section>
+
+    <section class="section section-rule method-section">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">Method</p><h2>System overview</h2></div></div>
+        <div class="method-media">{methodMedia.map((media, index) => <MediaFrame media={media} priority={index === 0} />)}</div>
+        <ol class="method-list">{data.methods.map((method, index) => <li><span>0{index + 1}</span>{method}</li>)}</ol>
+      </div>
+    </section>
+
+    <section class="section section-rule evidence-section">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">Evidence</p><h2>Evaluation results</h2></div></div>
+        <div class="metrics">{data.metrics.map((metric) => <div class="metric"><strong>{metric.value}</strong><span>{metric.label}</span><p>{metric.note}</p></div>)}</div>
+        {evidenceMedia.length > 0 && <div class="evidence-media"><h3>Experiments</h3><div class="media-gallery">{evidenceMedia.map((media) => <MediaFrame media={media} />)}</div></div>}
+      </div>
+    </section>
+
+    <section class="section section-rule">
+      <div class="container two-column limit-grid">
+        <div><p class="eyebrow">Scope</p><h2>Limitations</h2></div>
+        <ul>{data.limitations.map((item) => <li>{item}</li>)}</ul>
+      </div>
+      {limitationMedia.length > 0 && <div class="container limitation-media"><h3>Observed failure</h3><div class="media-gallery">{limitationMedia.map((media) => <MediaFrame media={media} />)}</div></div>}
+    </section>
+
+    <section class="section section-rule">
+      <div class="container details-grid">
+        <div><p class="eyebrow">Technical stack</p><div class="tags">{data.stack.map((item) => <span>{item}</span>)}</div></div>
+        <div><p class="eyebrow">Code and materials</p>{data.links.length ? data.links.map((link) => <a class="resource-link" href={link.href}>{link.label} ↗</a>) : <p class="availability">Code available upon request.</p>}</div>
+      </div>
+    </section>
+
+    <nav class="project-nav" aria-label="Project navigation"><div class="container nav-grid"><a href={`/research/${previous.id.replace(/\.md$/, '')}/`}><span>Previous</span><strong>{previous.data.shortTitle}</strong></a><a class="next" href={`/research/${next.id.replace(/\.md$/, '')}/`}><span>Next</span><strong>{next.data.shortTitle}</strong></a></div></nav>
   </article>
 </BaseLayout>
 
 <style>
-  .project-hero { --accent: var(--teal); padding: clamp(5rem,10vw,10rem) 0 clamp(4rem,8vw,7rem); border-bottom: 4px solid var(--accent); background: var(--paper); }
-  .accent-blue { --accent: var(--blue); } .accent-orange { --accent: var(--orange); } .accent-violet { --accent: var(--violet); }
-  .project-meta { display:flex; flex-wrap:wrap; gap:1rem 2rem; margin-bottom:2rem; color:var(--accent); font-size:.73rem; font-weight:720; letter-spacing:.09em; text-transform:uppercase; }
-  h1 { max-width:1030px; font-size:clamp(3rem,7vw,6.8rem); }
-  .project-summary { max-width:760px; margin-bottom:0; color:var(--ink-soft); font-size:clamp(1.12rem,2vw,1.4rem); }
-  .compact { padding-block:clamp(3rem,6vw,5rem); }
-  .contribution-grid { display:grid; grid-template-columns:.55fr 1.45fr; gap:3rem; }
-  .contribution { margin:0; font-family:var(--serif); font-size:clamp(1.65rem,3vw,2.5rem); line-height:1.25; }
-  .two-column,.details-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(3rem,8vw,8rem); }
-  ul { margin:0; padding:0; list-style:none; }
-  li { position:relative; margin-bottom:1rem; padding-left:1.25rem; color:var(--ink-soft); }
-  li::before { content:'—'; position:absolute; left:0; color:var(--teal); }
-  .team-panel { padding:2rem; border:1px solid var(--line); background:var(--paper); }
-  .method-section { background:var(--paper); }
-  .method-media { display:grid; gap:1.25rem; }
-  .section-heading { display:grid; grid-template-columns:1fr 1fr; align-items:end; gap:3rem; margin-bottom:3rem; }
-  .section-heading h2,.section-heading .lede { margin-bottom:0; }
-  .method-list { display:grid; grid-template-columns:repeat(4,1fr); margin:2rem 0 0; padding:0; list-style:none; border-top:1px solid var(--line); }
-  .method-list li { display:grid; gap:.75rem; margin:0; padding:1.2rem 1rem 0 0; }
-  .method-list li::before { display:none; }
-  .method-list span { color:var(--teal); font-size:.7rem; font-weight:750; }
-  .evidence-section { color:var(--paper); background:var(--navy); }
-  .evidence-section .eyebrow { color:#65beb5; }
-  .metrics { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); margin-top:3rem; border-top:1px solid rgba(245,242,233,.3); }
-  .metric { min-height:15rem; padding:2rem 1.25rem 1.25rem 0; border-bottom:1px solid rgba(245,242,233,.3); }
-  .metric strong { display:block; color:#82cec5; font-family:var(--serif); font-size:clamp(2.8rem,5vw,4.6rem); font-weight:550; line-height:1; }
-  .metric span { display:block; margin-top:1rem; font-weight:690; }
-  .metric p { margin-top:.5rem; color:#aab8c3; font-size:.78rem; }
-  .evidence-media,.limitation-media { margin-top:clamp(3rem,7vw,6rem); padding-top:2rem; border-top:1px solid rgba(245,242,233,.3); }
-  .limitation-media { border-top-color:var(--line); }
-  .evidence-media h3,.limitation-media h3 { margin-bottom:1.5rem; font-size:clamp(1.6rem,3vw,2.3rem); }
-  .media-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2rem 1.25rem; }
-  .evidence-media :global(figcaption) { color:#aab8c3; }
-  .limit-grid { align-items:start; }
-  .tags { display:flex; flex-wrap:wrap; gap:.6rem; }
-  .tags span { padding:.5rem .75rem; border:1px solid var(--line-dark); background:var(--paper); font-size:.75rem; font-weight:650; }
-  .availability { padding:1rem; border-left:3px solid var(--orange); background:#efe4d6; color:#70472f; font-weight:620; }
-  .resource-link { display:block; margin-bottom:.5rem; }
-  .project-nav { background:var(--paper); border-top:1px solid var(--line); }
-  .nav-grid { display:grid; grid-template-columns:1fr 1fr; }
-  .nav-grid a { display:grid; gap:.4rem; padding:2.5rem 0; text-decoration:none; }
-  .nav-grid a+a { padding-left:2rem; border-left:1px solid var(--line); }
-  .nav-grid .next { text-align:right; }
-  .nav-grid span { color:var(--ink-soft); font-size:.72rem; font-weight:680; text-transform:uppercase; }
-  .nav-grid strong { font-family:var(--serif); font-size:1.3rem; }
-  @media (max-width:700px) { .contribution-grid,.two-column,.details-grid,.section-heading,.media-gallery { grid-template-columns:1fr; gap:1.5rem; } .method-list { grid-template-columns:1fr 1fr; } .nav-grid strong { font-size:1rem; } }
+  .project-hero { padding: clamp(4rem, 8vw, 7rem) 0; border-bottom: 1px solid var(--line-dark); background: var(--paper); }
+  .project-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-bottom: 1.75rem; color: var(--teal); font-size: 0.7rem; font-weight: 680; letter-spacing: 0.08em; text-transform: uppercase; }
+  .hero-grid { display: grid; grid-template-columns: 1.4fr 0.6fr; gap: clamp(2rem, 7vw, 7rem); align-items: end; }
+  h1 { margin-bottom: 0; font-size: clamp(2.8rem, 5.5vw, 5.25rem); }
+  .project-summary { margin-bottom: 0.4rem; color: var(--ink-soft); font-size: 1rem; }
+  .compact { padding-block: clamp(3.5rem, 6vw, 5.5rem); }
+  .contribution-grid { display: grid; grid-template-columns: 0.65fr 1.35fr; gap: clamp(2rem, 7vw, 7rem); }
+  .contribution-grid h2 { margin-bottom: 0; font-size: clamp(1.8rem, 3vw, 2.5rem); }
+  .contribution { max-width: 48rem; margin: 0; font-family: var(--serif); font-size: clamp(1.45rem, 2.5vw, 2rem); line-height: 1.4; }
+  .two-column, .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 8vw, 8rem); }
+  ul { margin: 0; padding: 0; list-style: none; }
+  li { position: relative; margin-bottom: 0.8rem; padding-left: 1rem; color: var(--ink-soft); }
+  li::before { content: '·'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+  .method-section { background: var(--paper); }
+  .method-media { display: grid; gap: 1.25rem; }
+  .section-heading { margin-bottom: 2.5rem; }
+  .section-heading h2 { margin-bottom: 0; }
+  .method-list { display: grid; grid-template-columns: repeat(4, 1fr); margin: 1.5rem 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+  .method-list li { display: grid; gap: 0.5rem; margin: 0; padding: 1rem 1rem 0 0; font-size: 0.82rem; }
+  .method-list li::before { display: none; }
+  .method-list span { color: var(--teal); font-size: 0.74rem; font-weight: 700; }
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); border-top: 1px solid var(--line-dark); }
+  .metric { min-height: 11rem; padding: 1.4rem 1rem 1rem 0; border-bottom: 1px solid var(--line); }
+  .metric strong { display: block; font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 550; line-height: 1; }
+  .metric span { display: block; margin-top: 0.75rem; font-size: 0.82rem; font-weight: 680; }
+  .metric p { margin: 0.35rem 0 0; color: var(--ink-soft); font-size: 0.78rem; line-height: 1.5; }
+  .evidence-media, .limitation-media { margin-top: clamp(3rem, 6vw, 5rem); padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .evidence-media h3, .limitation-media h3 { margin-bottom: 1.25rem; }
+  .media-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.25rem; }
+  .limit-grid { align-items: start; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .tags span { padding: 0.42rem 0.65rem; border: 1px solid var(--line); background: var(--paper); font-size: 0.72rem; }
+  .availability { margin-bottom: 0; color: var(--ink-soft); font-size: 0.86rem; }
+  .resource-link { display: block; margin-bottom: 0.5rem; }
+  .project-nav { border-top: 1px solid var(--line); background: var(--paper); }
+  .nav-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .nav-grid a { display: grid; gap: 0.35rem; padding: 2rem 0; text-decoration: none; }
+  .nav-grid a + a { padding-left: 2rem; border-left: 1px solid var(--line); }
+  .nav-grid .next { text-align: right; }
+  .nav-grid span { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.07em; }
+  .nav-grid strong { font-family: var(--serif); font-size: 1.15rem; font-weight: 560; }
+  @media (max-width: 760px) {
+    .hero-grid, .contribution-grid, .two-column, .details-grid, .section-heading, .media-gallery { grid-template-columns: 1fr; gap: 1.5rem; }
+    .method-list { grid-template-columns: 1fr 1fr; }
+    .nav-grid strong { font-size: 0.95rem; }
+  }
 </style>

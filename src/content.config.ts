@@ -19,7 +19,7 @@ const projects = defineCollection({
     title: z.string(),
     shortTitle: z.string(),
     period: z.string(),
-    status: z.enum(['Manuscript in preparation', 'Completed', 'Prototype validated']),
+    status: z.enum(['Manuscript in preparation', 'Completed', 'Evaluated on 15 scenarios', 'Prototype · early robot trials']),
     summary: z.string(),
     contribution: z.string(),
     role: z.array(z.string()).min(1),

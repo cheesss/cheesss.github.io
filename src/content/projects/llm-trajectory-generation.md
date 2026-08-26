@@ -2,9 +2,9 @@
 title: LLM-Based Zero-Shot Trajectory Generation
 shortTitle: Zero-Shot LMTG
 period: 2024–2025
-status: Prototype validated
-summary: A language-to-motion prototype that converts natural-language instructions into collision-aware waypoint trajectories and early real-robot manipulation trials.
-contribution: I implemented the structured prompting and waypoint-generation pipeline, then connected simulation, perception, and initial real-robot execution without claiming a complete benchmark.
+status: Prototype · early robot trials
+summary: A language-to-motion prototype that converts instructions into waypoint trajectories and checks them for collisions before execution.
+contribution: I implemented the task representation, waypoint parser, and collision checks, then connected the planner to simulation and initial real-robot trials.
 role:
   - Designed structured task and scene representations for language-model planning.
   - Implemented waypoint parsing, validation, and collision-aware trajectory generation.
@@ -26,7 +26,7 @@ methods:
   - Simulation and early real-robot integration
 limitations:
   - Real-robot clips are prototype demonstrations rather than a controlled quantitative benchmark.
-  - This project should not be interpreted as complete real-robot validation.
+  - The project has not been evaluated in a controlled real-robot benchmark.
 stack: [Python, LLMs, PyBullet, Motion Planning, Prompt Engineering]
 media:
   - src: /media/lmtg-system.svg
@@ -39,7 +39,7 @@ media:
   - src: /media/videos/lmtg-pick-box.mp4
     poster: /media/posters/lmtg-pick-box.webp
     alt: Real robot moving toward and grasping a red box in a cluttered tabletop scene after a natural-language instruction.
-    caption: Early real-robot execution for “Pick up the box,” included as prototype evidence rather than a benchmark result.
+    caption: Early real-robot trial for the instruction “Pick up the box.”
     kind: video
     section: evidence
     autoplay: false
@@ -55,7 +55,7 @@ media:
   - src: /media/videos/lmtg-bbox-failure.mp4
     poster: /media/posters/lmtg-bbox-failure.webp
     alt: Real robot approaching a red box beside an open brown box during a trial affected by inaccurate bounding-box geometry.
-    caption: Bounding-box failure retained as evidence of the gap between language-level planning and reliable geometric perception.
+    caption: An inaccurate object bounding box produces an invalid approach near the brown box.
     kind: video
     section: limitation
     autoplay: false

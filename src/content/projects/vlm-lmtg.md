@@ -2,9 +2,9 @@
 title: VLM-Grounded, Memory- and Gripper-Aware LMTG
 shortTitle: VLM-Grounded LMTG
 period: "2025"
-status: Prototype validated
-summary: A language-model trajectory pipeline augmented with visual scene grounding, execution memory, and gripper-aware grasp selection for tabletop manipulation.
-contribution: I integrated visual grounding and task memory into the trajectory-generation loop, then evaluated the resulting system across a fixed 15-scenario protocol.
+status: Evaluated on 15 scenarios
+summary: A tabletop manipulation planner that combines visual grounding, execution memory, and gripper-aware grasp selection.
+contribution: I connected visual grounding and execution memory to the planner, then evaluated the system on a fixed set of 15 scenarios. Success increased from 9/15 to 12/15.
 role:
   - Built the scene-grounding interface between visual observations and language-conditioned planning.
   - Added memory and gripper-aware grasp selection to reduce repeated execution failures.
@@ -29,12 +29,12 @@ methods:
   - Language-conditioned trajectory generation
 limitations:
   - The reported improvement is limited to the defined 15 scenarios.
-  - Generalization to cluttered, unseen real-world scenes requires further evaluation.
+  - The 15-scenario evaluation did not include cluttered or previously unseen real-world scenes.
 stack: [Python, Vision-Language Models, LLMs, PyBullet, Manipulation Planning]
 media:
   - src: /media/vlm-system.svg
     alt: Diagram of an RGB scene being grounded into objects, a gripper-aware grasp being selected, and execution feedback updating task memory.
-    caption: Perception, grasp selection, and execution feedback are kept in one loop so the planner can revise decisions after failure.
+    caption: The planner uses grounded objects and gripper constraints, then stores execution feedback for the next attempt.
     kind: diagram
     section: method
     autoplay: false
@@ -42,7 +42,7 @@ media:
   - src: /media/videos/vlm-yellow-bottle.mp4
     poster: /media/posters/vlm-yellow-bottle.webp
     alt: Real robot selecting and executing a grasp for a yellow bottle among several tabletop objects.
-    caption: Real-robot result for the prompt “Pick up the yellow bottle,” demonstrating gripper-aware object selection and execution.
+    caption: Real-robot trial for the prompt “Pick up the yellow bottle.”
     kind: video
     section: evidence
     autoplay: false
@@ -57,8 +57,8 @@ media:
     aspectRatio: 16 / 9
   - src: /media/videos/vlm-zero-shot-failure.mp4
     poster: /media/posters/vlm-zero-shot-failure.webp
-    alt: Real robot approaching tabletop objects during a zero-shot trial that does not complete the intended grasp reliably.
-    caption: Limitation case retained to show why scene grounding alone does not guarantee robust zero-shot execution.
+    alt: Real robot approaching tabletop objects during a zero-shot trial that does not complete the intended grasp.
+    caption: Zero-shot trial in which the robot approaches the target but fails to complete the grasp.
     kind: video
     section: limitation
     autoplay: false

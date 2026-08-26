@@ -8,8 +8,8 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
 const heroMedia = {
   src: '/media/videos/lpb-hero.mp4',
   poster: '/media/posters/lpb-hero.webp',
-  alt: 'RB10 manipulator moving above a tabletop cup during an intervention-and-recovery experiment without any people in frame.',
-  caption: 'RB10 intervention-and-recovery experiment · muted 9.5-second excerpt',
+  alt: 'RB10 manipulator moving above a tabletop cup during an intervention-and-recovery experiment.',
+  caption: 'RB10 intervention-and-recovery experiment · 9.5-second excerpt',
   kind: 'video' as const,
   section: 'evidence' as const,
   autoplay: true,
@@ -17,24 +17,24 @@ const heroMedia = {
 };
 ---
 <BaseLayout
-  title="Hyeonjun Cho — Robot Learning Research"
-  description="Research portfolio of Hyeonjun Cho: imitation learning, diffusion policies, vision-language manipulation, and safe recovery-aware robot learning."
+  title="Hyeonjun Cho · Robot Learning Research"
+  description="Research portfolio of Hyeonjun Cho: imitation learning, vision-language manipulation, and recovery-aware robot learning."
 >
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">Undergraduate Researcher · SKKU</p>
-        <h1>Hyeonjun<br />Cho</h1>
-        <p class="hero-role">Robot learning for systems that recover, adapt, and act in the physical world.</p>
-        <p class="lede">Imitation learning, diffusion policies, vision-language manipulation, and safe recovery-aware robot learning.</p>
+        <p class="eyebrow">Undergraduate Researcher · Sungkyunkwan University</p>
+        <h1>Hyeonjun Cho</h1>
+        <p class="research-statement">Robot learning for physical manipulation under distribution shift.</p>
+        <p class="lede">Imitation learning, vision-language manipulation, and recovery after safety interventions.</p>
         <div class="button-row">
-          <a class="button primary" href="#research">View Research <span aria-hidden="true">↓</span></a>
+          <a class="button primary" href="#research">View Research</a>
           <a class="button" href="/cv/Hyeonjun_Cho_Academic_CV_20260805.pdf">Download CV</a>
           <a class="button" href="mailto:chohjender@g.skku.edu">Email Me</a>
         </div>
       </div>
       <div class="hero-visual">
-        <div class="visual-label"><span>RB10 · Recovery loop</span><span class="live-dot">Real-robot research</span></div>
+        <div class="visual-label"><span>Real-robot experiment</span><span>RB10 · Recovery</span></div>
         <MediaFrame media={heroMedia} priority={true} />
       </div>
     </div>
@@ -43,72 +43,94 @@ const heroMedia = {
   <section id="research" class="section section-rule">
     <div class="container">
       <div class="section-heading">
-        <div><p class="eyebrow">Selected Work · 2024–2026</p><h2>Research</h2></div>
-        <p class="lede">I study how learned robot policies can remain useful when perception, safety interventions, and the physical world push them away from familiar states.</p>
+        <div><p class="eyebrow">Selected research · 2024–2026</p><h2>Research</h2></div>
       </div>
-      <div class="project-grid">
-        {projects.map((project) => <ProjectCard slug={project.id.replace(/\.md$/, '')} {...project.data} />)}
+      <div class="project-list">
+        {projects.map((project) => (
+          <ProjectCard
+            slug={project.id.replace(/\.md$/, '')}
+            order={project.data.order}
+            title={project.data.title}
+            period={project.data.period}
+            summary={project.data.summary}
+            status={project.data.status}
+            metricValue={project.data.metrics[0]?.value}
+            metricLabel={project.data.metrics[0]?.label}
+            metricNote={project.data.metrics[0]?.note}
+          />
+        ))}
       </div>
     </div>
   </section>
 
-  <section id="ongoing" class="section ongoing-section">
+  <section id="ongoing" class="section section-rule">
     <div class="container ongoing-grid">
-      <div><p class="eyebrow ongoing-eyebrow">Ongoing · Results not yet finalized</p><h2>Learning dexterous manipulation from human video.</h2></div>
+      <div>
+        <p class="eyebrow">Ongoing research</p>
+        <h2>Dexterous manipulation from human video</h2>
+      </div>
       <div class="ongoing-body">
-        <p class="lede">Exploring mesh-free, force-grounded learning that aligns human demonstration video with robot state despite occlusion and timing mismatch.</p>
-        <ol class="research-steps"><li><span>01</span>Human-video observation</li><li><span>02</span>DTW and occlusion-aware alignment</li><li><span>03</span>Robot-state supervision</li></ol>
-        <p class="ongoing-note">This work is presented as a research direction, not a finalized result. Public media will be added after source-video and privacy review.</p>
+        <p class="lede">Aligning human demonstration video with robot state under occlusion and timing mismatch.</p>
+        <dl>
+          <div><dt>Current focus</dt><dd>DTW alignment and occlusion-aware supervision</dd></div>
+          <div><dt>Status</dt><dd>Results not yet finalized</dd></div>
+        </dl>
       </div>
     </div>
   </section>
 
   <section id="awards" class="section section-rule">
-    <div class="container split-section"><div><p class="eyebrow">Recognition</p><h2>Awards</h2></div><div class="rows"><div class="info-row"><span>Grand Prize</span><strong>DNA Capstone Design · RAGTAL / DNA-HERO</strong></div><div class="info-row"><span>Silver Prize</span><strong>Capstone Design</strong></div></div></div>
+    <div class="container profile-grid">
+      <div><p class="eyebrow">Recognition</p><h2>Awards</h2></div>
+      <div class="rows">
+        <div class="info-row"><span>Grand Prize</span><strong>DNA Capstone Design · RAGTAL / DNA-HERO</strong></div>
+      </div>
+    </div>
   </section>
 
   <section id="about" class="section section-rule">
-    <div class="container about-grid">
-      <div><p class="eyebrow">About</p><h2>From physical systems to learning systems.</h2></div>
-      <div><p class="lede">I am an undergraduate researcher at Sungkyunkwan University, double-majoring in Mechanical Engineering and Physics. My work connects learning-based policies with the details that determine whether a robot actually succeeds: sensing, interventions, recovery, and evaluation.</p><div class="about-columns"><div><h3>Education</h3><p><strong>Sungkyunkwan University</strong><br />Mechanical Engineering + Physics<br />Expected Aug 2027</p></div><div><h3>Technical focus</h3><p>Python · PyTorch · ROS 2<br />Imitation Learning · VLMs<br />Motion Planning · Real Robots</p></div></div></div>
+    <div class="container profile-grid">
+      <div><p class="eyebrow">Profile</p><h2>Mechanical systems and robot learning</h2></div>
+      <div>
+        <p class="lede">I study Mechanical Engineering and Physics at Sungkyunkwan University. I work across policy learning, robot integration, and controlled evaluation.</p>
+        <dl class="profile-details">
+          <div><dt>Education</dt><dd>Sungkyunkwan University · Mechanical Engineering and Physics · Expected Aug 2027</dd></div>
+          <div><dt>Methods</dt><dd>Imitation learning · Vision-language models · Motion planning</dd></div>
+          <div><dt>Tools</dt><dd>Python · PyTorch · ROS 2 · Real-robot systems</dd></div>
+        </dl>
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .hero { padding: clamp(2rem, 5vw, 5rem) 0 clamp(5rem, 9vw, 8rem); }
-  .hero-grid { display: grid; grid-template-columns: .88fr 1.12fr; min-height: calc(100vh - 8rem); align-items: center; gap: clamp(2rem, 6vw, 6rem); }
-  .hero-copy { position: relative; z-index: 2; }
-  .hero-copy h1 { margin-bottom: 1.5rem; }
-  .hero-role { max-width: 31rem; font-family: var(--serif); font-size: clamp(1.45rem, 2.8vw, 2.15rem); line-height: 1.18; }
-  .hero-copy .lede { max-width: 32rem; font-size: 1.02rem; }
-  .hero-copy .button-row { margin-top: 2rem; }
-  .hero-visual { position: relative; overflow: hidden; background: var(--navy); box-shadow: var(--shadow); }
-  .hero-visual :global(.media-surface) { min-height:clamp(22rem,48vw,38rem); }
-  .hero-visual :global(img),.hero-visual :global(video) { object-position:center; }
-  .hero-visual :global(figcaption) { padding:.15rem 1rem 1rem; color:#b7c4cc; }
-  .visual-label { position: absolute; inset: 0 0 auto; z-index: 2; display: flex; justify-content: space-between; padding: 1rem; color: #ccd6dd; background: linear-gradient(#0b1d32, transparent); font-size: .68rem; font-weight: 660; letter-spacing: .07em; text-transform: uppercase; }
-  .live-dot::before { content: ''; display: inline-block; width: .45rem; height: .45rem; margin-right: .45rem; border-radius: 50%; background: #5fc0b6; }
-  .section-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; margin-bottom: 3rem; }
+  .hero { padding: clamp(4rem, 8vw, 7rem) 0; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 0.92fr; align-items: center; gap: clamp(3rem, 7vw, 7rem); }
+  .hero-copy, .hero-visual { min-width: 0; }
+  .hero-copy h1 { margin-bottom: 1.25rem; }
+  .research-statement { max-width: 36rem; margin-bottom: 1rem; font-family: var(--serif); font-size: clamp(1.55rem, 2.6vw, 2.15rem); line-height: 1.25; }
+  .hero-copy .lede { max-width: 34rem; }
+  .hero-copy .button-row { margin-top: 1.75rem; }
+  .hero-visual { border: 1px solid var(--line); background: var(--paper); }
+  .hero-visual :global(img), .hero-visual :global(video) { object-position: center; }
+  .hero-visual :global(figcaption) { padding: 0 0.9rem 0.85rem; }
+  .visual-label { display: flex; justify-content: space-between; padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 0.66rem; font-weight: 620; letter-spacing: 0.07em; text-transform: uppercase; }
+  .section-heading { margin-bottom: 2.5rem; }
   .section-heading h2 { margin-bottom: 0; }
-  .section-heading .lede { margin-bottom: .4rem; }
-  .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-  .ongoing-section { color: #f5f2e9; background: var(--navy); }
-  .ongoing-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(3rem, 8vw, 8rem); }
-  .ongoing-eyebrow { color: #e89562; }
-  .ongoing-body .lede { color: #becbd4; }
-  .research-steps { margin: 2rem 0; padding: 0; list-style: none; border-top: 1px solid rgba(245,242,233,.28); }
-  .research-steps li { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(245,242,233,.28); }
-  .research-steps span { color: #65beb5; font-size: .7rem; font-weight: 750; }
-  .ongoing-note { color: #95a7b3; font-size: .78rem; }
-  .split-section, .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 8rem); }
+  .ongoing-grid, .profile-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(3rem, 8vw, 8rem); }
+  .ongoing-body dl, .profile-details { margin: 2rem 0 0; border-top: 1px solid var(--line-dark); }
+  .ongoing-body dl div, .profile-details div { display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--line); }
+  dt { color: var(--ink-soft); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  dd { margin: 0; font-size: 0.88rem; }
   .rows { border-top: 1px solid var(--line-dark); }
-  .info-row { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
-  .info-row span { color: var(--teal); font-size: .78rem; font-weight: 720; }
-  .info-row strong { font-family: var(--serif); font-size: 1.25rem; font-weight: 560; }
-  .about-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); }
-  .about-columns h3 { font-family: var(--sans); font-size: .74rem; font-weight: 730; letter-spacing: .1em; text-transform: uppercase; }
-  .about-columns p { color: var(--ink-soft); }
-  @media (max-width: 850px) { .hero-grid { min-height: auto; grid-template-columns: 1fr; } .hero-copy { padding-top: 3rem; } .hero-visual { width: min(100%, 37rem); margin-left: auto; } .section-heading, .ongoing-grid, .split-section, .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
-  @media (max-width: 640px) { .project-grid, .about-columns { grid-template-columns: 1fr; } .visual-label { font-size: .58rem; } .info-row { grid-template-columns: 1fr; gap: .35rem; } }
+  .info-row { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .info-row span { color: var(--teal); font-size: 0.74rem; font-weight: 650; }
+  .info-row strong { font-family: var(--serif); font-size: 1.1rem; font-weight: 560; }
+  @media (max-width: 850px) {
+    .hero-grid, .section-heading, .ongoing-grid, .profile-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-visual { width: min(100%, 42rem); }
+  }
+  @media (max-width: 520px) {
+    .ongoing-body dl div, .profile-details div, .info-row { grid-template-columns: 1fr; gap: 0.25rem; }
+  }
 </style>

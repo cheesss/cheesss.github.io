@@ -3,15 +3,15 @@ title: Recovery-Aware LPB for RMP-Induced OOD States
 shortTitle: Recovery-Aware LPB
 period: "2026"
 status: Manuscript in preparation
-summary: A recovery-aware imitation-learning pipeline that detects unsafe distribution shifts induced by reactive motion policies and returns the robot to task-relevant states.
-contribution: I designed and evaluated a recovery-aware policy bridge that improves real-robot task success under proximity-triggered RMP interventions.
+summary: A policy bridge that detects states created by reactive safety interventions and returns the robot to task-relevant behavior.
+contribution: I designed the recovery bridge and evaluated it in 160 RB10 trials. Task success increased from 64.4% with the original LPB to 91.3% under the same intervention setting.
 role:
   - Designed the recovery-state definition and recovery-aware policy bridge.
   - Built the RB10 and ROS 2 evaluation pipeline for intervention and recovery trials.
   - Analyzed failure modes across baseline, fine-tuning, original LPB, and the proposed method.
 teamContribution:
   - The broader team developed and maintained the robot platform, task setup, and safety procedures.
-  - Experimental protocols and manuscript framing were refined collaboratively with research mentors.
+  - Research mentors and I refined the experimental protocol and manuscript framing.
 metrics:
   - value: 91.3%
     label: Recovery-aware LPB
@@ -37,7 +37,7 @@ stack: [Python, PyTorch, ROS 2, RB10, RMP, Imitation Learning]
 media:
   - src: /media/lpb-system.svg
     alt: Diagram showing a task policy, RMP safety intervention, OOD state, and recovery-aware policy bridge returning control to the task policy.
-    caption: The safety layer can create states unseen in demonstrations; the recovery bridge explicitly reconnects those states to task execution.
+    caption: The RMP safety layer can move the robot outside the demonstration distribution. The recovery bridge returns control from those states to task execution.
     kind: diagram
     section: method
     autoplay: false
@@ -45,7 +45,7 @@ media:
   - src: /media/videos/lpb-hero.mp4
     poster: /media/posters/lpb-hero.webp
     alt: RB10 manipulator moving above a tabletop cup during an intervention-and-recovery experiment without any people in frame.
-    caption: Face-free excerpt from the repeated RB10 intervention-and-recovery experiment used for real-robot evaluation.
+    caption: RB10 intervention-and-recovery excerpt from the real-robot evaluation.
     kind: video
     section: evidence
     autoplay: false
@@ -53,7 +53,7 @@ media:
   - src: /media/videos/lpb-inference-excerpt.mp4
     poster: /media/posters/lpb-inference-excerpt.webp
     alt: An RB10 manipulator performs an LPB inference run while Hyeonjun Cho adjusts the workpiece on the adjacent table.
-    caption: Excerpt from a long-form real-robot LPB inference recording. I adjust the workspace and the inference run continues; this clip documents the integrated experiment rather than a separate benchmark result.
+    caption: Excerpt from a continuous RB10 LPB inference session, including manual workpiece repositioning between rollouts.
     kind: video
     section: evidence
     autoplay: false
@@ -69,7 +69,7 @@ media:
   - src: /media/videos/lpb-recovery-b.mp4
     poster: /media/posters/lpb-recovery-b.webp
     alt: Second LPB diagnostic timeline showing a distinct recovery trajectory and the recovery cost falling below the decision threshold.
-    caption: A second recovery trace exposes a different OOD path and its return toward a task-relevant state.
+    caption: A second trial shows the recovery cost falling below the decision threshold as the robot returns toward task execution.
     kind: video
     section: evidence
     autoplay: false
