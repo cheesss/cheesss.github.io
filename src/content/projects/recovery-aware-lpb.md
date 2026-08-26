@@ -52,8 +52,8 @@ media:
     aspectRatio: 16 / 9
   - src: /media/videos/lpb-inference-excerpt.mp4
     poster: /media/posters/lpb-inference-excerpt.webp
-    alt: An RB10 manipulator performs an LPB inference run while a privacy-blurred operator adjusts the workpiece on the adjacent table.
-    caption: Privacy-protected excerpt from a long-form real-robot LPB inference recording. The operator adjusts the workspace and the inference run continues; this clip documents the integrated experiment rather than a separate benchmark result.
+    alt: An RB10 manipulator performs an LPB inference run while Hyeonjun Cho adjusts the workpiece on the adjacent table.
+    caption: Excerpt from a long-form real-robot LPB inference recording. I adjust the workspace and the inference run continues; this clip documents the integrated experiment rather than a separate benchmark result.
     kind: video
     section: evidence
     autoplay: false
