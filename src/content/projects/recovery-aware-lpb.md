@@ -43,8 +43,8 @@ stack: [Python, PyTorch, ROS 2, RB10, RMP, Imitation Learning]
 media:
   - src: /media/videos/lpb-hero.mp4
     poster: /media/posters/lpb-hero.webp
-    alt: An RB10 manipulator moves above a tabletop cup during an intervention-and-recovery experiment.
-    caption: A short representative rollout from the real-robot intervention-and-recovery evaluation.
+    alt: A privacy-masked operator introduces a board obstacle as an RB10 manipulator changes course and returns toward the tabletop task.
+    caption: An introduced obstacle triggers RMPflow avoidance; the recovery-aware bridge then guides the robot back toward the task trajectory.
     kind: video
     section: intro
     autoplay: false
