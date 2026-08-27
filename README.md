@@ -39,6 +39,13 @@ Two dev-server caveats:
 - 1180 px container; long sections use a heading column plus a content column. Body copy is capped at about 46 rem.
 - Method diagrams are static SVG block diagrams on the page background with thin ink strokes; the author's own contribution is outlined with a dashed navy region. Captions are numbered `Figure n.` and `Video n.` in page order.
 
+## Pages
+
+- `/` — name, affiliation, two-paragraph research statement, hero video, and a one-line index of the four projects with their headline metric. Built to be read in one screen.
+- `/research/` — the full project list: method-figure thumbnail, first sentence of the problem, contribution, headline metric with its condition, links.
+- `/research/<slug>/` — one page per project with an in-page contents nav (Problem · Key result · Contribution · Experiment · Method · Results · Limitations).
+- `/about/` — education, research experience with advisor, awards, technical skills.
+
 ## Content model
 
 Research case studies live in `src/content/projects`. Each project declares title, period, status, summary, contribution, optional `problem` / `approach` / `findings` paragraphs, individual role, team contribution, metrics, methods, limitations, media, links, featured status, and order. Astro validates the schema during checks and builds.

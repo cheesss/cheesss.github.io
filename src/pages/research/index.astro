@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const firstSentence = (text?: string) => text?.match(/^[^.]*\./)?.[0] ?? '';
+---
+<BaseLayout
+  title="Research · Hyeonjun Cho"
+  description="Research projects of Hyeonjun Cho: recovery-aware LPB, force-feedback imitation learning, VLM-grounded manipulation, and zero-shot trajectory generation."
+>
+  <section class="section page-header">
+    <div class="container">
+      <h1>Research</h1>
+      <p>Four projects on robot learning for physical manipulation, 2024–2026. Each page states the problem, my role versus the team's, the method, the evaluation condition behind every number, and the limitations.</p>
+    </div>
+  </section>
+
+  <section class="section section-rule">
+    <div class="container">
+      {projects.map((project) => {
+        const data = project.data;
+        const slug = project.id.replace(/\.md$/, '');
+        const href = `/research/${slug}/`;
+        const figure = data.media.find((item) => item.kind === 'diagram' || item.kind === 'image');
+        const metric = data.metrics[0];
+        return (
+          <article class="entry">
+            <a class="thumb" href={href} aria-hidden="true" tabindex="-1">
+              {figure && <img src={figure.src} alt="" loading="lazy" decoding="async" style={`aspect-ratio: ${figure.aspectRatio}`} />}
+            </a>
+            <div class="entry-body">
+              <h2><a href={href}>{data.title}</a></h2>
+              {data.subtitle && <p class="subtitle">{data.subtitle}</p>}
+              <p class="meta">{data.period} · {data.status}</p>
+              <p>{firstSentence(data.problem) || data.summary} {data.contribution}</p>
+              <p class="metric"><strong>{metric.value}</strong> {metric.label}. <span class="muted">{metric.note}</span></p>
+              <ul class="links">
+                <li><a href={href}>Project page</a></li>
+                {data.links.slice(0, 1).map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+              </ul>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header { padding-top: 2.5rem; }
+  .page-header p { margin-bottom: 0; }
+  .entry { display: grid; grid-template-columns: 20rem minmax(0, 1fr); gap: 2.5rem; padding: 2rem 0; border-top: 1px solid var(--line); }
+  .entry:last-child { border-bottom: 1px solid var(--line); }
+  .thumb { display: block; align-self: start; border: 1px solid var(--line); background: var(--bg); }
+  .thumb img { width: 100%; height: auto; }
+  .entry-body h2 { margin-bottom: 0.2rem; font-size: 1.3rem; }
+  .entry-body h2 a { color: var(--ink); text-decoration: none; }
+  .entry-body h2 a:hover { color: var(--accent); text-decoration: underline; }
+  .subtitle { margin-bottom: 0.2rem; color: var(--ink-soft); }
+  .entry-body .meta { margin-bottom: 0.8rem; }
+  .metric { margin-bottom: 0.6rem; }
+  .metric strong { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; }
+  @media (max-width: 760px) {
+    .entry { grid-template-columns: 1fr; gap: 1rem; }
+    .thumb { max-width: 24rem; }
+  }
+</style>

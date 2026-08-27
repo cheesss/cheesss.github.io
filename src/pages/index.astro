@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MediaFrame from '../components/MediaFrame.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const heroMedia = {
@@ -39,6 +38,7 @@ const heroMedia = {
           <li><a href="/cv/Hyeonjun_Cho_CV.pdf">Academic CV (PDF)</a></li>
           <li><a href="mailto:chohjender@g.skku.edu">chohjender@g.skku.edu</a></li>
           <li><a href="https://github.com/cheesss" rel="me">GitHub</a></li>
+          <li><a href="/about/">About</a></li>
         </ul>
       </div>
       <div class="intro-visual">
@@ -50,41 +50,22 @@ const heroMedia = {
   <section id="research" class="section section-rule">
     <div class="container split">
       <h2>Research</h2>
-      <div class="project-list">
-        {projects.map((project) => (
-          <ProjectCard
-            slug={project.id.replace(/\.md$/, '')}
-            title={project.data.title}
-            subtitle={project.data.subtitle}
-            period={project.data.period}
-            status={project.data.status}
-            summary={project.data.summary}
-            contribution={project.data.contribution}
-            links={project.data.links}
-          />
-        ))}
+      <div>
+        <ol class="project-index">
+          {projects.map((project) => {
+            const slug = project.id.replace(/\.md$/, '');
+            const metric = project.data.metrics[0];
+            return (
+              <li>
+                <a class="project-title" href={`/research/${slug}/`}>{project.data.title}</a>
+                <span class="meta">{project.data.period} · {project.data.status}</span>
+                <span class="project-metric"><strong>{metric.value}</strong> {metric.label}</span>
+              </li>
+            );
+          })}
+        </ol>
+        <p class="more"><a href="/research/">All research, with figures and evaluation conditions →</a></p>
       </div>
-    </div>
-  </section>
-
-  <section id="awards" class="section section-rule">
-    <div class="container split">
-      <h2>Awards</h2>
-      <ul class="award-list">
-        <li><strong>Grand Prize</strong>, Creative Innovation DNA-HERO Industry-Academia Team Project, Sungkyunkwan University stage (2025).</li>
-        <li><strong>Silver Award</strong>, Consortium Creative Capstone Design Competition, National Preliminary Round (2025).</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="about" class="section section-rule">
-    <div class="container split">
-      <h2>Profile</h2>
-      <dl class="profile">
-        <div><dt>Education</dt><dd>B.S. in Mechanical Engineering, expected February 2027; Double Major in Physics, expected August 2027, Sungkyunkwan University.</dd></div>
-        <div><dt>Methods</dt><dd>Imitation learning, vision-language models, motion planning.</dd></div>
-        <div><dt>Tools</dt><dd>Python, PyTorch, ROS 2, real-robot systems (RB10).</dd></div>
-      </dl>
     </div>
   </section>
 </BaseLayout>
@@ -96,19 +77,19 @@ const heroMedia = {
   .intro-copy .meta { margin-bottom: 1.2rem; }
   .intro-copy .links { margin-top: 1.2rem; }
   .intro-visual { padding-top: 0.45rem; }
-  .project-list { margin-top: 0; }
-  .award-list { margin: 0; }
-  .profile { margin: 0; }
-  .profile { max-width: var(--measure); }
-  .profile div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid var(--line); }
-  .profile div:first-child { border-top: 1px solid var(--line-dark); }
-  dt { font-weight: 600; }
-  dd { margin: 0; }
+  .project-index { margin: 0; padding: 0; list-style: none; max-width: none; }
+  .project-index li { display: grid; grid-template-columns: minmax(0, 1fr) 15rem 15rem; gap: 1.5rem; align-items: baseline; padding: 0.85rem 0; border-top: 1px solid var(--line); }
+  .project-index li:last-child { border-bottom: 1px solid var(--line); }
+  .project-title { color: var(--ink); font-family: var(--serif); font-size: 1.12rem; font-weight: 600; text-decoration: none; }
+  .project-title:hover { color: var(--accent); text-decoration: underline; }
+  .project-metric { font-size: 0.94rem; }
+  .project-metric strong { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; }
+  .more { margin-top: 1rem; }
+  @media (max-width: 900px) {
+    .project-index li { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
   @media (max-width: 760px) {
     .intro-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     .intro-visual { max-width: 24rem; padding-top: 0; }
-  }
-  @media (max-width: 480px) {
-    .profile div { grid-template-columns: 1fr; gap: 0.15rem; }
   }
 </style>

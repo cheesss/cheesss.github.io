@@ -1,0 +1,85 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = await getCollection('projects');
+const title = (slug: string) => projects.find((p) => p.id.replace(/\.md$/, '') === slug)?.data.title ?? slug;
+---
+<BaseLayout
+  title="About · Hyeonjun Cho"
+  description="Education, research experience, awards, and technical skills of Hyeonjun Cho, undergraduate researcher in robot learning at Sungkyunkwan University."
+>
+  <section class="section page-header">
+    <div class="container">
+      <h1>About</h1>
+      <p>
+        I am an undergraduate researcher at the Robotics Innovatory, Sungkyunkwan University, working on robot learning for
+        physical manipulation under distribution shift: imitation learning and diffusion policies, vision-language manipulation,
+        and safe, recovery-aware robot learning. Most of my evaluation is carried out on a real RB10 manipulator.
+      </p>
+      <ul class="links">
+        <li><a href="/cv/Hyeonjun_Cho_CV.pdf">Academic CV (PDF)</a></li>
+        <li><a href="mailto:chohjender@g.skku.edu">chohjender@g.skku.edu</a></li>
+        <li><a href="https://github.com/cheesss" rel="me">GitHub</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-rule">
+    <div class="container split">
+      <h2>Education</h2>
+      <dl class="rows">
+        <div><dt>Exp. Feb. 2027</dt><dd>B.S. in Mechanical Engineering, Sungkyunkwan University.</dd></div>
+        <div><dt>Exp. Aug. 2027</dt><dd>Double Major in Physics, Sungkyunkwan University.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section-rule">
+    <div class="container split">
+      <h2>Research experience</h2>
+      <dl class="rows">
+        <div><dt>Fall 2024 – present</dt><dd>Undergraduate Researcher, Robotics Innovatory, Sungkyunkwan University. Advisor: Prof. Hyouk Ryeol Choi.</dd></div>
+        <div><dt>2026 – present</dt><dd><a href="/research/recovery-aware-lpb/">{title('recovery-aware-lpb')}</a> — manuscript in preparation.</dd></div>
+        <div><dt>2025</dt><dd><a href="/research/ragtal-dna-hero/">{title('ragtal-dna-hero')}</a> — Learning Lead, industry-academia team project.</dd></div>
+        <div><dt>Spring 2025</dt><dd><a href="/research/vlm-lmtg/">{title('vlm-lmtg')}</a> — Undergraduate Research Program.</dd></div>
+        <div><dt>Winter 2024 – 25</dt><dd><a href="/research/llm-trajectory-generation/">{title('llm-trajectory-generation')}</a> — Undergraduate Research Program.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="awards" class="section section-rule">
+    <div class="container split">
+      <h2>Awards</h2>
+      <dl class="rows">
+        <div><dt>2025</dt><dd><strong>Grand Prize</strong>, Creative Innovation DNA-HERO Industry-Academia Team Project, Sungkyunkwan University stage; selected as university representative.</dd></div>
+        <div><dt>2025</dt><dd><strong>Silver Award</strong>, Consortium Creative Capstone Design Competition, National Preliminary Round.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section-rule">
+    <div class="container split">
+      <h2>Technical skills</h2>
+      <dl class="rows">
+        <div><dt>Languages, frameworks</dt><dd>Python; PyTorch; ROS and ROS 2; Robomimic.</dd></div>
+        <div><dt>Robot learning</dt><dd>Diffusion Policy; BC-Transformer; RNN-GMM; VLM-based manipulation; Lang-SAM; LMTG.</dd></div>
+        <div><dt>Control, simulation</dt><dd>RMP / RMPflow; RB10 ServoJ and Jacobian control; MuJoCo; robosuite; PyBullet.</dd></div>
+        <div><dt>Hardware, sensing</dt><dd>Rainbow Robotics RB10; Intel RealSense RGB-D; OnRobot and Dynamixel grippers; proximity and force/torque sensors.</dd></div>
+      </dl>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header { padding-top: 2.5rem; }
+  .page-header .links { margin-top: 0.25rem; }
+  .rows { margin: 0; max-width: var(--measure); }
+  .rows div { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1rem; padding: 0.55rem 0; border-bottom: 1px solid var(--line); }
+  .rows div:first-child { border-top: 1px solid var(--line-dark); }
+  dt { color: var(--ink-soft); }
+  dd { margin: 0; }
+  @media (max-width: 520px) {
+    .rows div { grid-template-columns: 1fr; gap: 0.1rem; }
+  }
+</style>

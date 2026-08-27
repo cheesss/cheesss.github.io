@@ -6,7 +6,7 @@ test('home communicates research direction and exposes primary actions', async (
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: /Hyeonjun Cho/ })).toBeVisible();
   await expect(page.getByText('robot learning for physical manipulation under distribution shift', { exact: false })).toBeVisible();
-  await expect(page.getByText('B.S. in Mechanical Engineering, expected February 2027; Double Major in Physics, expected August 2027', { exact: false })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'All research, with figures and evaluation conditions →' })).toHaveAttribute('href', '/research/');
   await expect(page.getByRole('link', { name: 'Academic CV (PDF)' }).first()).toHaveAttribute('href', '/cv/Hyeonjun_Cho_CV.pdf');
   await expect(page.locator('.intro-visual video source')).toHaveAttribute('src', '/media/videos/lpb-home-hero.mp4');
   await expect(page.getByRole('link', { name: 'chohjender@g.skku.edu' }).first()).toHaveAttribute('href', 'mailto:chohjender@g.skku.edu');
@@ -48,8 +48,33 @@ test('core content remains available without JavaScript', async ({ browser }) =>
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: /Hyeonjun Cho/ })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: 'Research', exact: true })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Project page' }).first()).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Recovery-Aware LPB for RMP-Induced OOD States' }).first()).toBeVisible();
   await context.close();
+});
+
+test('research index lists all four projects with figures and evaluation conditions', async ({ page }) => {
+  await page.goto('/research/');
+  await expect(page.getByRole('heading', { level: 1, name: 'Research' })).toBeVisible();
+  await expect(page.locator('article.entry')).toHaveCount(4);
+  await expect(page.locator('article.entry .thumb img')).toHaveCount(4);
+  await expect(page.getByRole('link', { name: 'Project page' })).toHaveCount(4);
+  await expect(page.getByText('146 successes', { exact: false }).first()).toBeVisible();
+});
+
+test('about page carries education, advisor, awards, and skills', async ({ page }) => {
+  await page.goto('/about/');
+  await expect(page.getByRole('heading', { level: 1, name: 'About' })).toBeVisible();
+  await expect(page.getByText('B.S. in Mechanical Engineering', { exact: false })).toBeVisible();
+  await expect(page.getByText('Advisor: Prof. Hyouk Ryeol Choi', { exact: false })).toBeVisible();
+  await expect(page.getByText('Grand Prize', { exact: false })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 2, name: 'Technical skills' })).toBeVisible();
+});
+
+test('project pages expose an in-page contents nav', async ({ page }) => {
+  await page.goto('/research/recovery-aware-lpb/');
+  const contents = page.getByRole('navigation', { name: 'Contents' });
+  for (const name of ['Problem', 'Method', 'Results', 'Limitations']) await expect(contents.getByRole('link', { name })).toBeVisible();
+  await expect(page.locator('#limitations')).toHaveCount(1);
 });
 
 test('reduced motion disables continuous CSS animation', async ({ browser }) => {
@@ -140,7 +165,7 @@ test('primary mobile navigation remains fully visible at 320px', async ({ browse
 test('mobile detail and 404 pages do not overflow horizontally', async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
-  for (const path of ['/research/recovery-aware-lpb/', '/research/ragtal-dna-hero/', '/404.html']) {
+  for (const path of ['/research/', '/about/', '/research/recovery-aware-lpb/', '/research/ragtal-dna-hero/', '/404.html']) {
     await page.goto(path);
     const dimensions = await page.locator('body').evaluate((body) => ({ clientWidth: body.clientWidth, scrollWidth: body.scrollWidth }));
     expect(dimensions.scrollWidth, `${path} should fit the viewport`).toBe(dimensions.clientWidth);
