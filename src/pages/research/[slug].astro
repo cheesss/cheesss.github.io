@@ -56,10 +56,7 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
     <section id="result" class="section section-rule">
       <div class="container split">
         <h2>Key result</h2>
-        <div class="key-result">
-          <p class="key-value">{data.metrics[0].value}</p>
-          <p><strong>{data.metrics[0].label}.</strong> {data.metrics[0].note}</p>
-        </div>
+        <p class="key-result"><strong>{data.metrics[0].value}</strong> — {data.metrics[0].label}. {data.metrics[0].note}</p>
       </div>
     </section>
 
@@ -156,9 +153,8 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
   .contents { display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; margin-top: 1.1rem; font-size: 0.94rem; }
   .contents a { color: var(--ink-soft); }
   .contents a:hover { color: var(--accent); }
-  .key-result { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.25rem; align-items: baseline; max-width: var(--measure); }
-  .key-result p { margin: 0; }
-  .key-value { color: var(--accent); font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.75rem); font-weight: 600; line-height: 1; white-space: nowrap; }
+  .key-result { margin: 0; }
+  .key-result strong { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; }
   .intro-media, .method-media { width: 100%; }
   .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
   .two-column ul { margin-bottom: 0; }
@@ -176,6 +172,5 @@ for (const item of ordered) labels.set(item, item.kind === 'video' ? `Video ${++
   @media (max-width: 700px) {
     .two-column, .media-gallery { grid-template-columns: 1fr; }
     .two-column { gap: 1.25rem; }
-    .key-result { grid-template-columns: 1fr; gap: 0.6rem; }
   }
 </style>
