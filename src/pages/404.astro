@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
-<BaseLayout title="Page not found · Hyeonjun Cho" description="The requested page was not found. Continue to Hyeonjun Cho's robot-learning research.">
+<BaseLayout title="Page not found · Cho Hyeon Joon" description="The requested page was not found. Continue to Cho Hyeon Joon's robot-learning research.">
   <section class="section not-found">
     <div class="container">
       <h1>Page not found.</h1>

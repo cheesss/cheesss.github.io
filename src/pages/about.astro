@@ -6,8 +6,8 @@ const projects = await getCollection('projects');
 const title = (slug: string) => projects.find((p) => p.id.replace(/\.md$/, '') === slug)?.data.title ?? slug;
 ---
 <BaseLayout
-  title="About · Hyeonjun Cho"
-  description="Education, research experience, awards, and technical skills of Hyeonjun Cho, undergraduate researcher in robot learning at Sungkyunkwan University."
+  title="About · Cho Hyeon Joon"
+  description="Education, research experience, awards, and technical skills of Cho Hyeon Joon, undergraduate researcher in robot learning at Sungkyunkwan University."
 >
   <section class="section page-header">
     <div class="container">

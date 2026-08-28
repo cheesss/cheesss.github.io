@@ -66,7 +66,7 @@ media:
     aspectRatio: 16 / 9
   - src: /media/videos/lpb-inference-excerpt.mp4
     poster: /media/posters/lpb-inference-excerpt.webp
-    alt: An RB10 manipulator performs an LPB inference run while Hyeonjun Cho adjusts the workpiece on the adjacent table.
+    alt: An RB10 manipulator performs an LPB inference run while Cho Hyeon Joon adjusts the workpiece on the adjacent table.
     caption: Short excerpt from the continuous RB10 LPB inference session, including workpiece repositioning between repeated rollouts.
     kind: video
     section: additional
@@ -90,8 +90,8 @@ media:
     aspectRatio: 597 / 548
   - src: /media/videos/lpb-inference-full.mp4
     poster: /media/posters/lpb-inference-full.webp
-    alt: Hyeonjun Cho monitors and resets workpieces beside an RB10 manipulator during a continuous LPB inference session.
-    caption: Continuous real-robot LPB inference session across repeated rollouts (3 min 27 s at 1.7× speed). Hyeonjun Cho's face is shown with permission; one third-party face is masked.
+    alt: Cho Hyeon Joon monitors and resets workpieces beside an RB10 manipulator during a continuous LPB inference session.
+    caption: Continuous real-robot LPB inference session across repeated rollouts (3 min 27 s at 1.7× speed). Cho Hyeon Joon's face is shown with permission; one third-party face is masked.
     kind: video
     section: additional
     autoplay: false

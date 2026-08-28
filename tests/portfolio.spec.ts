@@ -4,7 +4,7 @@ const projects = ['recovery-aware-lpb', 'ragtal-dna-hero', 'vlm-lmtg', 'llm-traj
 
 test('home communicates research direction and exposes primary actions', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1, name: /Hyeonjun Cho/ })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1, name: /Cho Hyeon Joon/ })).toBeVisible();
   await expect(page.getByText('robot learning for physical manipulation under distribution shift', { exact: false })).toBeVisible();
   await expect(page.getByRole('link', { name: 'All research, with figures and evaluation conditions →' })).toHaveAttribute('href', '/research/');
   await expect(page.getByRole('link', { name: 'Academic CV (PDF)' }).first()).toHaveAttribute('href', '/cv/Hyeonjun_Cho_CV.pdf');
@@ -46,7 +46,7 @@ test('core content remains available without JavaScript', async ({ browser }) =>
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1, name: /Hyeonjun Cho/ })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1, name: /Cho Hyeon Joon/ })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: 'Research', exact: true })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Recovery-Aware LPB for RMP-Induced OOD States' }).first()).toBeVisible();
   await context.close();

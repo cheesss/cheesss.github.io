@@ -1,4 +1,4 @@
-# Hyeonjun Cho — Academic Research Portfolio
+# Cho Hyeon Joon — Academic Research Portfolio
 
 Live at <https://cheesss.github.io/>.
 
@@ -61,11 +61,11 @@ To add a project:
 3. Register every published asset in `content/media-manifest.json`.
 4. Run `pnpm check`, `pnpm build`, and `pnpm test`.
 
-Only link a project repository when its public history and README clearly substantiate Hyeonjun Cho's contribution. Otherwise leave `links: []`; the page then shows "Available on request."
+Only link a project repository when its public history and README clearly substantiate Cho Hyeon Joon's contribution. Otherwise leave `links: []`; the page then shows "Available on request."
 
 ## Media policy and budget
 
-- Faces: Hyeonjun Cho has approved showing his own face (recorded in the manifest with the date). Any other identifiable person must be pixelated before publication; the mask window and frame counts are logged next to the source in `content/raw-media/`.
+- Faces: Cho Hyeon Joon has approved showing his own face (recorded in the manifest with the date). Any other identifiable person must be pixelated before publication; the mask window and frame counts are logged next to the source in `content/raw-media/`.
 - Videos: H.264 MP4, 720p or lower, muted, fast-start, no more than 8 MB each. Assets marked `intendedUse: "Hero"` are limited to 5 MB; the current homepage video is registered as `Hero and Evidence` and therefore uses the 8 MB budget.
 - Posters: WebP, no more than 250 KB. General images: WebP or AVIF, no more than 350 KB.
 - Published media total: no more than 45 MB.
