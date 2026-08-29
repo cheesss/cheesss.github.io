@@ -8,6 +8,7 @@
   },
   "published": [
     { "file": "public/media/lpb-system.svg", "project": "Recovery-Aware LPB", "kind": "diagram", "owner": "Cho Hyeon Joon", "publicClearance": true },
+    { "file": "public/media/lpb-diffusion-policy-overview.webp", "sourcePage": "User-provided local image", "sourceFile": "Gemini_Generated_Image_5impeq5impeq5imp.png", "project": "Recovery-Aware LPB", "kind": "diagram", "intendedUse": "Method overview", "owner": "Cho Hyeon Joon", "processing": "Converted to 2804x1536 WebP at quality 90 for web delivery; composition and embedded experiment frames preserved.", "publicClearance": true },
     { "file": "public/media/ragtal-system.svg", "project": "RAGTAL / DNA-HERO", "kind": "diagram", "owner": "Cho Hyeon Joon", "publicClearance": true },
     { "file": "public/media/vlm-system.svg", "project": "VLM-Grounded LMTG", "kind": "diagram", "owner": "Cho Hyeon Joon", "publicClearance": true },
     { "file": "public/media/lmtg-system.svg", "project": "Zero-Shot LMTG", "kind": "diagram", "owner": "Cho Hyeon Joon", "publicClearance": true },

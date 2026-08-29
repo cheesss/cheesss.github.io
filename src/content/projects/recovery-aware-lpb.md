@@ -49,13 +49,13 @@ media:
     section: intro
     autoplay: false
     aspectRatio: 16 / 9
-  - src: /media/lpb-system.svg
-    alt: Diagram showing a task policy, RMP safety intervention, OOD state, and recovery-aware policy bridge returning control to the task policy.
-    caption: The RMP safety layer can move the robot outside the demonstration distribution. The recovery bridge returns control from those states to task execution.
+  - src: /media/lpb-diffusion-policy-overview.webp
+    alt: Two-panel method diagram showing recovery-aware LPB training and closed-loop deployment with a frozen diffusion policy, visual and proprioceptive encoders, latent dynamics, expert latent bank, gradient guidance, RMPflow, and the RB10 robot.
+    caption: "Method overview. Training: expert demonstrations define the frozen diffusion policy and expert latent bank, while original LPB rollouts and RMP-induced recovery transitions train the action-conditioned latent dynamics model. Deployment: dual-camera and proprioceptive observations condition iterative action denoising; the LPB latent OOD gradient guides the action chunk toward the expert manifold before RMPflow applies local collision avoidance and the executed action closes the real-robot loop."
     kind: diagram
     section: method
     autoplay: false
-    aspectRatio: 2 / 1
+    aspectRatio: 701 / 384
   - src: /media/videos/lpb-rmp-inference-intro.mp4
     poster: /media/posters/lpb-rmp-inference-intro.webp
     alt: An RB10 manipulator runs an RMP-guided LPB inference trial while a privacy-masked operator introduces a white-board obstacle.
