@@ -31,7 +31,10 @@
 const catalog = window.IDP_CATALOG;
 if (!catalog) { document.getElementById('asset-count').textContent = 'Media catalog unavailable. Rebuild the local site.'; throw new Error('Missing catalog'); }
 const byId = id => catalog.assets.find(a => a.id === id || a.aliases.includes(id));
-const megabytes = bytes => (bytes / 1024 / 1024).toFixed(1);
+const formatBytes = bytes => {
+  if (bytes < 1024 * 1024) return `${Math.max(1, Math.round(bytes / 1024))} KB`;
+  return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+};
 const dialog = document.getElementById('viewer');
 
 function el(tag, className, text) {
@@ -46,7 +49,7 @@ function openMedia(asset) {
   area.replaceChildren();
   document.getElementById('dialog-title').textContent = asset.title;
   document.getElementById('dialog-caption').textContent = asset.caption;
-  document.getElementById('dialog-status').textContent = `${asset.status} · ${asset.clearance === 'approved' ? 'Existing public clearance recorded' : 'Caption / privacy review required'} · ${megabytes(asset.bytes)} MB`;
+  document.getElementById('dialog-status').textContent = `${asset.status} · ${asset.clearance === 'approved' ? 'Existing public clearance recorded' : 'Caption / privacy review required'} · ${formatBytes(asset.bytes)}`;
   document.getElementById('dialog-download').href = asset.src;
   if (asset.kind === 'figure') {
     const img = new Image(); img.src = asset.src; img.alt = asset.title; area.append(img);
@@ -56,9 +59,7 @@ function openMedia(asset) {
     if (asset.thumbnail) video.poster = asset.thumbnail;
     area.append(video);
   } else {
-    area.append(el('p', 'dialog-placeholder', asset.kind === 'model'
-      ? 'Download the native GLB, or use the interactive replay section to inspect the animated workcell.'
-      : 'Editable source / document. Download to inspect at full resolution.'));
+    area.append(el('p', 'dialog-placeholder', 'Editable source / document. Download to inspect at full resolution.'));
   }
   dialog.showModal();
 }
@@ -221,8 +222,43 @@ if (proximityRoot) {
 }
 
 document.addEventListener('play', e => {
-  if (e.target.tagName === 'VIDEO') document.querySelectorAll('video').forEach(v => { if (v !== e.target) v.pause(); });
+  if (e.target.tagName !== 'VIDEO') return;
+  const isTraj = e.target.closest('.trajectory-task-group');
+  document.querySelectorAll('video').forEach(v => {
+    if (v === e.target) return;
+    // Allow simultaneous comparison playback within the active trajectory task group
+    if (isTraj && v.closest('.trajectory-task-group') === isTraj) return;
+    v.pause();
+  });
 }, true);
+
+// BibTeX clipboard copy
+const copyBtn = document.getElementById('copy-bibtex');
+if (copyBtn) {
+  copyBtn.addEventListener('click', async () => {
+    const code = document.getElementById('bibtex-code');
+    const textEl = document.getElementById('copy-bibtex-text');
+    if (!code || !textEl) return;
+    try {
+      await navigator.clipboard.writeText(code.textContent);
+      const originalText = textEl.textContent;
+      textEl.textContent = 'Copied!';
+      copyBtn.classList.add('copied');
+      setTimeout(() => {
+        textEl.textContent = originalText;
+        copyBtn.classList.remove('copied');
+      }, 2000);
+    } catch (err) {
+      console.warn('Clipboard write failed, selecting text instead', err);
+      const range = document.createRange();
+      range.selectNodeContents(code);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+  });
+}
+
 function card(a) {
   const article = el('article', 'asset-card');
   const button = el('button', 'asset-cover');
@@ -244,19 +280,15 @@ function card(a) {
   const info = el('div', 'asset-info');
   const meta = el('div', 'asset-meta');
   [a.category, a.status].filter(Boolean).forEach(text => meta.append(el('span', 'chip', text)));
-  const link = el('a', '', `Download ${megabytes(a.bytes)} MB ↓`);
+  const link = el('a', '', `Download ${formatBytes(a.bytes)} ↓`);
   link.href = a.src;
   link.download = '';
   info.append(meta, el('h3', '', a.title), el('p', '', a.caption), link);
   article.append(button, info);
   return article;
 }
-// Supplementary grid excludes retired interactive/3D replay artifacts.
-const retired3D = a => {
-  const haystack = `${a.id || ''} ${a.title || ''} ${a.category || ''} ${a.src || ''}`.toLowerCase();
-  return a.kind === 'model' || haystack.includes('3d') || haystack.includes('replay.html') || haystack.includes('five return paths') || haystack.includes('five-paths');
-};
 document.querySelectorAll('a[href="#replay"], a[href="replay.html"], #replay, #replay-shell').forEach(node => node.remove());
-const extras = catalog.assets.filter(a => (a.clearance === 'approved' || a.featured) && !retired3D(a) && !used.has(a.id));
+const supplementaryIds = ['ral-two-interventions', 'lpb-inference-full'];
+const extras = supplementaryIds.map(byId).filter(a => a && !used.has(a.id));
 document.getElementById('assets').replaceChildren(...extras.map(card));
-document.getElementById('asset-count').textContent = `${extras.length} supporting assets · ${catalog.counts.total} files in the full provenance catalog`;
+document.getElementById('asset-count').textContent = `${extras.length} selected supporting videos`;

@@ -45,7 +45,7 @@
       "category": "Rollouts & diagnostics",
       "src": "assets/ral-two-interventions.mp4",
       "thumbnail": "assets/ral-two-interventions-thumb.webp",
-      "caption": "New side-by-side edit of the recorded M4 V16 run at 55-85 s and 110-140 s, each at 1x. Separate events, not baseline versus ours and not a trial from the M0-M3 table. Unmasked, as requested.",
+      "caption": "Two recorded disturbance events from the V16 rollout, shown side by side at 1x.",
       "status": "Re-edited from source / attributed data",
       "clearance": "review-required",
       "sha256": "bfb8b5060b6e445e5210e55209f1cdd44294415275a45fa581ea8f7e46400109",
@@ -314,12 +314,12 @@
       "aliases": [
         "lpb-system"
       ],
-      "title": "lpb system",
+      "title": "LPB System Schematic",
       "kind": "figure",
       "category": "Rollouts & diagnostics",
       "src": "assets/lpb-system.svg",
       "thumbnail": null,
-      "caption": "Previously published LPB project material; provenance retained from the personal project page.",
+      "caption": "System architecture and controller composition from original LPB project.",
       "status": "Portfolio media",
       "clearance": "approved",
       "sha256": "0235e14391d26db0fff1de65c8d1035fc555979b110a83f25d5d8f0931795eb8",
@@ -331,12 +331,12 @@
       "aliases": [
         "lpb-diffusion-policy-overview"
       ],
-      "title": "lpb diffusion policy overview",
+      "title": "LPB Diffusion Policy Overview",
       "kind": "figure",
       "category": "Method",
       "src": "assets/lpb-diffusion-policy-overview.webp",
       "thumbnail": "assets/lpb-diffusion-policy-overview-thumb.webp",
-      "caption": "Previously published LPB project material; provenance retained from the personal project page.",
+      "caption": "Base diffusion policy architecture and observation history conditioning.",
       "status": "Portfolio media",
       "clearance": "approved",
       "sha256": "b862b2470af2124cd9cff627bf3722e59cbdc584828533ea7286c678af790a58",
@@ -350,12 +350,12 @@
       "aliases": [
         "lpb-hero"
       ],
-      "title": "lpb hero",
+      "title": "LPB Reactive Avoidance Trial",
       "kind": "video",
       "category": "Rollouts & diagnostics",
       "src": "assets/lpb-hero.mp4",
       "thumbnail": "assets/lpb-hero-thumb.webp",
-      "caption": "Derived from the published face-masked source clip; every visible third-party face remains masked.",
+      "caption": "Autonomous reactive obstacle avoidance rollout. Visible third-party faces masked.",
       "status": "Portfolio media",
       "clearance": "approved",
       "sha256": "1e4ecf3ec1dbef4f16d93e5b2148452c83daf3c389edd33b4333671434b616a1",
@@ -367,12 +367,12 @@
       "aliases": [
         "lpb-inference-full"
       ],
-      "title": "lpb inference full",
+      "title": "LPB Full-Length Evaluation Run",
       "kind": "video",
       "category": "Rollouts & diagnostics",
       "src": "assets/lpb-inference-full.mp4",
       "thumbnail": "assets/lpb-inference-full-thumb.webp",
-      "caption": "Cho Hyeon Joon confirmed on 2026-08-26 that the seated person is himself and approved showing his face. A second person enters at 267.6–280.9 s of the source; that face is pixelated (tracked 205 frames, bridged 113).",
+      "caption": "Recorded full-length evaluation rollout demonstrating reactive avoidance and task continuation.",
       "status": "Portfolio media",
       "clearance": "approved",
       "sha256": "646eb27a59fb779465a4a09e1418b9b75dde47dd06a3fd8c2c8ab25b238ae116",
@@ -384,12 +384,12 @@
       "aliases": [
         "lpb-inference-excerpt"
       ],
-      "title": "lpb inference excerpt",
+      "title": "LPB Evaluation Excerpt",
       "kind": "video",
       "category": "Rollouts & diagnostics",
       "src": "assets/lpb-inference-excerpt.mp4",
       "thumbnail": "assets/lpb-inference-excerpt-thumb.webp",
-      "caption": "Cho Hyeon Joon confirmed on 2026-08-26 that the visible person is himself and approved showing his face.",
+      "caption": "Recorded excerpt showing reactive obstacle avoidance during manipulation task.",
       "status": "Portfolio media",
       "clearance": "approved",
       "sha256": "f706212356fc8522bbf932c5902d73fdc7ea90943e24d1ff3e311b591bdeb739",
@@ -401,12 +401,12 @@
       "aliases": [
         "lpb-home-hero"
       ],
-      "title": "lpb home hero",
+      "title": "LPB Initial-State Rollout",
       "kind": "video",
       "category": "Rollouts & diagnostics",
       "src": "assets/lpb-home-hero.mp4",
       "thumbnail": "assets/lpb-home-hero-thumb.webp",
-      "caption": "Cho Hyeon Joon confirmed on 2026-08-26 that the visible person is himself and approved showing his face.",
+      "caption": "Autonomous trial initialized from home configuration with active reactive controller.",
       "status": "Portfolio media",
       "clearance": "approved",
       "sha256": "e4af04b99a7e465d27315c129d1b0dbd60051dcc23941d7538ac9133d7819a69",
@@ -418,12 +418,12 @@
       "aliases": [
         "lpb-rmp-inference-intro"
       ],
-      "title": "lpb rmp inference intro",
+      "title": "Proximity-Driven RMPflow Demo",
       "kind": "video",
       "category": "Rollouts & diagnostics",
       "src": "assets/lpb-rmp-inference-intro.mp4",
       "thumbnail": "assets/lpb-rmp-inference-intro-thumb.webp",
-      "caption": "All visible third-party faces are tracked and masked in the published derivative.",
+      "caption": "External-camera demonstration of proximity sensing with continuous RMPflow controller.",
       "status": "Portfolio media",
       "clearance": "approved",
       "sha256": "af9b2ff5e4323b1348c199f84ac983ceaf55c249c3b87d7a903848b1d9bedf77",
@@ -435,12 +435,12 @@
       "aliases": [
         "lpb-recovery-a"
       ],
-      "title": "lpb recovery a",
+      "title": "Targeted Recovery Transition A",
       "kind": "video",
       "category": "Rollouts & diagnostics",
       "src": "assets/lpb-recovery-a.mp4",
       "thumbnail": "assets/lpb-recovery-a-thumb.webp",
-      "caption": "Previously published LPB project material; provenance retained from the personal project page.",
+      "caption": "Recorded targeted recovery trajectory (condition A) under human-guided collection.",
       "status": "Portfolio media",
       "clearance": "approved",
       "sha256": "8457a96a3823d26e239502893ce737f0f2833aaaee7e00cf809ab6e74bb3a94e",
@@ -452,12 +452,12 @@
       "aliases": [
         "lpb-recovery-b"
       ],
-      "title": "lpb recovery b",
+      "title": "Targeted Recovery Transition B",
       "kind": "video",
       "category": "Rollouts & diagnostics",
       "src": "assets/lpb-recovery-b.mp4",
       "thumbnail": "assets/lpb-recovery-b-thumb.webp",
-      "caption": "Previously published LPB project material; provenance retained from the personal project page.",
+      "caption": "Recorded targeted recovery trajectory (condition B) under human-guided collection.",
       "status": "Portfolio media",
       "clearance": "approved",
       "sha256": "1870e35942b277f52109045a5bc170a3783970c41a1f7331dd6945652865459a",
