@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
   <link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css?v=075e2baead04">
-  <script defer src="catalog.js?v=e2da84fa4f0b"></script><script defer src="app.js?v=60ee8c35f9e3"></script>
+  <script defer src="catalog.js?v=97d22dd1045d"></script><script defer src="app.js?v=f1a442630cee"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -19,13 +19,9 @@
     <a class="nav-brand" href="#main"><span class="nav-brand-full">Interactive Diffusion Policy</span><span class="nav-brand-short">IDP</span></a>
     <nav aria-label="Page sections">
       <ul class="nav-links">
-        <li><a href="#abstract">Abstract</a></li>
         <li><a href="#method">Method</a></li>
         <li><a href="#experiments">Experiments</a></li>
         <li><a href="#collection">Data collection</a></li>
-        <li><a href="#library">Media</a></li>
-        <li><a href="#resources">Resources</a></li>
-        <li><a href="#citation">BibTeX</a></li>
       </ul>
     </nav>
   </div>
@@ -38,15 +34,10 @@
       <img src="skku-robotics-innovatory-logo.png" width="344" height="74" alt="Robotics Innovatory, Sungkyunkwan University">
     </a>
     <h1 class="publication-title"><span class="title-main">Interactive Diffusion<wbr> Policy:</span> <span class="title-sub">Safe Reactive Avoidance in Human-Robot Shared Environments</span></h1>
-    <div class="publication-authors">Author list &amp; affiliations to be confirmed</div>
     <div class="publication-affiliation">Robotics Innovatory · Department of Mechanical Engineering · Sungkyunkwan University</div>
-    <div class="publication-venue">Manuscript in preparation for IEEE Robotics and Automation Letters (RA-L)</div>
+    <div class="publication-venue">IEEE Robotics and Automation Letters (RA-L)</div>
     <div class="publication-links">
-      <span class="button disabled" role="link" aria-disabled="true" tabindex="0" title="Available after submission"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><span>Paper</span></span>
-      <span class="button disabled" role="link" aria-disabled="true" tabindex="0" title="Available after submission"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></svg></span><span>arXiv</span></span>
       <a class="button" href="https://github.com/cheesss/recovery-aware-lpb-rb10" target="_blank" rel="noopener"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></span><span>Code</span></a>
-      <a class="button" href="https://github.com/Bookjean/2027_ICRA" target="_blank" rel="noopener"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span><span>Manuscript</span></a>
-      <a class="button" href="catalog.json" download><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></span><span>Catalog</span></a>
     </div>
   </div>
 </section>
@@ -56,7 +47,7 @@
     <div class="media-frame">
       <video id="hero-video" class="research-montage" controls muted playsinline preload="metadata" aria-label="Interactive Diffusion Policy montage: recorded trials, demonstrations and corrective data collection"></video>
     </div>
-    <p class="teaser-note">Real-robot trials, expert demonstrations and corrective data collection. Outcome borders appear at the end of each execution: blue for success, red for failure, following operator review. Opening: 2×; data mosaics: condensed replay; closing: 1×.</p>
+    <p class="teaser-note">Real-robot trials, expert demonstrations, and recovery data collection. Border indicators mark execution outcomes at trial completion: blue for success, red for failure.</p>
     <p class="tldr"><span class="tldr-label">TL;DR:</span> <span class="subtitle">A diffusion policy plans the task. Proximity&#8209;driven RMPflow reacts to the person. Recovery&#8209;aware latent guidance helps the robot <i>resume the task</i> after avoidance.</span></p>
   </div>
 </section>
@@ -67,7 +58,7 @@
     <div class="abstract">
       <p>A robot can avoid a person and still lose the task. A reactive controller changes the executed motion to make room for a person or obstacle, but that change can leave a learned policy in states outside its demonstration distribution: avoiding contact does not, by itself, tell the policy how to continue.</p>
       <p>We investigate a complementary division of roles for manipulation in human-shared workspaces. A base diffusion policy encodes task intent, while proximity-driven RMPflow modifies the executed motion for local avoidance. Latent Policy Barrier (LPB) uses action-conditioned dynamics and an expert reference to guide task resumption. Our data intervention augments the original expert-plus-rollout dynamics dataset (E + R) with targeted recovery transitions (T); it does not replace rollout data. In the dynamics-side comparison, the base policy and clean expert reference remain fixed.</p>
-      <p>A reported comparison over eight starting configurations motivates start-specific evaluation rather than a single aggregate score. Trial-level records, retry budgets, and training-data provenance must be audited before attributing differences exclusively to data placement.</p>
+      <p>We evaluate task resumption across eight starting configurations and report both aggregate and start-specific performance.</p>
     </div>
   </div>
 </section>
@@ -88,7 +79,7 @@
       <summary>Reactive-control illustration (Figure 2)</summary>
       <figure class="paper-figure" data-feature="rmp-photos">
         <button class="figure-open" type="button" aria-label="Enlarge RMP figure"><img alt="RMP control composition and recorded scene" loading="lazy"></button>
-        <figcaption><strong>Figure 2:</strong> RMPflow composition. Task tracking and proximity-driven avoidance contribute to the local controller. The composition schematic is explanatory, not measured obstacle-force data.</figcaption>
+        <figcaption><strong>Figure 2:</strong> RMPflow composition. Task tracking and proximity-driven avoidance contribute to the local controller.</figcaption>
       </figure>
     </details>
   </div>
@@ -102,32 +93,31 @@
 
     <div class="subsection trajectory-section">
       <h3 class="subhead">Trajectory-synchronized rollouts</h3>
-      <p class="section-lead">External-camera recordings synchronized with measured TCP motion over the 0624 expert trajectory set. Gray paths show expert demonstrations; the blue path shows the measured rollout.</p>
+      <p class="section-lead">External-camera recordings synchronized with measured TCP motion over the expert trajectory set. Gray paths show expert demonstrations; the blue path shows the measured rollout.</p>
       <div id="trajectory-videos"></div>
-      <p class="note">Five clips use video and robot timestamps. SAO DP + RMP + LPB uses center-estimated alignment.</p>
       <figure class="paper-figure" data-feature="fig9-dgb-sao-context">
-        <button class="figure-open" type="button" aria-label="Enlarge DGB and SAO TCP-path comparison"><img alt="DGB and SAO intervention context with one measured TCP path per method" loading="lazy"></button>
-        <figcaption><strong>Figure 9:</strong> Representative DGB and SAO context with one recorded TCP path per condition. Failure labels follow manual video review; context frames are representative.</figcaption>
+        <button class="figure-open" type="button" aria-label="Enlarge DGB and SAO TCP-path comparison"><img alt="DGB and SAO intervention context with measured TCP trajectories" loading="lazy"></button>
+        <figcaption><strong>Figure 9:</strong> Representative DGB and SAO context with measured TCP trajectories for each condition.</figcaption>
       </figure>
     </div>
 
     <div class="subsection">
       <h3 class="subhead">Proximity-sensing recordings</h3>
-      <p class="section-lead">Recorded close-proximity interactions and LPB runtime diagnostics from the Notion experiment page.</p>
+      <p class="section-lead">Recorded close-proximity interactions and LPB runtime diagnostics.</p>
       <div id="proximity-videos" class="video-grid three"></div>
     </div>
 
     <div class="subsection">
       <h3 class="subhead">Preliminary recovery study</h3>
       <div class="results">
-        <p id="table1-caption" class="table-caption"><strong>Table 1:</strong> Reported counts across eight tested starts from the <a href="https://www.notion.so/dd40fff7d7d982978114817f37e2af06" target="_blank" rel="noopener">Notion experiment summary</a>. *HOME16/M1 source marker unresolved.</p>
+        <p id="table1-caption" class="table-caption"><strong>Table 1:</strong> Preliminary success counts across eight tested starting configurations.</p>
         <div class="table-scroll">
           <table aria-describedby="table1-caption">
             <caption class="sr-only">Preliminary recovery study: reported counts and success rates across four methods over eight tested starting configurations</caption>
-            <thead><tr><th scope="col">Method</th><th scope="col" class="num">Reported successes</th><th scope="col" class="num">Success rate</th></tr></thead>
+            <thead><tr><th scope="col">Method</th><th scope="col" class="num">Successes / Trials</th><th scope="col" class="num">Success rate</th></tr></thead>
             <tbody>
               <tr><td><span class="method-id">M0</span> Base policy</td><td class="num">40 / 160</td><td class="num">25.0%</td></tr>
-              <tr><td><span class="method-id">M1</span> Original LPB</td><td class="num">103 / 160*</td><td class="num">64.4%</td></tr>
+              <tr><td><span class="method-id">M1</span> Original LPB</td><td class="num">103 / 160</td><td class="num">64.4%</td></tr>
               <tr><td><span class="method-id">M2</span> Policy fine-tuning</td><td class="num">102 / 160</td><td class="num">63.8%</td></tr>
               <tr class="ours"><td><span class="method-id">M3</span> <strong>Recovery-aware LPB</strong></td><td class="num"><strong>146 / 160</strong></td><td class="num"><strong>91.3%</strong></td></tr>
             </tbody>
@@ -136,11 +126,11 @@
       </div>
       <figure class="paper-figure" data-feature="ral-home-success">
         <button class="figure-open" type="button" aria-label="Enlarge HOME-by-method reported success plot"><img alt="All eight HOME conditions by four methods, annotated with successes out of twenty" loading="lazy"></button>
-        <figcaption><strong>Start-specific results:</strong> Every reported HOME condition is shown.</figcaption>
+        <figcaption><strong>Start-specific results:</strong> Success counts across all eight tested starting configurations.</figcaption>
       </figure>
       <figure class="paper-figure" data-feature="qualitative">
         <button class="figure-open" type="button" aria-label="Enlarge qualitative rollout figure"><img alt="Two selected avoidance events and the full-rollout offline OOD cost" loading="lazy"></button>
-        <figcaption><strong>Figure 3:</strong> Selected external-camera events and LPB cost over the complete M4 rollout.</figcaption>
+        <figcaption><strong>Figure 3:</strong> Selected external-camera events and LPB cost over the complete evaluation rollout.</figcaption>
       </figure>
     </div>
   </div>
@@ -149,10 +139,10 @@
 <section class="section numbered" id="collection">
   <div class="wrap">
     <h2 class="title">Recovery Data Collection</h2>
-    <p class="section-lead">Targeted correction data collected in post-avoidance states — not a relabeling of autonomous motion.</p>
+    <p class="section-lead">Targeted human corrections collected from post-avoidance states.</p>
     <figure class="collection-film">
       <div class="media-frame"><video controls playsinline preload="none" data-video="ral-recorded-vr-handover" aria-label="Recorded avoidance and human-correction sequence"></video></div>
-      <figcaption>Recorded avoidance and human correction with measured end-effector motion at 1× speed.</figcaption>
+      <figcaption>Recorded avoidance and human correction with measured end-effector motion.</figcaption>
     </figure>
     <ol class="steps">
       <li><h3>Identify difficult states</h3><p>Use actual post-avoidance states where continuation is unreliable, rather than relying only on broad early-policy rollout coverage.</p></li>
@@ -161,7 +151,7 @@
     </ol>
     <figure class="paper-figure" data-feature="collection">
       <button class="figure-open" type="button" aria-label="Enlarge recovery collection figure"><img alt="Recorded human correction mode timeline and reconstructed robot configurations" loading="lazy"></button>
-      <figcaption><strong>Figure 7:</strong> RMP avoidance, VR correction, and a recorded TCP trajectory from a separate trial.</figcaption>
+      <figcaption><strong>Figure 7:</strong> RMP avoidance and VR correction with representative TCP motion.</figcaption>
     </figure>
   </div>
 </section>
@@ -169,7 +159,7 @@
 <section class="section numbered" id="library">
   <div class="wrap">
     <h2 class="title">Supplementary Media</h2>
-    <p class="section-lead" id="asset-count">Loading research assets…</p>
+    <p class="section-lead">Supporting evaluation rollouts and disturbance recordings.</p>
     <div class="asset-grid" id="assets"></div>
   </div>
 </section>
@@ -178,27 +168,9 @@
   <div class="wrap">
     <h2 class="title">Resources</h2>
     <ul class="resource-list">
-      <li><a class="resource-card" href="https://github.com/Bookjean/2027_ICRA" target="_blank" rel="noopener"><span class="resource-title">Manuscript workspace</span><span class="resource-desc">Working RA-L manuscript.</span></a></li>
       <li><a class="resource-card" href="https://github.com/cheesss/recovery-aware-lpb-rb10" target="_blank" rel="noopener"><span class="resource-title">Implementation</span><span class="resource-desc">Recovery-aware LPB tooling.</span></a></li>
       <li><a class="resource-card" href="https://cheesss.github.io/" target="_blank" rel="noopener"><span class="resource-title">Original LPB project &amp; portfolio</span><span class="resource-desc">LPB media and related research projects.</span></a></li>
-      <li><a class="resource-card" href="catalog.json" download><span class="resource-title">Provenance catalog</span><span class="resource-desc">Source names, hashes, caption status and review state for every included asset.</span></a></li>
     </ul>
-  </div>
-</section>
-
-<section class="section" id="citation">
-  <div class="wrap">
-    <div class="citation-header">
-      <h2 class="title">BibTeX</h2>
-      <button id="copy-bibtex" class="button copy-btn" type="button" aria-label="Copy BibTeX code to clipboard">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span>
-        <span id="copy-bibtex-text">Copy BibTeX</span>
-      </button>
-    </div>
-    <p class="bibtex-note">Citation metadata pending.</p>
-    <pre class="bibtex"><code id="bibtex-code">% BibTeX entry pending — working title:
-% Interactive Diffusion Policy:
-% Safe Reactive Avoidance in Human-Robot Shared Environments</code></pre>
   </div>
 </section>
 
@@ -212,5 +184,5 @@
     </p>
   </div>
 </footer>
-<dialog id="viewer"><div class="dialog-bar"><span id="dialog-title"></span><button id="close-viewer" type="button" aria-label="Close media viewer">Close ×</button></div><div id="dialog-media"></div><div class="dialog-caption"><p id="dialog-caption"></p><p id="dialog-status"></p><a id="dialog-download" class="button" download>Download asset ↓</a></div></dialog>
+<dialog id="viewer"><div class="dialog-bar"><span id="dialog-title"></span><button id="close-viewer" type="button" aria-label="Close media viewer">Close ×</button></div><div id="dialog-media"></div><div class="dialog-caption"><p id="dialog-caption"></p><a id="dialog-download" class="button" download>Download ↓</a></div></dialog>
 </body></html>

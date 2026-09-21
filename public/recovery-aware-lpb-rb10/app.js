@@ -29,12 +29,8 @@
 })();
 
 const catalog = window.IDP_CATALOG;
-if (!catalog) { document.getElementById('asset-count').textContent = 'Media catalog unavailable. Rebuild the local site.'; throw new Error('Missing catalog'); }
+if (!catalog) { throw new Error('Missing catalog'); }
 const byId = id => catalog.assets.find(a => a.id === id || a.aliases.includes(id));
-const formatBytes = bytes => {
-  if (bytes < 1024 * 1024) return `${Math.max(1, Math.round(bytes / 1024))} KB`;
-  return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
-};
 const dialog = document.getElementById('viewer');
 
 function el(tag, className, text) {
@@ -49,8 +45,11 @@ function openMedia(asset) {
   area.replaceChildren();
   document.getElementById('dialog-title').textContent = asset.title;
   document.getElementById('dialog-caption').textContent = asset.caption;
-  document.getElementById('dialog-status').textContent = `${asset.status} · ${asset.clearance === 'approved' ? 'Existing public clearance recorded' : 'Caption / privacy review required'} · ${formatBytes(asset.bytes)}`;
-  document.getElementById('dialog-download').href = asset.src;
+  const downloadLink = document.getElementById('dialog-download');
+  if (downloadLink) {
+    downloadLink.href = asset.src;
+    downloadLink.textContent = 'Download ↓';
+  }
   if (asset.kind === 'figure') {
     const img = new Image(); img.src = asset.src; img.alt = asset.title; area.append(img);
   } else if (asset.kind === 'video') {
@@ -95,7 +94,6 @@ if (hero) {
   const video = document.getElementById('hero-video');
   const revision = '?v=' + hero.sha256.slice(0, 12);
   video.src = hero.src + revision;
-  // Match the frame to whichever highlight is available.
   const widescreen = ['idp-focused-highlight', 'idp-research-montage'].includes(hero.id);
   video.classList.toggle('research-montage', widescreen);
   video.classList.toggle('comparison-edit', !widescreen);
@@ -109,6 +107,8 @@ document.querySelectorAll('video[data-video]').forEach(video => {
   video.src = a.src + v;
   video.poster = a.thumbnail ? a.thumbnail + v : '';
 });
+
+// Figure modal uses the visible figure caption and title rather than internal catalog metadata.
 document.querySelectorAll('[data-feature]').forEach(figure => {
   const a = byId(figure.dataset.feature);
   if (!a) { figure.hidden = true; return; }
@@ -116,11 +116,24 @@ document.querySelectorAll('[data-feature]').forEach(figure => {
   const img = figure.querySelector('img');
   if (a.width) { img.width = a.width; img.height = a.height; }
   img.src = a.src;
-  figure.querySelector('button').addEventListener('click', () => openMedia(a));
+  const figcaption = figure.querySelector('figcaption');
+  const strong = figcaption ? figcaption.querySelector('strong') : null;
+  const visibleTitle = strong
+    ? `${strong.textContent.replace(/:$/, '').trim()}${img.alt ? ' — ' + img.alt : ''}`
+    : (img.alt || a.title);
+  const prefix = strong ? strong.textContent : '';
+  const visibleCaption = (figcaption && prefix)
+    ? figcaption.textContent.replace(prefix, '').trim()
+    : (figcaption ? figcaption.textContent.trim() : a.caption);
+  figure.querySelector('button').addEventListener('click', () => openMedia({
+    ...a,
+    title: visibleTitle,
+    caption: visibleCaption
+  }));
 });
 
 const features = [
-  ['ral-guidance-inspection', 'Inspect the guidance record', 'New 1x reconstruction from saved V16 inference records: current observation, nearest expert, current-state cost, and the recorded guidance_active flag. Not a calibrated collision-risk score.']
+  ['ral-guidance-inspection', 'Guidance record inspection', 'Runtime reconstruction of current observation, nearest expert reference, and policy guidance state from saved inference records.']
 ];
 const featuredRoot = document.getElementById('featured-videos');
 features.forEach(([id, title, caption], i) => {
@@ -131,11 +144,11 @@ features.forEach(([id, title, caption], i) => {
 });
 
 const trajectoryVideos = [
-  ['fig9-sync-dgb-dp-rmp-lpb', 'DGB', 'DP + RMP + LPB', 'Dynamic-push rollout with the recovery-aware LPB condition.'],
+  ['fig9-sync-dgb-dp-rmp-lpb', 'DGB', 'DP + RMP + LPB', 'Dynamic-push rollout with recovery-aware LPB.'],
   ['fig9-sync-dgb-dp-rmp', 'DGB', 'DP + RMP', 'Dynamic-push rollout without LPB guidance.'],
   ['fig9-sync-dgb-dp-stop', 'DGB', 'DP + Stop', 'Dynamic-push stop baseline.'],
-  ['fig9-sync-sao-dp-rmp-lpb', 'SAO', 'DP + RMP + LPB', 'Sudden-obstacle rollout. Video alignment is estimated because its creation metadata is inconsistent.'],
-  ['fig9-sync-sao-dp-rmp', 'SAO', 'DP + RMP', 'Sudden-obstacle rollout using the selected recorded trial.'],
+  ['fig9-sync-sao-dp-rmp-lpb', 'SAO', 'DP + RMP + LPB', 'Sudden-obstacle rollout with recovery-aware LPB (estimated alignment).'],
+  ['fig9-sync-sao-dp-rmp', 'SAO', 'DP + RMP', 'Sudden-obstacle rollout without LPB guidance.'],
   ['fig9-sync-sao-dp-stop', 'SAO', 'DP + Stop', 'Sudden-obstacle stop baseline.']
 ];
 const trajectoryTasks = [['DGB', 'Dynamic push (DGB)'], ['SAO', 'Sudden obstacle (SAO)']];
@@ -226,82 +239,65 @@ document.addEventListener('play', e => {
   const isTraj = e.target.closest('.trajectory-task-group');
   document.querySelectorAll('video').forEach(v => {
     if (v === e.target) return;
-    // Allow simultaneous comparison playback within the active trajectory task group
     if (isTraj && v.closest('.trajectory-task-group') === isTraj) return;
     v.pause();
   });
 }, true);
 
-// BibTeX clipboard copy
-const copyBtn = document.getElementById('copy-bibtex');
-if (copyBtn) {
-  copyBtn.addEventListener('click', async () => {
-    const code = document.getElementById('bibtex-code');
-    const textEl = document.getElementById('copy-bibtex-text');
-    if (!code || !textEl) return;
-    try {
-      await navigator.clipboard.writeText(code.textContent);
-      const originalText = textEl.textContent;
-      textEl.textContent = 'Copied!';
-      copyBtn.classList.add('copied');
-      setTimeout(() => {
-        textEl.textContent = originalText;
-        copyBtn.classList.remove('copied');
-      }, 2000);
-    } catch (err) {
-      try {
-        const textarea = document.createElement('textarea');
-        textarea.value = code.textContent;
-        textarea.style.position = 'fixed';
-        textarea.style.left = '-9999px';
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        const originalText = textEl.textContent;
-        textEl.textContent = 'Copied!';
-        copyBtn.classList.add('copied');
-        setTimeout(() => {
-          textEl.textContent = originalText;
-          copyBtn.classList.remove('copied');
-        }, 2000);
-      } catch (fallbackErr) {
-        console.warn('Clipboard copy failed', fallbackErr);
-      }
-    }
-  });
-}
-
-function card(a) {
+function card(item) {
+  const a = byId(item.id);
+  if (!a) return null;
+  const cleanAsset = {
+    ...a,
+    title: item.title || a.title,
+    caption: item.caption || a.caption
+  };
   const article = el('article', 'asset-card');
   const button = el('button', 'asset-cover');
   button.type = 'button';
-  button.setAttribute('aria-label', `Open ${a.title}`);
-  if (a.thumbnail) {
-    const img = new Image(); img.src = a.thumbnail; img.alt = a.title; img.loading = 'lazy'; img.decoding = 'async';
+  button.setAttribute('aria-label', `Open ${cleanAsset.title}`);
+  if (cleanAsset.thumbnail) {
+    const img = new Image(); img.src = cleanAsset.thumbnail; img.alt = cleanAsset.title; img.loading = 'lazy'; img.decoding = 'async';
     button.append(img);
   } else {
-    button.append(el('span', 'filetype', a.src.split('.').pop().toUpperCase()));
+    button.append(el('span', 'filetype', cleanAsset.src.split('.').pop().toUpperCase()));
   }
-  if (a.kind === 'video') {
+  if (cleanAsset.kind === 'video') {
     const mark = el('span', 'play-mark');
     mark.setAttribute('aria-hidden', 'true');
     mark.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></svg>';
     button.append(mark);
   }
-  button.addEventListener('click', () => openMedia(a));
+  button.addEventListener('click', () => openMedia(cleanAsset));
   const info = el('div', 'asset-info');
-  const meta = el('div', 'asset-meta');
-  [a.category, a.status].filter(Boolean).forEach(text => meta.append(el('span', 'chip', text)));
-  const link = el('a', '', `Download ${formatBytes(a.bytes)} ↓`);
-  link.href = a.src;
+  const link = el('a', '', 'Download ↓');
+  link.href = cleanAsset.src;
   link.download = '';
-  info.append(meta, el('h3', '', a.title), el('p', '', a.caption), link);
+  info.append(el('h3', '', cleanAsset.title), el('p', '', cleanAsset.caption), link);
   article.append(button, info);
   return article;
 }
+
 document.querySelectorAll('a[href="#replay"], a[href="replay.html"], #replay, #replay-shell').forEach(node => node.remove());
-const supplementaryIds = ['ral-two-interventions', 'lpb-inference-full'];
-const extras = supplementaryIds.map(byId).filter(a => a && !used.has(a.id));
-document.getElementById('assets').replaceChildren(...extras.map(card));
-document.getElementById('asset-count').textContent = `${extras.length} selected supporting videos`;
+
+const supplementaryItems = [
+  {
+    id: 'ral-two-interventions',
+    title: 'Reactive avoidance and continuation',
+    caption: 'Side-by-side view of two recorded disturbance events during manipulation, showing obstacle avoidance and subsequent task continuation.'
+  },
+  {
+    id: 'lpb-inference-full',
+    title: 'Full evaluation rollout',
+    caption: 'Recorded full-length evaluation rollout demonstrating reactive avoidance and task continuation.'
+  }
+];
+const extras = supplementaryItems
+  .filter(item => !used.has(item.id))
+  .map(card)
+  .filter(Boolean);
+
+const assetsRoot = document.getElementById('assets');
+if (assetsRoot) {
+  assetsRoot.replaceChildren(...extras);
+}

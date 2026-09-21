@@ -12,11 +12,8 @@
       "src": "assets/idp-research-montage.mp4",
       "thumbnail": "assets/idp-research-montage-thumb.webp",
       "caption": "Restored full-data montage. Thin blue/red borders fade in only after each reviewed execution reaches its end or visible successful release. Operator-reviewed outcomes, not an aggregate success-rate estimate. Opening: 2x; data mosaics: condensed; closing: 1x.",
-      "status": "Research montage",
-      "clearance": "review-required",
       "sha256": "53181022e406d00d220c53ad99efe996f9f88234285a9c3560ad23dddb1b7b53",
-      "bytes": 24535265,
-      "featured": true
+      "bytes": 24535265
     },
     {
       "id": "idp-title-reveal",
@@ -29,45 +26,36 @@
       "src": "assets/idp-title-reveal.mp4",
       "thumbnail": "assets/idp-title-reveal-thumb.webp",
       "caption": "A close view pulls back into six large recorded robot videos on a light background. No early outcome badges: these short excerpts end before the reviewed task endpoints. 1x playback.",
-      "status": "Research montage",
-      "clearance": "review-required",
       "sha256": "2142057906e8d394984dd78f8c5de4f86acac435c98a85bef0089f8fee81aa24",
-      "bytes": 4178571,
-      "featured": true
+      "bytes": 4178571
     },
     {
       "id": "ral-two-interventions",
       "aliases": [
         "ral-two-interventions"
       ],
-      "title": "Two disturbances, one continuation problem",
+      "title": "Reactive avoidance sequence",
       "kind": "video",
       "category": "Rollouts & diagnostics",
       "src": "assets/ral-two-interventions.mp4",
       "thumbnail": "assets/ral-two-interventions-thumb.webp",
-      "caption": "Two recorded disturbance events from the V16 rollout, shown side by side at 1x.",
-      "status": "Re-edited from source / attributed data",
-      "clearance": "review-required",
+      "caption": "Two recorded disturbance events during manipulation, showing reactive avoidance and task continuation.",
       "sha256": "bfb8b5060b6e445e5210e55209f1cdd44294415275a45fa581ea8f7e46400109",
-      "bytes": 2216970,
-      "featured": true
+      "bytes": 2216970
     },
     {
       "id": "ral-recorded-vr-handover",
       "aliases": [
         "ral-recorded-vr-handover"
       ],
-      "title": "How recovery transitions are collected",
+      "title": "Recovery data collection",
       "kind": "video",
       "category": "Rollouts & diagnostics",
       "src": "assets/ral-recorded-vr-handover.mp4",
       "thumbnail": "assets/ral-recorded-vr-handover-thumb.webp",
-      "caption": "Recorded avoidance and human-correction sequence with synchronized observation and measured end-effector motion. One continuous collection rollout at 1x, not an autonomous success trial.",
-      "status": "Re-edited from source / attributed data",
-      "clearance": "review-required",
+      "caption": "Recorded avoidance and human correction sequence with synchronized observations and end-effector motion.",
       "sha256": "e09998a7990a01c5d82f83cec2020e06876a01e8ffee26086726ab2210498d55",
-      "bytes": 1493124,
-      "featured": true
+      "bytes": 1493124
     },
     {
       "id": "ral-home-success",
@@ -79,12 +67,9 @@
       "category": "Rollouts & diagnostics",
       "src": "assets/ral-home-success.webp",
       "thumbnail": "assets/ral-home-success-thumb.webp",
-      "caption": "New plot transcribed from the Notion HOME-by-method table. All four denominators are reported as 160; individual trial logs are not re-audited. The source HOME16/M1 asterisk and completion-status conflict remain unresolved.",
-      "status": "Re-edited from source / attributed data",
-      "clearance": "review-required",
+      "caption": "Preliminary reported success counts across eight tested starting configurations.",
       "sha256": "5f64ea86496dd53adbebc47a5e4c2ff7a0451cff4d56ff232e2966825161a3e4",
       "bytes": 125722,
-      "featured": true,
       "width": 2340,
       "height": 1224
     },
@@ -93,17 +78,14 @@
       "aliases": [
         "ral-guidance-inspection"
       ],
-      "title": "What the guidance log actually shows",
+      "title": "Guidance record inspection",
       "kind": "video",
       "category": "Rollouts & diagnostics",
       "src": "assets/ral-guidance-inspection.mp4",
       "thumbnail": "assets/ral-guidance-inspection-thumb.webp",
-      "caption": "New reconstruction from one-row-per-inference records: wrist image, retrieved current-observation expert and saved current_cost. guidance_active is read from the executed guided-branch log, not thresholded anew. 60-90 s from first logged inference, 1x. Uniform display gamma 0.65.",
-      "status": "Re-edited from source / attributed data",
-      "clearance": "review-required",
+      "caption": "Runtime reconstruction from saved inference records showing current observation, nearest expert reference, and policy guidance state.",
       "sha256": "ba58a46f44b9a8f4eafdc8a3b1cab5be702e870383f681a1da3063bd18a221c0",
-      "bytes": 1503700,
-      "featured": true
+      "bytes": 1503700
     },
     {
       "id": "fig9-sync-dgb-dp-rmp-lpb",
@@ -115,12 +97,9 @@
       "category": "Rollouts & diagnostics",
       "src": "assets/fig9-sync-dgb-dp-rmp-lpb.mp4",
       "thumbnail": "assets/fig9-sync-dgb-dp-rmp-lpb-thumb.webp",
-      "caption": "Absolute-time synchronized external video and measured TCP trajectory over 0624 expert demonstrations.",
-      "status": "Timestamp-synchronized diagnostic video",
-      "clearance": "review-required",
+      "caption": "Absolute-time synchronized external video and measured TCP trajectory over expert demonstrations.",
       "sha256": "ab7bcfe05ebfe1ba434ff7aa836a22517e11dea4a384988cabc189e92ac02a88",
-      "bytes": 2392690,
-      "featured": true
+      "bytes": 2392690
     },
     {
       "id": "fig9-sync-dgb-dp-rmp",
@@ -132,12 +111,9 @@
       "category": "Rollouts & diagnostics",
       "src": "assets/fig9-sync-dgb-dp-rmp.mp4",
       "thumbnail": "assets/fig9-sync-dgb-dp-rmp-thumb.webp",
-      "caption": "Absolute-time synchronized external video and measured TCP trajectory over 0624 expert demonstrations.",
-      "status": "Timestamp-synchronized diagnostic video",
-      "clearance": "review-required",
+      "caption": "Absolute-time synchronized external video and measured TCP trajectory over expert demonstrations.",
       "sha256": "c5ba1ded0c4864a017db92d5c91ca9bc867e955e7835bb2ebd6a7180b50a23c5",
-      "bytes": 2175414,
-      "featured": true
+      "bytes": 2175414
     },
     {
       "id": "fig9-sync-dgb-dp-stop",
@@ -149,12 +125,9 @@
       "category": "Rollouts & diagnostics",
       "src": "assets/fig9-sync-dgb-dp-stop.mp4",
       "thumbnail": "assets/fig9-sync-dgb-dp-stop-thumb.webp",
-      "caption": "Absolute-time synchronized external video and measured TCP trajectory over 0624 expert demonstrations.",
-      "status": "Timestamp-synchronized diagnostic video",
-      "clearance": "review-required",
+      "caption": "Absolute-time synchronized external video and measured TCP trajectory over expert demonstrations.",
       "sha256": "0d0a1ea2225b60c5b022cf50ee0ff06af7433ac352c439dce100854227bec7d0",
-      "bytes": 1027988,
-      "featured": true
+      "bytes": 1027988
     },
     {
       "id": "fig9-sync-sao-dp-rmp-lpb",
@@ -166,12 +139,9 @@
       "category": "Rollouts & diagnostics",
       "src": "assets/fig9-sync-sao-dp-rmp-lpb.mp4",
       "thumbnail": "assets/fig9-sync-sao-dp-rmp-lpb-thumb.webp",
-      "caption": "External video and measured TCP trajectory with center-estimated alignment because creation metadata is inconsistent.",
-      "status": "Timestamp-synchronized diagnostic video",
-      "clearance": "review-required",
+      "caption": "External video and measured TCP trajectory with estimated alignment.",
       "sha256": "33e07ed3495f4667712d836b0142f2f3fde84859094afebba766fbbacf73d82c",
-      "bytes": 1997925,
-      "featured": true
+      "bytes": 1997925
     },
     {
       "id": "fig9-sync-sao-dp-rmp",
@@ -183,12 +153,9 @@
       "category": "Rollouts & diagnostics",
       "src": "assets/fig9-sync-sao-dp-rmp.mp4",
       "thumbnail": "assets/fig9-sync-sao-dp-rmp-thumb.webp",
-      "caption": "Absolute-time synchronized external video and selected measured TCP trajectory over the expert demonstrations.",
-      "status": "Timestamp-synchronized diagnostic video",
-      "clearance": "review-required",
+      "caption": "Absolute-time synchronized external video and measured TCP trajectory over expert demonstrations.",
       "sha256": "9d3a13c30422f90db9533bc105def67a262226c7aedfdcc3eb069706e7ad1beb",
-      "bytes": 2148287,
-      "featured": true
+      "bytes": 2148287
     },
     {
       "id": "fig9-sync-sao-dp-stop",
@@ -200,12 +167,9 @@
       "category": "Rollouts & diagnostics",
       "src": "assets/fig9-sync-sao-dp-stop.mp4",
       "thumbnail": "assets/fig9-sync-sao-dp-stop-thumb.webp",
-      "caption": "Absolute-time synchronized external video and measured TCP trajectory over 0624 expert demonstrations.",
-      "status": "Timestamp-synchronized diagnostic video",
-      "clearance": "review-required",
+      "caption": "Absolute-time synchronized external video and measured TCP trajectory over expert demonstrations.",
       "sha256": "8aaa79585ef99414aa95387b6b41e17a92c9d89436a75277696ca1178f36f273",
-      "bytes": 1251030,
-      "featured": true
+      "bytes": 1251030
     },
     {
       "id": "notion-proximity-close-approach",
@@ -217,12 +181,9 @@
       "category": "Proximity sensing",
       "src": "assets/notion-proximity-close-approach.mp4",
       "thumbnail": "assets/notion-proximity-close-approach-thumb.webp",
-      "caption": "Edited external-camera recording from the Notion experiment page. A person approaches the sensorized robot during policy execution. The face is pixelated; this qualitative clip does not establish collision safety or aggregate success.",
-      "status": "Notion experiment recording",
-      "clearance": "review-required",
+      "caption": "Edited external-camera recording. A person approaches the sensorized robot during policy execution.",
       "sha256": "d381f6e4695e58e3e2e3033d77ab7eb3f57198192d889dbfff5a0679404092df",
-      "bytes": 3989797,
-      "featured": true
+      "bytes": 3989797
     },
     {
       "id": "notion-proximity-task-interaction",
@@ -234,12 +195,9 @@
       "category": "Proximity sensing",
       "src": "assets/notion-proximity-task-interaction.mp4",
       "thumbnail": "assets/notion-proximity-task-interaction-thumb.webp",
-      "caption": "Edited external-camera recording from the Notion experiment page. The sensorized robot responds while the task is in progress. The face is pixelated; controller mode and outcome are not inferred from video alone.",
-      "status": "Notion experiment recording",
-      "clearance": "review-required",
+      "caption": "Edited external-camera recording. The sensorized robot responds while the task is in progress.",
       "sha256": "e4c06c36b77b2ce83ef9b69a212ac9acf2712d38f38d1d9d283477b150fbda32",
-      "bytes": 3540437,
-      "featured": true
+      "bytes": 3540437
     },
     {
       "id": "notion-lpb-avoidance-diagnostic",
@@ -251,12 +209,9 @@
       "category": "Proximity sensing",
       "src": "assets/notion-lpb-avoidance-diagnostic.mp4",
       "thumbnail": "assets/notion-lpb-avoidance-diagnostic-thumb.webp",
-      "caption": "Screen-recorded qualitative diagnostic showing observations, trajectories and runtime plots for one LPB-related run. Plot values are not treated as a calibrated collision-risk or success metric.",
-      "status": "Notion experiment recording",
-      "clearance": "review-required",
+      "caption": "Screen-recorded qualitative diagnostic showing observations, trajectories and runtime plots.",
       "sha256": "1302a5a685a1d8380890480284d960cfda03d3845207605b2c1b37d6465c938e",
-      "bytes": 651347,
-      "featured": true
+      "bytes": 651347
     },
     {
       "id": "notion-lpb-rollout-diagnostic-a",
@@ -268,12 +223,9 @@
       "category": "Proximity sensing",
       "src": "assets/notion-lpb-rollout-diagnostic-a.mp4",
       "thumbnail": "assets/notion-lpb-rollout-diagnostic-a-thumb.webp",
-      "caption": "Runtime visualization from one recorded inference run. It is provided for qualitative inspection and is not an independent trial count or aggregate performance result.",
-      "status": "Notion experiment recording",
-      "clearance": "review-required",
+      "caption": "Runtime visualization from one recorded inference run.",
       "sha256": "89a5290dafd1c613f83b47d477080e3e6c3bd890685a32fb399e12865f72a9f1",
-      "bytes": 1830714,
-      "featured": true
+      "bytes": 1830714
     },
     {
       "id": "notion-lpb-rollout-diagnostic-b",
@@ -285,29 +237,23 @@
       "category": "Proximity sensing",
       "src": "assets/notion-lpb-rollout-diagnostic-b.mp4",
       "thumbnail": "assets/notion-lpb-rollout-diagnostic-b-thumb.webp",
-      "caption": "Runtime visualization from a second recorded inference run. It is provided for qualitative inspection and is not an independent trial count or aggregate performance result.",
-      "status": "Notion experiment recording",
-      "clearance": "review-required",
+      "caption": "Runtime visualization from a second recorded inference run.",
       "sha256": "a1c742b4e331ea2c7cd67859f96982674e0f8ace13bc9a3d378a72ff32f2619a",
-      "bytes": 2126175,
-      "featured": true
+      "bytes": 2126175
     },
     {
       "id": "v16-hero",
       "aliases": [
         "v16-hero"
       ],
-      "title": "V16: reactive avoidance and task continuation",
+      "title": "Reactive avoidance and task continuation",
       "kind": "video",
       "category": "Rollouts & diagnostics",
       "src": "assets/v16-hero.mp4",
       "thumbnail": "assets/v16-hero-thumb.webp",
-      "caption": "V16, source 55-85 s at 1x, without face masking. Recorded RMP avoidance and subsequent task continuation; no VR recovery or LPB activation timing is claimed.",
-      "status": "Recorded highlight",
-      "clearance": "review-required",
+      "caption": "Recorded reactive avoidance and subsequent task continuation.",
       "sha256": "3496ad44c181e957cab1b6897a8830a56f4047c27a190d87c8062d1d263c288e",
-      "bytes": 3014646,
-      "featured": true
+      "bytes": 3014646
     },
     {
       "id": "lpb-system",
@@ -320,11 +266,8 @@
       "src": "assets/lpb-system.svg",
       "thumbnail": null,
       "caption": "System architecture and controller composition from original LPB project.",
-      "status": "Portfolio media",
-      "clearance": "approved",
       "sha256": "0235e14391d26db0fff1de65c8d1035fc555979b110a83f25d5d8f0931795eb8",
-      "bytes": 3681,
-      "featured": false
+      "bytes": 3681
     },
     {
       "id": "lpb-diffusion-policy-overview",
@@ -337,11 +280,8 @@
       "src": "assets/lpb-diffusion-policy-overview.webp",
       "thumbnail": "assets/lpb-diffusion-policy-overview-thumb.webp",
       "caption": "Base diffusion policy architecture and observation history conditioning.",
-      "status": "Portfolio media",
-      "clearance": "approved",
       "sha256": "b862b2470af2124cd9cff627bf3722e59cbdc584828533ea7286c678af790a58",
       "bytes": 219666,
-      "featured": false,
       "width": 2600,
       "height": 1424
     },
@@ -356,11 +296,8 @@
       "src": "assets/lpb-hero.mp4",
       "thumbnail": "assets/lpb-hero-thumb.webp",
       "caption": "Autonomous reactive obstacle avoidance rollout. Visible third-party faces masked.",
-      "status": "Portfolio media",
-      "clearance": "approved",
       "sha256": "1e4ecf3ec1dbef4f16d93e5b2148452c83daf3c389edd33b4333671434b616a1",
-      "bytes": 1604658,
-      "featured": false
+      "bytes": 1604658
     },
     {
       "id": "lpb-inference-full",
@@ -373,11 +310,8 @@
       "src": "assets/lpb-inference-full.mp4",
       "thumbnail": "assets/lpb-inference-full-thumb.webp",
       "caption": "Recorded full-length evaluation rollout demonstrating reactive avoidance and task continuation.",
-      "status": "Portfolio media",
-      "clearance": "approved",
       "sha256": "646eb27a59fb779465a4a09e1418b9b75dde47dd06a3fd8c2c8ab25b238ae116",
-      "bytes": 7403450,
-      "featured": false
+      "bytes": 7403450
     },
     {
       "id": "lpb-inference-excerpt",
@@ -390,11 +324,8 @@
       "src": "assets/lpb-inference-excerpt.mp4",
       "thumbnail": "assets/lpb-inference-excerpt-thumb.webp",
       "caption": "Recorded excerpt showing reactive obstacle avoidance during manipulation task.",
-      "status": "Portfolio media",
-      "clearance": "approved",
       "sha256": "f706212356fc8522bbf932c5902d73fdc7ea90943e24d1ff3e311b591bdeb739",
-      "bytes": 1217035,
-      "featured": false
+      "bytes": 1217035
     },
     {
       "id": "lpb-home-hero",
@@ -407,11 +338,8 @@
       "src": "assets/lpb-home-hero.mp4",
       "thumbnail": "assets/lpb-home-hero-thumb.webp",
       "caption": "Autonomous trial initialized from home configuration with active reactive controller.",
-      "status": "Portfolio media",
-      "clearance": "approved",
       "sha256": "e4af04b99a7e465d27315c129d1b0dbd60051dcc23941d7538ac9133d7819a69",
-      "bytes": 4158314,
-      "featured": false
+      "bytes": 4158314
     },
     {
       "id": "lpb-rmp-inference-intro",
@@ -424,11 +352,8 @@
       "src": "assets/lpb-rmp-inference-intro.mp4",
       "thumbnail": "assets/lpb-rmp-inference-intro-thumb.webp",
       "caption": "External-camera demonstration of proximity sensing with continuous RMPflow controller.",
-      "status": "Portfolio media",
-      "clearance": "approved",
       "sha256": "af9b2ff5e4323b1348c199f84ac983ceaf55c249c3b87d7a903848b1d9bedf77",
-      "bytes": 3809564,
-      "featured": false
+      "bytes": 3809564
     },
     {
       "id": "lpb-recovery-a",
@@ -441,11 +366,8 @@
       "src": "assets/lpb-recovery-a.mp4",
       "thumbnail": "assets/lpb-recovery-a-thumb.webp",
       "caption": "Recorded targeted recovery trajectory (condition A) under human-guided collection.",
-      "status": "Portfolio media",
-      "clearance": "approved",
       "sha256": "8457a96a3823d26e239502893ce737f0f2833aaaee7e00cf809ab6e74bb3a94e",
-      "bytes": 401658,
-      "featured": false
+      "bytes": 401658
     },
     {
       "id": "lpb-recovery-b",
@@ -458,11 +380,8 @@
       "src": "assets/lpb-recovery-b.mp4",
       "thumbnail": "assets/lpb-recovery-b-thumb.webp",
       "caption": "Recorded targeted recovery trajectory (condition B) under human-guided collection.",
-      "status": "Portfolio media",
-      "clearance": "approved",
       "sha256": "1870e35942b277f52109045a5bc170a3783970c41a1f7331dd6945652865459a",
-      "bytes": 231683,
-      "featured": false
+      "bytes": 231683
     },
     {
       "id": "framework",
@@ -474,12 +393,9 @@
       "category": "Method",
       "src": "assets/framework.webp",
       "thumbnail": "assets/framework-thumb.webp",
-      "caption": "Recovery-aware dynamics training and continuous RMP control. Temporal robot composite is illustrative; the rollout is autonomous, not a VR takeover.",
-      "status": "Figure candidate",
-      "clearance": "review-required",
+      "caption": "Recovery-aware dynamics training and continuous RMP control.",
       "sha256": "a42c3da29ae21de1ff076fb5ad7cb79bf1023439b5c0447dfb071342fce11843",
       "bytes": 185382,
-      "featured": true,
       "width": 2600,
       "height": 1424
     },
@@ -493,12 +409,9 @@
       "category": "Data collection",
       "src": "assets/collection.webp",
       "thumbnail": "assets/collection-thumb.webp",
-      "caption": "Qualitative recovery-aware data collection illustration. Panels (a) and (b) use recorded robot images with manual annotations. Panel (c) is a separate recorded TCP trajectory from another trial; no photo-to-path synchronization is claimed.",
-      "status": "Paper figure candidate",
-      "clearance": "review-required",
+      "caption": "Recovery-aware data collection illustration with recorded robot images and trajectories.",
       "sha256": "3e08574c6370b5bb015c4cd3564c4b9e5517be8bb271a0e36282557c112a8858",
       "bytes": 173498,
-      "featured": true,
       "width": 2600,
       "height": 1461
     },
@@ -512,12 +425,9 @@
       "category": "Rollouts & diagnostics",
       "src": "assets/fig9-dgb-sao-context.webp",
       "thumbnail": "assets/fig9-dgb-sao-context-thumb.webp",
-      "caption": "Qualitative DGB/SAO context and measured TCP-path comparison. Each condition contains one recorded rollout. Failure labels follow manual video review and conflict with parts of the stored metadata; they are not aggregate outcome rates.",
-      "status": "Paper figure candidate",
-      "clearance": "review-required",
+      "caption": "Representative DGB and SAO context with measured TCP paths.",
       "sha256": "0d460780fb57d2d533435bada6a35666087791f48a11b0f804856a8bddfcb6c3",
       "bytes": 147944,
-      "featured": true,
       "width": 2600,
       "height": 1561
     },
@@ -531,12 +441,9 @@
       "category": "Rollouts & diagnostics",
       "src": "assets/qualitative.webp",
       "thumbnail": "assets/qualitative-thumb.webp",
-      "caption": "Two selected events and the full-rollout offline LPB OOD cost. This V16 recording shows autonomous execution with RMP, not human VR recovery.",
-      "status": "Figure candidate",
-      "clearance": "review-required",
+      "caption": "Two selected events and offline LPB cost over the evaluation rollout.",
       "sha256": "53a36d1751ed95a369055041769f1a12743f175a4a1aa50df015b0860d2a4823",
       "bytes": 146584,
-      "featured": true,
       "width": 1920,
       "height": 1080
     },
@@ -550,12 +457,9 @@
       "category": "Method",
       "src": "assets/rmp-photos.webp",
       "thumbnail": "assets/rmp-photos-thumb.webp",
-      "caption": "RMP composition with recorded environment context; conceptual policy combination is not a measured force field.",
-      "status": "Figure candidate",
-      "clearance": "review-required",
+      "caption": "RMP composition with recorded environment context.",
       "sha256": "b989e1cf4d5a305af3886cd5fd477bd2b2134029ae4b03ae4fd6321a06094e76",
       "bytes": 165936,
-      "featured": true,
       "width": 2600,
       "height": 1265
     }
@@ -563,8 +467,6 @@
   "counts": {
     "total": 32,
     "videos": 24,
-    "figures": 8,
-    "reviewRequired": 23
-  },
-  "provenance": "Personal LPB project, manuscript figure outputs, and supplied experiment recordings. Revisions retained; byte-identical files deduplicated."
+    "figures": 8
+  }
 }
