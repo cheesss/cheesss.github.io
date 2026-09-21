@@ -125,8 +125,17 @@ h2.title{margin:0 0 1rem;font-size:1.75rem;line-height:1.2;letter-spacing:-.01em
 /* Videos */
 .video-grid{display:grid;gap:1.5rem 1.25rem}
 .video-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.video-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 .video-card video{width:100%;aspect-ratio:16/9;object-fit:contain;border:1px solid var(--rule);background:#fff}
 .video-grid.single .video-card video{aspect-ratio:8/5}
+.video-actions{display:flex;flex-wrap:wrap;gap:.4rem 1rem;margin-top:.7rem}
+.video-action{padding:.2rem 0;border:0;border-bottom:1px solid currentColor;background:transparent;color:var(--link);font-family:var(--sans);font-size:.8rem;line-height:1.5}
+.video-action:hover{color:var(--ink)}
+.analysis-disclosure{margin-top:1.8rem;padding:.7rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.analysis-disclosure summary{cursor:pointer;font-size:.95rem}
+.analysis-disclosure[open] summary{margin-bottom:1.5rem}
+.diagnostic-grid{grid-template-columns:minmax(0,1fr);max-width:760px;margin-inline:auto;gap:2.2rem}
+.diagnostic-card video{aspect-ratio:auto;height:auto;object-fit:contain;background:#fff}
 .card-body{padding:.6rem 0 0}
 .video-label{display:block;margin-bottom:.15rem;font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
 .video-card h3{margin:0 0 .15rem;font-size:1rem}
@@ -247,7 +256,7 @@ dialog::backdrop{background:rgba(20,20,20,.72)}
   .pillars,.steps{grid-template-columns:1fr}
   .pillar,.steps li,.pillar:first-child,.pillar:last-child,.steps li:first-child,.steps li:last-child{padding:.9rem 0}
   .pillar+.pillar,.steps li+li{border-left:0;border-top:1px solid var(--rule)}
-  .video-grid.three{grid-template-columns:1fr}
+  .video-grid.three,.video-grid.two{grid-template-columns:1fr}
   .segmented{gap:1rem}
   .segment{font-size:.8rem}
   table{font-size:.9rem}

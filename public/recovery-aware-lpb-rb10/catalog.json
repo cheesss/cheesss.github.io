@@ -172,6 +172,102 @@
       "bytes": 1251030
     },
     {
+      "id": "fig9-robot-dgb-dp-rmp-lpb",
+      "aliases": [
+        "fig9-robot-dgb-dp-rmp-lpb"
+      ],
+      "title": "DGB: DP + RMP + LPB",
+      "kind": "video",
+      "category": "Rollouts & diagnostics",
+      "src": "assets/fig9-robot-dgb-dp-rmp-lpb.mp4",
+      "thumbnail": "assets/fig9-robot-dgb-dp-rmp-lpb-thumb.webp",
+      "caption": "DGB robot recording with DP + RMP + LPB. 1x recorded speed.",
+      "sha256": "ae03b2af94f536bd4005d7c7fa320581cdd53232cfda4034d65516b59df18f0d",
+      "bytes": 4744221,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "id": "fig9-robot-dgb-dp-rmp",
+      "aliases": [
+        "fig9-robot-dgb-dp-rmp"
+      ],
+      "title": "DGB: DP + RMP",
+      "kind": "video",
+      "category": "Rollouts & diagnostics",
+      "src": "assets/fig9-robot-dgb-dp-rmp.mp4",
+      "thumbnail": "assets/fig9-robot-dgb-dp-rmp-thumb.webp",
+      "caption": "DGB robot recording with DP + RMP. 1x recorded speed.",
+      "sha256": "cc1d9b5a29769735380945efa3ded83b6f824dbe0f2cb53e32699825f9b01d0d",
+      "bytes": 4410573,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "id": "fig9-robot-dgb-dp-stop",
+      "aliases": [
+        "fig9-robot-dgb-dp-stop"
+      ],
+      "title": "DGB: DP + Stop",
+      "kind": "video",
+      "category": "Rollouts & diagnostics",
+      "src": "assets/fig9-robot-dgb-dp-stop.mp4",
+      "thumbnail": "assets/fig9-robot-dgb-dp-stop-thumb.webp",
+      "caption": "DGB robot recording with DP + Stop. 1x recorded speed.",
+      "sha256": "34bdc0cfaf1a26726341a608fba7c6c90d598cc55acaf72be88dd5473052b62c",
+      "bytes": 2127938,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "id": "fig9-robot-sao-dp-rmp-lpb",
+      "aliases": [
+        "fig9-robot-sao-dp-rmp-lpb"
+      ],
+      "title": "SAO: DP + RMP + LPB",
+      "kind": "video",
+      "category": "Rollouts & diagnostics",
+      "src": "assets/fig9-robot-sao-dp-rmp-lpb.mp4",
+      "thumbnail": "assets/fig9-robot-sao-dp-rmp-lpb-thumb.webp",
+      "caption": "SAO robot recording with DP + RMP + LPB. 1x recorded speed.",
+      "sha256": "aa2e81d167e6fd7408f04a43c7ffafde3ef533a790e14f0ba69e1e490ece7941",
+      "bytes": 4795733,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "id": "fig9-robot-sao-dp-rmp",
+      "aliases": [
+        "fig9-robot-sao-dp-rmp"
+      ],
+      "title": "SAO: DP + RMP",
+      "kind": "video",
+      "category": "Rollouts & diagnostics",
+      "src": "assets/fig9-robot-sao-dp-rmp.mp4",
+      "thumbnail": "assets/fig9-robot-sao-dp-rmp-thumb.webp",
+      "caption": "SAO robot recording with DP + RMP. 1x recorded speed.",
+      "sha256": "ec247db67bd2fe1acfb3e65d4e45868cf216eb9b25ad5296a6ce6cba87cd1f33",
+      "bytes": 4269667,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "id": "fig9-robot-sao-dp-stop",
+      "aliases": [
+        "fig9-robot-sao-dp-stop"
+      ],
+      "title": "SAO: DP + Stop",
+      "kind": "video",
+      "category": "Rollouts & diagnostics",
+      "src": "assets/fig9-robot-sao-dp-stop.mp4",
+      "thumbnail": "assets/fig9-robot-sao-dp-stop-thumb.webp",
+      "caption": "SAO robot recording with DP + Stop. 1x recorded speed.",
+      "sha256": "a54440148cdf685a39e5839fc3589ddc17891c9013c62b77dc08810291932e0b",
+      "bytes": 2563196,
+      "width": 1280,
+      "height": 720
+    },
+    {
       "id": "notion-proximity-close-approach",
       "aliases": [
         "notion-proximity-close-approach"
@@ -210,8 +306,8 @@
       "src": "assets/notion-lpb-avoidance-diagnostic.mp4",
       "thumbnail": "assets/notion-lpb-avoidance-diagnostic-thumb.webp",
       "caption": "Screen-recorded qualitative diagnostic showing observations, trajectories and runtime plots.",
-      "sha256": "1302a5a685a1d8380890480284d960cfda03d3845207605b2c1b37d6465c938e",
-      "bytes": 651347
+      "sha256": "3871ae66207c648943a9b895cc6dd9e2c808fe8c5e8ced01be2d520921994bd5",
+      "bytes": 1057629
     },
     {
       "id": "notion-lpb-rollout-diagnostic-a",
@@ -465,8 +561,8 @@
     }
   ],
   "counts": {
-    "total": 32,
-    "videos": 24,
+    "total": 38,
+    "videos": 30,
     "figures": 8
   }
 }

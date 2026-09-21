@@ -40,7 +40,8 @@ function el(tag, className, text) {
   return node;
 }
 
-function openMedia(asset) {
+function openMedia(asset, startTime = 0) {
+  document.querySelectorAll('video').forEach(video => video.pause());
   const area = document.getElementById('dialog-media');
   area.replaceChildren();
   document.getElementById('dialog-title').textContent = asset.title;
@@ -56,6 +57,11 @@ function openMedia(asset) {
     const video = document.createElement('video');
     video.src = asset.src; video.controls = true; video.playsInline = true; video.preload = 'metadata';
     if (asset.thumbnail) video.poster = asset.thumbnail;
+    if (startTime > 0) {
+      video.addEventListener('loadedmetadata', () => {
+        if (Number.isFinite(video.duration)) video.currentTime = Math.min(startTime, Math.max(0, video.duration - .05));
+      }, { once: true });
+    }
     area.append(video);
   } else {
     area.append(el('p', 'dialog-placeholder', 'Editable source / document. Download to inspect at full resolution.'));
@@ -71,17 +77,32 @@ dialog.addEventListener('click', e => {
   if (e.clientX < b.left || e.clientX > b.right || e.clientY < b.top || e.clientY > b.bottom) closeMedia();
 });
 
-function videoCard(asset, { title, caption, label, muted = false, preload = 'metadata', ariaLabel, className = 'video-card' }) {
+function videoCard(asset, { title, caption, label, muted = false, preload = 'none', ariaLabel, className = 'video-card', analysisAsset }) {
   const article = el('article', className);
   const video = document.createElement('video');
   video.controls = true; video.playsInline = true; video.preload = preload;
   if (muted) video.muted = true;
-  video.src = asset.src;
-  if (asset.thumbnail) video.poster = asset.thumbnail;
+  const revision = asset.sha256 ? '?v=' + asset.sha256.slice(0, 12) : '';
+  video.src = asset.src + revision;
+  if (asset.thumbnail) video.poster = asset.thumbnail + revision;
   video.setAttribute('aria-label', ariaLabel || title);
   const body = el('div', 'card-body');
   if (label) body.append(el('span', 'video-label', label));
   body.append(el('h3', '', title), el('p', '', caption));
+  const actions = el('div', 'video-actions');
+  const enlarge = el('button', 'video-action', 'Enlarge video');
+  enlarge.type = 'button';
+  enlarge.setAttribute('aria-label', `Enlarge ${ariaLabel || title}`);
+  enlarge.addEventListener('click', () => openMedia({ ...asset, title: ariaLabel || title, caption }, video.currentTime));
+  actions.append(enlarge);
+  if (analysisAsset) {
+    const analysis = el('button', 'video-action', 'View trajectory');
+    analysis.type = 'button';
+    analysis.setAttribute('aria-label', `View trajectory for ${ariaLabel || title}`);
+    analysis.addEventListener('click', () => openMedia({ ...analysisAsset, title: `${ariaLabel || title} / Trajectory analysis` }));
+    actions.append(analysis);
+  }
+  body.append(actions);
   article.append(video, body);
   return article;
 }
@@ -160,10 +181,15 @@ const tabs = [];
 const panels = [];
 trajectoryTasks.forEach(([task, label]) => {
   const cards = trajectoryVideos.filter(item => item[1] === task).map(([id, , title, caption]) => {
-    const a = byId(id);
+    const analysis = byId(id);
+    const robot = byId(id.replace('fig9-sync-', 'fig9-robot-'));
+    const a = robot || analysis;
     if (!a) return null;
     used.add(a.id);
-    return videoCard(a, { title, caption, muted: true, ariaLabel: `${task}: ${title}`, className: 'video-card trajectory-card' });
+    if (analysis) used.add(analysis.id);
+    return videoCard(a, { title, caption, label: robot ? '1x recorded speed' : 'Trajectory analysis',
+      muted: true, ariaLabel: `${task}: ${title}`, className: 'video-card robot-card',
+      analysisAsset: robot ? analysis : undefined });
   }).filter(Boolean);
   if (!cards.length) return;
   const key = task.toLowerCase();
@@ -218,20 +244,29 @@ const proximityVideos = [
 ];
 const proximityRoot = document.getElementById('proximity-videos');
 if (proximityRoot) {
-  const cards = proximityVideos.map(([id, title, caption], index) => {
+  const externalGrid = el('div', 'video-grid two');
+  const diagnosticGrid = el('div', 'video-grid diagnostic-grid');
+  proximityVideos.forEach(([id, title, caption], index) => {
     const asset = byId(id);
-    if (!asset) return null;
+    if (!asset) return;
     used.add(asset.id);
-    return videoCard(asset, {
+    const card = videoCard(asset, {
       title,
       caption,
       label: index < 2 ? 'External recording' : 'Runtime diagnostic',
       muted: true,
       preload: 'none',
       ariaLabel: title,
+      className: index < 2 ? 'video-card robot-card' : 'video-card diagnostic-card',
     });
-  }).filter(Boolean);
-  proximityRoot.replaceChildren(...cards);
+    (index < 2 ? externalGrid : diagnosticGrid).append(card);
+  });
+  const details = el('details', 'analysis-disclosure');
+  details.append(el('summary', '', 'Inspect observation and guidance plots'), diagnosticGrid);
+  details.addEventListener('toggle', () => {
+    if (!details.open) details.querySelectorAll('video').forEach(video => video.pause());
+  });
+  proximityRoot.replaceChildren(externalGrid, details);
 }
 
 document.addEventListener('play', e => {
