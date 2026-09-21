@@ -249,12 +249,25 @@ if (copyBtn) {
         copyBtn.classList.remove('copied');
       }, 2000);
     } catch (err) {
-      console.warn('Clipboard write failed, selecting text instead', err);
-      const range = document.createRange();
-      range.selectNodeContents(code);
-      const sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = code.textContent;
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        const originalText = textEl.textContent;
+        textEl.textContent = 'Copied!';
+        copyBtn.classList.add('copied');
+        setTimeout(() => {
+          textEl.textContent = originalText;
+          copyBtn.classList.remove('copied');
+        }, 2000);
+      } catch (fallbackErr) {
+        console.warn('Clipboard copy failed', fallbackErr);
+      }
     }
   });
 }
