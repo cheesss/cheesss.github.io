@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-21",
+  "updated": "2026-10-12",
   "assets": [
     {
       "id": "idp-research-montage",
@@ -16,20 +16,6 @@
       "bytes": 24535265
     },
     {
-      "id": "idp-title-reveal",
-      "aliases": [
-        "idp-title-reveal"
-      ],
-      "title": "Interactive Diffusion Policy: title reveal",
-      "kind": "video",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/idp-title-reveal.mp4",
-      "thumbnail": "assets/idp-title-reveal-thumb.webp",
-      "caption": "A close view pulls back into six large recorded robot videos on a light background. No early outcome badges: these short excerpts end before the reviewed task endpoints. 1x playback.",
-      "sha256": "2142057906e8d394984dd78f8c5de4f86acac435c98a85bef0089f8fee81aa24",
-      "bytes": 4178571
-    },
-    {
       "id": "ral-two-interventions",
       "aliases": [
         "ral-two-interventions"
@@ -42,36 +28,6 @@
       "caption": "Two recorded disturbance events during manipulation, showing reactive avoidance and task continuation.",
       "sha256": "bfb8b5060b6e445e5210e55209f1cdd44294415275a45fa581ea8f7e46400109",
       "bytes": 2216970
-    },
-    {
-      "id": "ral-recorded-vr-handover",
-      "aliases": [
-        "ral-recorded-vr-handover"
-      ],
-      "title": "Recovery data collection",
-      "kind": "video",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/ral-recorded-vr-handover.mp4",
-      "thumbnail": "assets/ral-recorded-vr-handover-thumb.webp",
-      "caption": "Recorded avoidance and human correction sequence with synchronized observations and end-effector motion.",
-      "sha256": "e09998a7990a01c5d82f83cec2020e06876a01e8ffee26086726ab2210498d55",
-      "bytes": 1493124
-    },
-    {
-      "id": "ral-home-success",
-      "aliases": [
-        "ral-home-success"
-      ],
-      "title": "Recovery across starting states",
-      "kind": "figure",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/ral-home-success.webp",
-      "thumbnail": "assets/ral-home-success-thumb.webp",
-      "caption": "Preliminary reported success counts across eight tested starting configurations.",
-      "sha256": "5f64ea86496dd53adbebc47a5e4c2ff7a0451cff4d56ff232e2966825161a3e4",
-      "bytes": 125722,
-      "width": 2340,
-      "height": 1224
     },
     {
       "id": "ral-guidance-inspection",
@@ -338,231 +294,279 @@
       "bytes": 2126175
     },
     {
-      "id": "v16-hero",
+      "id": "paper-overview",
       "aliases": [
-        "v16-hero"
+        "paper-overview"
       ],
-      "title": "Reactive avoidance and task continuation",
-      "kind": "video",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/v16-hero.mp4",
-      "thumbnail": "assets/v16-hero-thumb.webp",
-      "caption": "Recorded reactive avoidance and subsequent task continuation.",
-      "sha256": "3496ad44c181e957cab1b6897a8830a56f4047c27a190d87c8062d1d263c288e",
-      "bytes": 3014646
-    },
-    {
-      "id": "lpb-system",
-      "aliases": [
-        "lpb-system"
-      ],
-      "title": "LPB System Schematic",
+      "title": "Execution, avoidance, and recovery",
       "kind": "figure",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/lpb-system.svg",
-      "thumbnail": null,
-      "caption": "System architecture and controller composition from original LPB project.",
-      "sha256": "0235e14391d26db0fff1de65c8d1035fc555979b110a83f25d5d8f0931795eb8",
-      "bytes": 3681
+      "category": "Manuscript figures",
+      "src": "assets/paper-overview.webp",
+      "thumbnail": "assets/paper-overview-thumb.webp",
+      "caption": "Nominal task execution, proximity-driven avoidance, and LPB-guided task resumption.",
+      "sha256": "c995edaef08e5155dcea706859bce872ec34f0e7d2ebe0ac4ce9034e91b82d06",
+      "bytes": 63108,
+      "width": 817,
+      "height": 420
     },
     {
-      "id": "lpb-diffusion-policy-overview",
+      "id": "paper-sensor-module",
       "aliases": [
-        "lpb-diffusion-policy-overview"
+        "paper-sensor-module"
       ],
-      "title": "LPB Diffusion Policy Overview",
+      "title": "Robot-mounted proximity sensing",
       "kind": "figure",
-      "category": "Method",
-      "src": "assets/lpb-diffusion-policy-overview.webp",
-      "thumbnail": "assets/lpb-diffusion-policy-overview-thumb.webp",
-      "caption": "Base diffusion policy architecture and observation history conditioning.",
-      "sha256": "b862b2470af2124cd9cff627bf3722e59cbdc584828533ea7286c678af790a58",
-      "bytes": 219666,
-      "width": 2600,
-      "height": 1424
+      "category": "Manuscript figures",
+      "src": "assets/paper-sensor-module.webp",
+      "thumbnail": "assets/paper-sensor-module-thumb.webp",
+      "caption": "Sensor placement on the RB10 and the capacitive/ToF sensor module.",
+      "sha256": "91ce1def2529ca15a66c43764e6aca0dca2d18c880a2960b561c18b9700273af",
+      "bytes": 22368,
+      "width": 817,
+      "height": 397
     },
     {
-      "id": "lpb-hero",
+      "id": "paper-sensor-calibration",
       "aliases": [
-        "lpb-hero"
+        "paper-sensor-calibration"
       ],
-      "title": "LPB Reactive Avoidance Trial",
-      "kind": "video",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/lpb-hero.mp4",
-      "thumbnail": "assets/lpb-hero-thumb.webp",
-      "caption": "Autonomous reactive obstacle avoidance rollout. Visible third-party faces masked.",
-      "sha256": "1e4ecf3ec1dbef4f16d93e5b2148452c83daf3c389edd33b4333671434b616a1",
-      "bytes": 1604658
-    },
-    {
-      "id": "lpb-inference-full",
-      "aliases": [
-        "lpb-inference-full"
-      ],
-      "title": "LPB Full-Length Evaluation Run",
-      "kind": "video",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/lpb-inference-full.mp4",
-      "thumbnail": "assets/lpb-inference-full-thumb.webp",
-      "caption": "Recorded full-length evaluation rollout demonstrating reactive avoidance and task continuation.",
-      "sha256": "646eb27a59fb779465a4a09e1418b9b75dde47dd06a3fd8c2c8ab25b238ae116",
-      "bytes": 7403450
-    },
-    {
-      "id": "lpb-inference-excerpt",
-      "aliases": [
-        "lpb-inference-excerpt"
-      ],
-      "title": "LPB Evaluation Excerpt",
-      "kind": "video",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/lpb-inference-excerpt.mp4",
-      "thumbnail": "assets/lpb-inference-excerpt-thumb.webp",
-      "caption": "Recorded excerpt showing reactive obstacle avoidance during manipulation task.",
-      "sha256": "f706212356fc8522bbf932c5902d73fdc7ea90943e24d1ff3e311b591bdeb739",
-      "bytes": 1217035
-    },
-    {
-      "id": "lpb-home-hero",
-      "aliases": [
-        "lpb-home-hero"
-      ],
-      "title": "LPB Initial-State Rollout",
-      "kind": "video",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/lpb-home-hero.mp4",
-      "thumbnail": "assets/lpb-home-hero-thumb.webp",
-      "caption": "Autonomous trial initialized from home configuration with active reactive controller.",
-      "sha256": "e4af04b99a7e465d27315c129d1b0dbd60051dcc23941d7538ac9133d7819a69",
-      "bytes": 4158314
-    },
-    {
-      "id": "lpb-rmp-inference-intro",
-      "aliases": [
-        "lpb-rmp-inference-intro"
-      ],
-      "title": "Proximity-Driven RMPflow Demo",
-      "kind": "video",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/lpb-rmp-inference-intro.mp4",
-      "thumbnail": "assets/lpb-rmp-inference-intro-thumb.webp",
-      "caption": "External-camera demonstration of proximity sensing with continuous RMPflow controller.",
-      "sha256": "af9b2ff5e4323b1348c199f84ac983ceaf55c249c3b87d7a903848b1d9bedf77",
-      "bytes": 3809564
-    },
-    {
-      "id": "lpb-recovery-a",
-      "aliases": [
-        "lpb-recovery-a"
-      ],
-      "title": "Targeted Recovery Transition A",
-      "kind": "video",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/lpb-recovery-a.mp4",
-      "thumbnail": "assets/lpb-recovery-a-thumb.webp",
-      "caption": "Recorded targeted recovery trajectory (condition A) under human-guided collection.",
-      "sha256": "8457a96a3823d26e239502893ce737f0f2833aaaee7e00cf809ab6e74bb3a94e",
-      "bytes": 401658
-    },
-    {
-      "id": "lpb-recovery-b",
-      "aliases": [
-        "lpb-recovery-b"
-      ],
-      "title": "Targeted Recovery Transition B",
-      "kind": "video",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/lpb-recovery-b.mp4",
-      "thumbnail": "assets/lpb-recovery-b-thumb.webp",
-      "caption": "Recorded targeted recovery trajectory (condition B) under human-guided collection.",
-      "sha256": "1870e35942b277f52109045a5bc170a3783970c41a1f7331dd6945652865459a",
-      "bytes": 231683
-    },
-    {
-      "id": "framework",
-      "aliases": [
-        "framework"
-      ],
-      "title": "fig6 abstract build",
+      "title": "Distance estimation",
       "kind": "figure",
-      "category": "Method",
-      "src": "assets/framework.webp",
-      "thumbnail": "assets/framework-thumb.webp",
-      "caption": "Recovery-aware dynamics training and continuous RMP control.",
-      "sha256": "a42c3da29ae21de1ff076fb5ad7cb79bf1023439b5c0447dfb071342fce11843",
-      "bytes": 185382,
-      "width": 2600,
-      "height": 1424
+      "category": "Manuscript figures",
+      "src": "assets/paper-sensor-calibration.webp",
+      "thumbnail": "assets/paper-sensor-calibration-thumb.webp",
+      "caption": "Metal-specimen jig, reference and estimated distances, and estimation error.",
+      "sha256": "37b55ff42283cd1e7e039be81820c82306f24756682a5e2b6521f59dee503e0b",
+      "bytes": 50432,
+      "width": 817,
+      "height": 477
     },
     {
-      "id": "collection",
+      "id": "paper-sensor-comparison",
       "aliases": [
-        "collection"
+        "paper-sensor-comparison"
       ],
-      "title": "Recovery-aware data collection",
+      "title": "Depth camera and proximity sensing",
       "kind": "figure",
-      "category": "Data collection",
-      "src": "assets/collection.webp",
-      "thumbnail": "assets/collection-thumb.webp",
-      "caption": "Recovery-aware data collection illustration with recorded robot images and trajectories.",
-      "sha256": "3e08574c6370b5bb015c4cd3564c4b9e5517be8bb271a0e36282557c112a8858",
-      "bytes": 173498,
-      "width": 2600,
-      "height": 1461
+      "category": "Manuscript figures",
+      "src": "assets/paper-sensor-comparison.webp",
+      "thumbnail": "assets/paper-sensor-comparison-thumb.webp",
+      "caption": "RMPflow avoidance with a visible obstacle, robot-induced occlusion, and transparent glass.",
+      "sha256": "5a173d036718cc5aa13ff61e33da6ef5ab776d1a1312883c77a63f45107b98bf",
+      "bytes": 66246,
+      "width": 817,
+      "height": 480
     },
     {
-      "id": "fig9-dgb-sao-context",
+      "id": "paper-framework",
       "aliases": [
-        "fig9-dgb-sao-context"
+        "paper-framework"
       ],
-      "title": "DGB and SAO TCP-path comparison",
+      "title": "Interactive Diffusion Policy architecture",
       "kind": "figure",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/fig9-dgb-sao-context.webp",
-      "thumbnail": "assets/fig9-dgb-sao-context-thumb.webp",
-      "caption": "Representative DGB and SAO context with measured TCP paths.",
-      "sha256": "0d460780fb57d2d533435bada6a35666087791f48a11b0f804856a8bddfcb6c3",
-      "bytes": 147944,
-      "width": 2600,
-      "height": 1561
+      "category": "Manuscript figures",
+      "src": "assets/paper-framework.webp",
+      "thumbnail": "assets/paper-framework-thumb.webp",
+      "caption": "Diffusion Policy supplies reference targets, proximity measurements drive RMPflow avoidance, and latent dynamics supports LPB recovery guidance.",
+      "sha256": "4e34874579dbd87b315a72df139b31bf3560270c2da812c220a2f054b7c0d727",
+      "bytes": 81400,
+      "width": 1680,
+      "height": 620
     },
     {
-      "id": "qualitative",
+      "id": "paper-setup",
       "aliases": [
-        "qualitative"
+        "paper-setup"
       ],
-      "title": "fig9 academic",
+      "title": "Experimental setup",
       "kind": "figure",
-      "category": "Rollouts & diagnostics",
-      "src": "assets/qualitative.webp",
-      "thumbnail": "assets/qualitative-thumb.webp",
-      "caption": "Two selected events and offline LPB cost over the evaluation rollout.",
-      "sha256": "53a36d1751ed95a369055041769f1a12743f175a4a1aa50df015b0860d2a4823",
-      "bytes": 146584,
-      "width": 1920,
-      "height": 1080
+      "category": "Manuscript figures",
+      "src": "assets/paper-setup.webp",
+      "thumbnail": "assets/paper-setup-thumb.webp",
+      "caption": "RB10 wide-range pick-and-place setup with RGB cameras and link-mounted proximity sensors.",
+      "sha256": "e000e89812cc8d5e7c3051315b97365c6da27052901fccc099cf8719691ec398",
+      "bytes": 27126,
+      "width": 817,
+      "height": 394
     },
     {
-      "id": "rmp-photos",
+      "id": "paper-collection",
       "aliases": [
-        "rmp-photos"
+        "paper-collection"
       ],
-      "title": "fig5 photo build",
+      "title": "Recovery data collection",
       "kind": "figure",
-      "category": "Method",
-      "src": "assets/rmp-photos.webp",
-      "thumbnail": "assets/rmp-photos-thumb.webp",
-      "caption": "RMP composition with recorded environment context.",
-      "sha256": "b989e1cf4d5a305af3886cd5fd477bd2b2134029ae4b03ae4fd6321a06094e76",
-      "bytes": 165936,
-      "width": 2600,
-      "height": 1265
+      "category": "Manuscript figures",
+      "src": "assets/paper-collection.webp",
+      "thumbnail": "assets/paper-collection-thumb.webp",
+      "caption": "Policy rollout, RMPflow deflection, and human guidance with recorded TCP motion.",
+      "sha256": "574f9261f250ae76f8967df13d707c61d19c66e3173d6f142e5ca21fdafab50f",
+      "bytes": 43322,
+      "width": 817,
+      "height": 567
+    },
+    {
+      "id": "paper-obstacle-paths",
+      "aliases": [
+        "paper-obstacle-paths"
+      ],
+      "title": "Recovery under dynamic obstacles",
+      "kind": "figure",
+      "category": "Manuscript figures",
+      "src": "assets/paper-obstacle-paths.webp",
+      "thumbnail": "assets/paper-obstacle-paths-thumb.webp",
+      "caption": "End-effector trajectories for DP + Stop, DP + RMPflow, and IDP under DGB and SAO disturbances.",
+      "sha256": "ae63205627001a0c510ac970ea98ab6d3ec52ea552823a841d21f630567ea483",
+      "bytes": 98400,
+      "width": 1680,
+      "height": 637
+    },
+    {
+      "id": "paper-ood-events",
+      "aliases": [
+        "paper-ood-events"
+      ],
+      "title": "Avoidance and recovery during a rollout",
+      "kind": "figure",
+      "category": "Manuscript figures",
+      "src": "assets/paper-ood-events.webp",
+      "thumbnail": "assets/paper-ood-events-thumb.webp",
+      "caption": "Four avoidance events paired with wrist observations, nearest expert images, and the latent OOD-cost timeline.",
+      "sha256": "5cca2de78ee20e853262e4966ac785e385b3273385903ca4af4f515f6129831e",
+      "bytes": 128422,
+      "width": 1680,
+      "height": 753
+    },
+    {
+      "id": "sensor-camera-s1",
+      "aliases": [
+        "sensor-camera-s1"
+      ],
+      "title": "Visible obstacle",
+      "kind": "video",
+      "category": "Proximity sensing",
+      "src": "assets/sensor-camera-s1.mp4",
+      "thumbnail": "assets/sensor-camera-s1-thumb.webp",
+      "caption": "Camera and proximity sensing with an unobstructed obstacle view.",
+      "sha256": "1f4c546f7744a3fab34552ee471adee34ccf1aedb8e4f07dac018ff4a718524c",
+      "bytes": 4239504
+    },
+    {
+      "id": "sensor-camera-s2",
+      "aliases": [
+        "sensor-camera-s2"
+      ],
+      "title": "Robot-induced camera occlusion",
+      "kind": "video",
+      "category": "Proximity sensing",
+      "src": "assets/sensor-camera-s2.mp4",
+      "thumbnail": "assets/sensor-camera-s2-thumb.webp",
+      "caption": "Camera and proximity sensing when the robot occludes the approaching obstacle.",
+      "sha256": "aae2f0120bb77c33cc09a48e70129ab383fbc6fa0f3c8638b43822a36bf14f22",
+      "bytes": 2269577
+    },
+    {
+      "id": "sensor-camera-s3",
+      "aliases": [
+        "sensor-camera-s3"
+      ],
+      "title": "Transparent glass",
+      "kind": "video",
+      "category": "Proximity sensing",
+      "src": "assets/sensor-camera-s3.mp4",
+      "thumbnail": "assets/sensor-camera-s3-thumb.webp",
+      "caption": "Camera and proximity sensing with transparent glass.",
+      "sha256": "8e235680d3a7e3d01d15f2b1129576b43cbb5749a87253a9d5c4eb06495a246d",
+      "bytes": 2683609
+    },
+    {
+      "id": "sensor-reactive-avoidance",
+      "aliases": [
+        "sensor-reactive-avoidance"
+      ],
+      "title": "Proximity-driven reactive avoidance",
+      "kind": "video",
+      "category": "Proximity sensing",
+      "src": "assets/sensor-reactive-avoidance.mp4",
+      "thumbnail": "assets/sensor-reactive-avoidance-thumb.webp",
+      "caption": "Recorded RB10 motion as an obstacle approaches the link-mounted proximity sensors.",
+      "sha256": "545db22e5b5b268a3ad7b99f4995c7339fcfdb2fe5c2e35a60a9f0c4057233f2",
+      "bytes": 8921855
+    },
+    {
+      "id": "sensor-jig-motion",
+      "aliases": [
+        "sensor-jig-motion"
+      ],
+      "title": "Distance-estimation test jig",
+      "kind": "video",
+      "category": "Proximity sensing",
+      "src": "assets/sensor-jig-motion.mp4",
+      "thumbnail": "assets/sensor-jig-motion-thumb.webp",
+      "caption": "A moving specimen approaches and recedes from the proximity sensor on the test jig.",
+      "sha256": "1a5adbc22b700cbb37fc740081faca0a7221d299cd0c07e2a3e7c10cd32857bc",
+      "bytes": 9905723
+    },
+    {
+      "id": "idp-project-video",
+      "aliases": [
+        "idp-project-video"
+      ],
+      "title": "Interactive Diffusion Policy",
+      "kind": "video",
+      "category": "Proximity sensing",
+      "src": "assets/idp-project-video.mp4",
+      "thumbnail": "assets/idp-project-video-thumb.webp",
+      "caption": "Proximity sensing, reactive avoidance, human-guided recovery data collection, and integrated manipulation.",
+      "sha256": "f34a06e62688d1d5a990a6566685ded27930aeb349f4a651c06a549c65b1eee5",
+      "bytes": 29190848
+    },
+    {
+      "id": "idp-recovery-collection",
+      "aliases": [
+        "idp-recovery-collection"
+      ],
+      "title": "Recovery data collection",
+      "kind": "video",
+      "category": "Proximity sensing",
+      "src": "assets/idp-recovery-collection.mp4",
+      "thumbnail": "assets/idp-recovery-collection-thumb.webp",
+      "caption": "Policy execution, RMPflow avoidance, human guidance, and resumption with an end-effector trajectory.",
+      "sha256": "f7d6109511339ffacf6cb2ef158897cccb7959665c1c1af342d848084ad2ad50",
+      "bytes": 4610412
+    },
+    {
+      "id": "idp-dgb-comparison",
+      "aliases": [
+        "idp-dgb-comparison"
+      ],
+      "title": "Obstacle recovery comparison",
+      "kind": "video",
+      "category": "Proximity sensing",
+      "src": "assets/idp-dgb-comparison.mp4",
+      "thumbnail": "assets/idp-dgb-comparison-thumb.webp",
+      "caption": "Representative DP + RMPflow and Recovery-aware LPB behavior under dynamic blocking.",
+      "sha256": "cd5a445ba5ad50de838a644bf19c51ccde6e197c1988fc54a7dd55ea82edaf2c",
+      "bytes": 4947891
+    },
+    {
+      "id": "obstacle-interaction-full",
+      "aliases": [
+        "obstacle-interaction-full"
+      ],
+      "title": "Full obstacle-interaction rollout",
+      "kind": "video",
+      "category": "Proximity sensing",
+      "src": "assets/obstacle-interaction-full.mp4",
+      "thumbnail": "assets/obstacle-interaction-full-thumb.webp",
+      "caption": "An external-camera recording of task execution with repeated obstacle approaches.",
+      "sha256": "694943e0afaaea74cdd9d01f9fd64348a76b1290f97d9c9646b0e54b7de4331e",
+      "bytes": 21374704
     }
   ],
   "counts": {
     "total": 38,
-    "videos": 30,
-    "figures": 8
+    "videos": 29,
+    "figures": 9
   }
 }

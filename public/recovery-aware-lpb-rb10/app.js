@@ -109,17 +109,27 @@ function videoCard(asset, { title, caption, label, muted = false, preload = 'non
 
 // Assets already embedded in the main sections stay out of the supplementary grid.
 const used = new Set();
-const hero = byId('idp-research-montage') || byId('ral-two-interventions');
+const hero = byId('idp-project-video') || byId('idp-research-montage') || byId('ral-two-interventions');
 if (hero) {
   used.add(hero.id);
   const video = document.getElementById('hero-video');
   const revision = '?v=' + hero.sha256.slice(0, 12);
   video.src = hero.src + revision;
-  const widescreen = ['idp-focused-highlight', 'idp-research-montage'].includes(hero.id);
+  const widescreen = ['idp-project-video', 'idp-focused-highlight', 'idp-research-montage'].includes(hero.id);
   video.classList.toggle('research-montage', widescreen);
   video.classList.toggle('comparison-edit', !widescreen);
   video.poster = hero.thumbnail ? hero.thumbnail + revision : '';
+  document.querySelector('.video-chapters').hidden = hero.id !== 'idp-project-video';
 }
+document.querySelectorAll('[data-hero-time]').forEach(button => {
+  button.addEventListener('click', () => {
+    const video = document.getElementById('hero-video');
+    const seek = () => { video.currentTime = Math.min(Number(button.dataset.heroTime), video.duration); };
+    if (Number.isFinite(video.duration)) seek();
+    else video.addEventListener('loadedmetadata', seek, { once: true });
+    video.play().catch(() => {});
+  });
+});
 document.querySelectorAll('video[data-video]').forEach(video => {
   const a = byId(video.dataset.video);
   if (!a) return;
@@ -165,14 +175,14 @@ features.forEach(([id, title, caption], i) => {
 });
 
 const trajectoryVideos = [
-  ['fig9-sync-dgb-dp-rmp-lpb', 'DGB', 'DP + RMP + LPB', 'Dynamic-push rollout with recovery-aware LPB.'],
-  ['fig9-sync-dgb-dp-rmp', 'DGB', 'DP + RMP', 'Dynamic-push rollout without LPB guidance.'],
-  ['fig9-sync-dgb-dp-stop', 'DGB', 'DP + Stop', 'Dynamic-push stop baseline.'],
-  ['fig9-sync-sao-dp-rmp-lpb', 'SAO', 'DP + RMP + LPB', 'Sudden-obstacle rollout with recovery-aware LPB (estimated alignment).'],
-  ['fig9-sync-sao-dp-rmp', 'SAO', 'DP + RMP', 'Sudden-obstacle rollout without LPB guidance.'],
+  ['fig9-sync-dgb-dp-rmp-lpb', 'DGB', 'IDP', 'RMPflow avoidance with Recovery-aware LPB guidance.'],
+  ['fig9-sync-dgb-dp-rmp', 'DGB', 'DP + RMPflow', 'Reactive avoidance with policy continuation.'],
+  ['fig9-sync-dgb-dp-stop', 'DGB', 'DP + Stop', 'Stop during intrusion, then continue the task.'],
+  ['fig9-sync-sao-dp-rmp-lpb', 'SAO', 'IDP', 'RMPflow avoidance with Recovery-aware LPB guidance.'],
+  ['fig9-sync-sao-dp-rmp', 'SAO', 'DP + RMPflow', 'Reactive avoidance with policy continuation.'],
   ['fig9-sync-sao-dp-stop', 'SAO', 'DP + Stop', 'Sudden-obstacle stop baseline.']
 ];
-const trajectoryTasks = [['DGB', 'Dynamic push (DGB)'], ['SAO', 'Sudden obstacle (SAO)']];
+const trajectoryTasks = [['DGB', 'Dynamic global blocking'], ['SAO', 'Suddenly appearing obstacle']];
 const trajectoryRoot = document.getElementById('trajectory-videos');
 const tabList = el('div', 'segmented');
 tabList.setAttribute('role', 'tablist');
@@ -230,6 +240,59 @@ if (tabs.length) {
   selectTask(0);
 }
 
+const sensingComparisons = [
+  ['sensor-camera-s1', 'Visible obstacle', 'Depth sensing, camera-driven avoidance, and proximity-driven avoidance with an unobstructed view.'],
+  ['sensor-camera-s2', 'Camera occlusion', 'The robot blocks the approaching obstacle from the depth camera; link-mounted sensing supports avoidance.'],
+  ['sensor-camera-s3', 'Transparent glass', 'Depth sensing misses the glass in this comparison, while proximity input supports avoidance.'],
+];
+const sensingRoot = document.getElementById('sensing-comparisons');
+if (sensingRoot) {
+  const selector = el('div', 'segmented');
+  selector.setAttribute('role', 'tablist');
+  selector.setAttribute('aria-label', 'Sensing scenario');
+  const scenarioTabs = [];
+  const scenarioPanels = [];
+  sensingComparisons.forEach(([id, title, caption]) => {
+    const asset = byId(id);
+    if (!asset) return;
+    used.add(asset.id);
+    const tab = el('button', 'segment', title);
+    tab.type = 'button';
+    tab.id = `tab-${id}`;
+    tab.setAttribute('role', 'tab');
+    tab.setAttribute('aria-controls', `panel-${id}`);
+    const panel = el('div', 'sensing-scenario');
+    panel.id = `panel-${id}`;
+    panel.setAttribute('role', 'tabpanel');
+    panel.setAttribute('aria-labelledby', tab.id);
+    panel.append(videoCard(asset, { title, caption, muted: true,
+      ariaLabel: `Sensing: ${title}`, className: 'video-card sensor-video' }));
+    selector.append(tab);
+    scenarioTabs.push(tab);
+    scenarioPanels.push(panel);
+  });
+  const selectScenario = (index, focus = false) => {
+    scenarioTabs.forEach((tab, i) => {
+      const selected = i === index;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      scenarioPanels[i].hidden = !selected;
+      if (!selected) scenarioPanels[i].querySelectorAll('video').forEach(video => video.pause());
+    });
+    if (focus) scenarioTabs[index].focus();
+  };
+  scenarioTabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => selectScenario(i));
+    tab.addEventListener('keydown', event => {
+      if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+      event.preventDefault();
+      selectScenario((i + (event.key === 'ArrowRight' ? 1 : scenarioTabs.length - 1)) % scenarioTabs.length, true);
+    });
+  });
+  sensingRoot.replaceChildren(selector, ...scenarioPanels);
+  if (scenarioTabs.length) selectScenario(0);
+}
+
 const proximityVideos = [
   ['notion-proximity-close-approach', 'Close-proximity interaction',
     'External view of a person approaching the sensorized robot during policy execution.'],
@@ -278,6 +341,11 @@ document.addEventListener('play', e => {
     v.pause();
   });
 }, true);
+document.querySelectorAll('details').forEach(details => {
+  details.addEventListener('toggle', () => {
+    if (!details.open) details.querySelectorAll('video').forEach(video => video.pause());
+  });
+});
 
 function card(item) {
   const a = byId(item.id);
@@ -317,14 +385,14 @@ document.querySelectorAll('a[href="#replay"], a[href="replay.html"], #replay, #r
 
 const supplementaryItems = [
   {
-    id: 'ral-two-interventions',
-    title: 'Reactive avoidance and continuation',
-    caption: 'Side-by-side view of two recorded disturbance events during manipulation, showing obstacle avoidance and subsequent task continuation.'
+    id: 'idp-research-montage',
+    title: 'Multi-view research montage',
+    caption: 'Robot trials, expert demonstrations, and corrective data collection across multiple recordings.'
   },
   {
-    id: 'lpb-inference-full',
-    title: 'Full evaluation rollout',
-    caption: 'Recorded full-length evaluation rollout demonstrating reactive avoidance and task continuation.'
+    id: 'obstacle-interaction-full',
+    title: 'Full obstacle-interaction rollout',
+    caption: 'A complete external-camera recording of task execution with repeated obstacle approaches.'
   }
 ];
 const extras = supplementaryItems
