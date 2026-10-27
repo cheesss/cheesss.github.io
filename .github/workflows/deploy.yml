@@ -33,10 +33,11 @@ jobs:
       - name: Verify media release clearance
         run: pnpm release:check
       - name: Build site
+        id: build
         run: pnpm build
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: dist
+          path: ${{ steps.build.outputs.path }}
   deploy:
     environment:
       name: github-pages

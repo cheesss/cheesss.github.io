@@ -76,7 +76,9 @@ Web derivatives may be staged locally with `publicClearance: false` in the manif
 
 ## Deployment and recovery
 
-The GitHub Pages workflow (`.github/workflows/deploy.yml`) runs `pnpm check`, `pnpm release:check`, and `pnpm build`, then deploys `dist` on every push to `main`. This user-site repository intentionally sets `site: https://cheesss.github.io` and no Astro `base` path.
+The GitHub Pages workflow (`.github/workflows/deploy.yml`) runs `pnpm check`, `pnpm release:check`, and `pnpm build`, then deploys the reviewed artifact emitted by `scripts/prepare-pages-artifact.mjs` on every push to `main`. This user-site repository intentionally sets `site: https://cheesss.github.io` and no Astro `base` path.
+
+The standalone `/recovery-aware-lpb-rb10/` paper site is retired from this deployment. The packager preserves the working files and Git history, but excludes that complete route, including directly addressable media. It verifies that every other built file is copied unchanged and that the portfolio home and research pages remain present. The generated artifact path is recorded locally in `.pages-artifacts/latest.json`; CI passes it directly to the Pages upload step. Do not deploy the unfiltered `dist/` directory.
 
 A bad deployment is recovered by reverting the responsible commit on `main`; GitHub Actions then redeploys the last good state.
 

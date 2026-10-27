@@ -3,6 +3,18 @@ import path from 'node:path';
 
 const root = process.cwd();
 const roots = ['src', 'public', 'content', 'README.md'];
+const retiredRoute = 'recovery-aware-lpb-rb10';
+const artifactIndex = process.argv.indexOf('--artifact');
+const artifact = artifactIndex < 0 ? null : path.resolve(root, process.argv[artifactIndex + 1] || '');
+if (artifact) {
+  if (!artifact.startsWith(root + path.sep) || !(await statSafe(artifact))?.isDirectory()) {
+    throw new Error('Expected an existing deployment artifact inside this checkout.');
+  }
+  roots.push(path.relative(root, artifact));
+  if (await statSafe(path.join(artifact, retiredRoute))) {
+    throw new Error(`Retired paper page must not be published: ${retiredRoute}`);
+  }
+}
 const textExtensions = new Set(['.astro', '.css', '.html', '.js', '.json', '.md', '.mjs', '.svg', '.ts', '.txt', '.yml', '.yaml']);
 const forbidden = [
   ['OpenAI-style API key', /\bsk-[A-Za-z0-9_-]{16,}\b/g],

@@ -9,7 +9,7 @@
     "dev": "astro dev",
     "check": "astro check",
     "validate": "node scripts/validate-content.mjs && node scripts/check-media.mjs && node scripts/audit-public.mjs",
-    "build": "pnpm validate && astro build",
+    "build": "pnpm validate && astro build && node scripts/prepare-pages-artifact.mjs",
     "test": "playwright test",
     "test:mobile": "playwright test --project=mobile",
     "audit:public": "node scripts/audit-public.mjs",
